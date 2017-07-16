@@ -35,7 +35,7 @@ class Settings:
                     if key not in current.keys():
                         current[key] = self.default_settings[key]
                         print("Adding " + str(key) +
-                              " field to red settings.json")
+                              " field to Cronan settings.json")
                 dataIO.save_json(self.path, current)
             self.bot_settings = dataIO.load_json(self.path)
 
@@ -48,15 +48,15 @@ class Settings:
             self.parse_cmd_arguments()
 
     def parse_cmd_arguments(self):
-        parser = argparse.ArgumentParser(description="Red - Discord Bot")
+        parser = argparse.ArgumentParser(description="Cronan - Discord Bot")
         parser.add_argument("--owner", help="ID of the owner. Only who hosts "
-                                            "Red should be owner, this has "
+                                            "Cronan should be owner, this has "
                                             "security implications")
         parser.add_argument("--prefix", "-p", action="append",
                             help="Global prefix. Can be multiple")
         parser.add_argument("--admin-role", help="Role seen as admin role by "
-                                                 "Red")
-        parser.add_argument("--mod-role", help="Role seen as mod role by Red")
+                                                 "Cronan")
+        parser.add_argument("--mod-role", help="Role seen as mod role by Cronan")
         parser.add_argument("--no-prompt",
                             action="store_true",
                             help="Disables console inputs. Features requiring "
@@ -64,17 +64,17 @@ class Settings:
                                  "result")
         parser.add_argument("--no-cogs",
                             action="store_true",
-                            help="Starts Red with no cogs loaded, only core")
+                            help="Starts Cronan with no cogs loaded, only core")
         parser.add_argument("--self-bot",
                             action='store_true',
-                            help="Specifies if Red should log in as selfbot")
+                            help="Specifies if Cronan should log in as selfbot")
         parser.add_argument("--memory-only",
                             action="store_true",
                             help="Arguments passed and future edits to the "
                                  "settings will not be saved to disk")
         parser.add_argument("--dry-run",
                             action="store_true",
-                            help="Makes Red quit with code 0 just before the "
+                            help="Makes Cronan quit with code 0 just before the "
                                  "login. This is useful for testing the boot "
                                  "process.")
         parser.add_argument("--debug",
