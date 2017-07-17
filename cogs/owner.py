@@ -397,27 +397,6 @@ class Owner:
 
     @_set.command(pass_context=True)
     @checks.is_owner()
-    async def game(self, ctx, *, game=None):
-        """Sets Cronan's playing status
-
-        Leaving this empty will clear it."""
-
-        server = ctx.message.server
-
-        current_status = server.me.status if server is not None else None
-
-        if game:
-            game = game.strip()
-            await self.bot.change_presence(game=discord.Game(name=game),
-                                           status=current_status)
-            log.debug('Status set to "{}" by owner'.format(game))
-        else:
-            await self.bot.change_presence(game=None, status=current_status)
-            log.debug('status cleared by owner')
-        await self.bot.say("Done.")
-
-    @_set.command(pass_context=True)
-    @checks.is_owner()
     async def status(self, ctx, *, status=None):
         """Sets Cronan's status
 
@@ -860,12 +839,12 @@ class Owner:
             owner = "Cronan"
 
         about = (
-            "This is a version of RedBot changed by Cronan The Dark Gamer "
+            "This is a Discord bot created by Cronan The Dark Gamer "
             "for his own server. Make sure to check out Cronan at https://www.youtube.com/c/CronanTheDarkGamer"
             "".format(red_repo, author_repo, server_url))
 
         embed = discord.Embed(colour=discord.Colour.red())
-        embed.add_field(name="Instance owned by", value=str(owner))
+        embed.add_field(name="Bot owned by", value=str(owner))
         embed.add_field(name="Python", value=py_version)
         embed.add_field(name="discord.py", value=dpy_version)
         embed.add_field(name="About Cronan", value=about, inline=False)
@@ -885,6 +864,15 @@ class Owner:
         passed = self.get_bot_uptime()
         await self.bot.say("Been up for: **{}** (since {} UTC)"
                            "".format(passed, since))
+
+    @commands.command()
+    async def botserver(self):
+        """show's the invite link to tthe bot owner's server"""
+        server_url = "https://discord.gg/yEPCqYk"
+        embed = discord.Embed(colour=discord.Colour.red())
+        embed.add_field(name="Bot Owner's Server:", value=server_url)
+
+        await self.bot.say(embed=embed)
 
     @commands.command()
     async def version(self):
