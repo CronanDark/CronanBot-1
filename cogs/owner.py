@@ -789,7 +789,6 @@ class Owner:
         """Shows info about Cronan"""
         author_repo = "https://github.com/CronanDark/"
         red_repo = author_repo + "/CronanBot"
-        credit_url = "https://github.com/Twentysix26/Red-DiscordBot"
         server_url = "https://discord.gg/yEPCqYk"
         dpy_repo = "https://github.com/Rapptz/discord.py"
         python_url = "https://www.python.org/"
@@ -798,8 +797,7 @@ class Owner:
         dpy_version = "[{}]({})".format(discord.__version__, dpy_repo)
         py_version = "[{}.{}.{}]({})".format(*os.sys.version_info[:3],
                                              python_url)
-        creditwords = "[{}]({})".format("RedBot", credit_url)
-
+        
         owner_set = self.bot.settings.owner is not None
         owner = self.bot.settings.owner if owner_set else None
         if owner:
@@ -819,7 +817,6 @@ class Owner:
 
         embed = discord.Embed(colour=discord.Colour.red())
         embed.add_field(name="Bot owned by", value=str(owner))
-        embed.add_field(name="Credit to", value=creditwords)
         embed.add_field(name="Python", value=py_version)
         embed.add_field(name="discord.py", value=dpy_version)
         embed.add_field(name="About Cronan", value=about, inline=False)
