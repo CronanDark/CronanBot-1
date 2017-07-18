@@ -9,6 +9,7 @@ import datetime
 import time
 import aiohttp
 import asyncio
+from numpy import random
 
 settings = {"POLL_DURATION" : 60}
 
@@ -32,17 +33,22 @@ class RPSParser:
             raise
 
 
+
+
+
 class General:
     """General commands."""
 
     def __init__(self, bot):
         self.bot = bot
+        self.spinners = []
         self.stopwatches = {}
         self.ball = ["As I see it, yes", "It is certain", "It is decidedly so", "Most likely", "Outlook good",
                      "Signs point to yes", "Without a doubt", "Yes", "Yes – definitely", "You may rely on it", "Reply hazy, try again",
                      "Ask again later", "Better not tell you now", "Cannot predict now", "Concentrate and ask again",
                      "Don't count on it", "My reply is no", "My sources say no", "Outlook not so good", "Very doubtful"]
         self.poll_sessions = []
+
 
     @commands.command(hidden=True)
     async def ping(self):
@@ -321,6 +327,29 @@ class General:
             await self.bot.say("There is no definition #{}".format(pos+1))
         except:
             await self.bot.say("Error.")
+
+    @commands.command(aliases=["fidget", "spin"], pass_context=True)
+    async def spinner(self, ctx):
+        """Spin a fidget spinner."""
+        author = ctx.message.author
+        spinchoice = choice(["http://1.media.dorkly.cvcdn.com/98/93/8faa22b41bcbe455830907387af3a44b.gif",
+                   "http://0.media.dorkly.cvcdn.com/20/80/4fcaa14e1215f43b4b791419dca027d9.gif",
+                   "https://vhs-talk.s3-us-west-2.amazonaws.com/original/2X/2/2897b1847a18c33315d6d1f0066a6da590181988.gif",
+                   "http://fivedollarfidget.com/images/spinhandloop.gif",
+                   "http://media.boingboing.net/wp-content/uploads/2017/02/good-spin.gif"])
+        embed = discord.Embed(colour=discord.Colour.red())
+        embed.set_image(url=spinchoice)
+        if author.id in self.spinners:
+            await self.bot.say("You are already spinning!")
+        else:
+            self.spinners.append(author.id)
+            duration = randint(10, 200)
+            await self.bot.say(author.mention + " spun a fidget spinner; let's see how long it lasts.")
+            await self.bot.say(embed=embed)
+            await asyncio.sleep(duration)
+            duration = str(duration)
+            await self.bot.say(author.mention + ", your spinner spun for " + duration + " seconds!")
+            self.spinners.remove(author.id)
 
     @commands.command(pass_context=True, no_pm=True)
     async def poll(self, ctx, *text):

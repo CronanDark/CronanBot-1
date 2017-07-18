@@ -51,34 +51,6 @@ class Owner:
     def __unload(self):
         self.session.close()
 
-    @commands.command()
-    @checks.is_owner()
-    async def load(self, *, cog_name: str):
-        """Loads a cog
-
-        Example: load mod"""
-        module = cog_name.strip()
-        if "cogs." not in module:
-            module = "cogs." + module
-        try:
-            self._load_cog(module)
-        except CogNotFoundError:
-            await self.bot.say("That cog could not be found.")
-        except CogLoadError as e:
-            log.exception(e)
-            traceback.print_exc()
-            await self.bot.say("There was an issue loading the cog. Check"
-                               " your console or logs for more information.")
-        except Exception as e:
-            log.exception(e)
-            traceback.print_exc()
-            await self.bot.say('Cog was found and possibly loaded but '
-                               'something went wrong. Check your console '
-                               'or logs for more information.')
-        else:
-            set_cog(module, True)
-            await self.disable_commands()
-            await self.bot.say("The cog has been loaded.")
 
     @commands.group(invoke_without_command=True)
     @checks.is_owner()
@@ -707,7 +679,7 @@ class Owner:
     async def join(self):
         """Shows Cronan's invite URL"""
         if self.bot.user.bot:
-            await self.bot.whisper("Invite URL: " + self.bot.oauth_url)
+            await self.bot.whisper("Invite URL: https://discordapp.com/oauth2/authorize?client_id=335423008095338497&scope=bot&permissions=8")
         else:
             await self.bot.say("I'm not a bot account. I have no invite URL.")
 
@@ -817,6 +789,7 @@ class Owner:
         """Shows info about Cronan"""
         author_repo = "https://github.com/CronanDark/"
         red_repo = author_repo + "/CronanBot"
+        credit_url = "https://github.com/Twentysix26/Red-DiscordBot"
         server_url = "https://discord.gg/yEPCqYk"
         dpy_repo = "https://github.com/Rapptz/discord.py"
         python_url = "https://www.python.org/"
@@ -825,6 +798,7 @@ class Owner:
         dpy_version = "[{}]({})".format(discord.__version__, dpy_repo)
         py_version = "[{}.{}.{}]({})".format(*os.sys.version_info[:3],
                                              python_url)
+        creditwords = "[{}]({})".format("RedBot", credit_url)
 
         owner_set = self.bot.settings.owner is not None
         owner = self.bot.settings.owner if owner_set else None
@@ -839,12 +813,13 @@ class Owner:
             owner = "Cronan"
 
         about = (
-            "This is a Discord bot created by Cronan The Dark Gamer "
+            "This is a version of Redbot edited and created by Cronan The Dark Gamer "
             "for his own server. Make sure to check out Cronan at https://www.youtube.com/c/CronanTheDarkGamer"
             "".format(red_repo, author_repo, server_url))
 
         embed = discord.Embed(colour=discord.Colour.red())
         embed.add_field(name="Bot owned by", value=str(owner))
+        embed.add_field(name="Credit to", value=creditwords)
         embed.add_field(name="Python", value=py_version)
         embed.add_field(name="discord.py", value=dpy_version)
         embed.add_field(name="About Cronan", value=about, inline=False)
