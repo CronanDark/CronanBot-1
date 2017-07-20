@@ -351,7 +351,7 @@ class General:
     async def bob(self, *, message):
         """spongebob meme"""
         try:
-            embid = discord.Embed(colour=discord.Colour.red())
+            embid = discord.Embed(colour=discord.Colour.darker_grey())
             embid.set_image(url="http://i2.kym-cdn.com/entries/icons/original/000/022/940/spongebobicon.jpg")
 
             maybework = ''

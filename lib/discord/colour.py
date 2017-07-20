@@ -191,8 +191,8 @@ class Colour:
 
     @classmethod
     def darker_grey(cls):
-        """A factory method that returns a :class:`Colour` with a value of ``0x546e7a``."""
-        return cls(0x546e7a)
+        """A factory method that returns a :class:`Colour` with a value of ``0x36393E``."""
+        return cls(0x36393E)
 
 
 Color = Colour
