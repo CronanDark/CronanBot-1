@@ -811,7 +811,7 @@ class Owner:
             owner = "Cronan"
 
         about = (
-            "This is a version of Redbot edited and created by Cronan The Dark Gamer "
+            "This is a Discord bot created by Cronan The Dark Gamer "
             "for his own server. Make sure to check out Cronan at https://www.youtube.com/c/CronanTheDarkGamer"
             "".format(red_repo, author_repo, server_url))
 

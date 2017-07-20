@@ -1,6 +1,6 @@
 {
     "cogs.alias" : true,
-    "cogs.audio" : true,
+    "cogs.audio" : false,
     "cogs.customcom" : true,
     "cogs.downloader" : true,
     "cogs.economy" : true,
@@ -11,6 +11,5 @@
     "cogs.msgvote" : true,
     "cogs.redportal" : true,
     "cogs.streams" : true,
-    "cogs.trigger" : true,
     "cogs.trivia" : true
 }

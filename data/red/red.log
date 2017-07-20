@@ -1451,3 +1451,889 @@ Traceback (most recent call last):
     async def load(self, *, cog_name: ):
                                       ^
 SyntaxError: invalid syntax
+[18/07/2017 23:03] ERROR red load_cogs 575: 'General' object has no attribute 'check_poll_votes'
+Traceback (most recent call last):
+  File "red.py", line 572, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 904, in _load_cog
+    self.bot.load_extension(mod_obj.__name__)
+  File "lib\discord\ext\commands\bot.py", line 738, in load_extension
+    lib.setup(self)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 375, in setup
+    bot.add_listener(n.check_poll_votes, "on_message")
+AttributeError: 'General' object has no attribute 'check_poll_votes'
+[18/07/2017 23:16] ERROR red load_cogs 575: 'General' object has no attribute 'check_poll_votes'
+Traceback (most recent call last):
+  File "red.py", line 572, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 904, in _load_cog
+    self.bot.load_extension(mod_obj.__name__)
+  File "lib\discord\ext\commands\bot.py", line 738, in load_extension
+    lib.setup(self)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 375, in setup
+    bot.add_listener(n.check_poll_votes, "on_message")
+AttributeError: 'General' object has no attribute 'check_poll_votes'
+[18/07/2017 23:18] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 354, in poll
+    if message.channel.id not in self.settings["channels_enabled"]:
+AttributeError: 'Context' object has no attribute 'channel'
+[18/07/2017 23:24] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 364, in poll
+    if message.channel.id not in self.settings["channels_enabled"]:
+AttributeError: 'tuple' object has no attribute 'channel'
+[18/07/2017 23:38] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 364, in poll
+    if message.channel.id not in self.settings["channels_enabled"]:
+AttributeError: 'tuple' object has no attribute 'channel'
+[18/07/2017 23:55] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 364, in poll
+    if message.author == self.bot.user and not self.settings.get("bot", False):
+AttributeError: 'tuple' object has no attribute 'author'
+[18/07/2017 23:56] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 364, in poll
+    if message.author == self.bot.user and not self.settings.get("bot", False):
+AttributeError: 'str' object has no attribute 'author'
+[18/07/2017 23:57] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 364, in poll
+    if self.is_command(message):
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 354, in is_command
+    prefixes = self.bot.command_prefix(self.bot, msg)
+  File "red.py", line 55, in prefix_manager
+    return bot.settings.get_prefixes(message.server)
+AttributeError: 'str' object has no attribute 'server'
+[19/07/2017 00:00] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 356, in poll
+    up_emoji = self.fix_custom_emoji(message.server,
+AttributeError: 'General' object has no attribute 'fix_custom_emoji'
+[19/07/2017 00:02] ERROR red load_cogs 575: name 'msgvote' is not defined
+Traceback (most recent call last):
+  File "red.py", line 572, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 902, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 662, in exec_module
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 39, in <module>
+    class General:
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 352, in General
+    @msgvote.command(name="upemoji", pass_context=True, no_pm=True)
+NameError: name 'msgvote' is not defined
+[19/07/2017 00:04] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 374, in poll
+    up_emoji = self.fix_custom_emoji(message.server,
+AttributeError: 'General' object has no attribute 'fix_custom_emoji'
+[19/07/2017 00:05] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 381, in poll
+    up_emoji = self.fix_custom_emoji(message.server,
+AttributeError: 'str' object has no attribute 'server'
+[19/07/2017 00:07] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 382, in poll
+    self.settings["up_emoji"])
+AttributeError: 'General' object has no attribute 'settings'
+[19/07/2017 00:14] ERROR red load_cogs 575: name 'dataIO' is not defined
+Traceback (most recent call last):
+  File "red.py", line 572, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 904, in _load_cog
+    self.bot.load_extension(mod_obj.__name__)
+  File "lib\discord\ext\commands\bot.py", line 738, in load_extension
+    lib.setup(self)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 396, in setup
+    n = General(bot)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 51, in __init__
+    self.settings = dataIO.load_json(self.settings_path)
+NameError: name 'dataIO' is not defined
+[19/07/2017 00:16] ERROR red load_cogs 575: No module named 'dataIO'
+Traceback (most recent call last):
+  File "red.py", line 572, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 902, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 662, in exec_module
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 13, in <module>
+    import dataIO
+ImportError: No module named 'dataIO'
+[19/07/2017 00:21] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 388, in poll
+    await self.bot.add_reaction(message, up_emoji)
+  File "lib\discord\client.py", line 949, in add_reaction
+    raise InvalidArgument('message argument must be a Message')
+discord.errors.InvalidArgument: message argument must be a Message
+[19/07/2017 00:21] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 388, in poll
+    await self.bot.add_reaction(message, up_emoji)
+  File "lib\discord\client.py", line 949, in add_reaction
+    raise InvalidArgument('message argument must be a Message')
+discord.errors.InvalidArgument: message argument must be a Message
+[19/07/2017 00:22] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 388, in poll
+    await self.bot.add_reaction(ctx.message.server, up_emoji)
+  File "lib\discord\client.py", line 949, in add_reaction
+    raise InvalidArgument('message argument must be a Message')
+discord.errors.InvalidArgument: message argument must be a Message
+[19/07/2017 00:25] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 389, in poll
+    await self.bot.add_reaction(ctx.message.server, up_emoji)
+  File "lib\discord\client.py", line 949, in add_reaction
+    raise InvalidArgument('message argument must be a Message')
+discord.errors.InvalidArgument: message argument must be a Message
+[19/07/2017 00:27] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+TypeError: poll() takes 1 positional argument but 2 were given
+[19/07/2017 00:32] ERROR red load_cogs 575: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\general.py', 382, 28, '    async def poll(self, **, message):\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 902, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 382
+    async def poll(self, **, message):
+                           ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 572, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 906, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\general.py', 382, 28, '    async def poll(self, **, message):\n'))
+[19/07/2017 00:34] ERROR red load_cogs 575: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\general.py', 382, 33, '    async def poll(self, ctx, **, message):\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 902, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 382
+    async def poll(self, ctx, **, message):
+                                ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 572, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 906, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\general.py', 382, 33, '    async def poll(self, ctx, **, message):\n'))
+[19/07/2017 00:35] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 384, in poll
+    up_emoji = self.fix_custom_emoji(message.server,
+AttributeError: 'str' object has no attribute 'server'
+[19/07/2017 00:36] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 388, in poll
+    await self.bot.add_reaction(Message=message, Emoji=up_emoji)
+TypeError: add_reaction() got an unexpected keyword argument 'Message'
+[19/07/2017 00:39] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 388, in poll
+    await self.bot.add_reaction(message=message, emoji=up_emoji)
+  File "lib\discord\client.py", line 949, in add_reaction
+    raise InvalidArgument('message argument must be a Message')
+discord.errors.InvalidArgument: message argument must be a Message
+[19/07/2017 00:42] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 388, in poll
+    await self.bot.add_reaction(message(message), emoji(up_emoji))
+TypeError: 'str' object is not callable
+[19/07/2017 00:44] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 388, in poll
+    await self.bot.add_reaction(message(str(message)), emoji(up_emoji))
+TypeError: 'str' object is not callable
+[19/07/2017 00:48] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 388, in poll
+    await self.bot.add_reaction(message, up_emoji)
+  File "lib\discord\client.py", line 949, in add_reaction
+    raise InvalidArgument('message argument must be a Message')
+discord.errors.InvalidArgument: message argument must be a Message
+[19/07/2017 02:29] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 388, in poll
+    await self.bot.add_reaction(message, up_emoji)
+  File "lib\discord\client.py", line 949, in add_reaction
+    raise InvalidArgument('message argument must be a Message')
+discord.errors.InvalidArgument: message argument must be a Message
+[19/07/2017 02:30] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 388, in poll
+    await self.bot.add_reaction(channel.message, up_emoji)
+NameError: name 'channel' is not defined
+[19/07/2017 02:32] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 388, in poll
+    await self.bot.add_reaction(ctx.message.channel, up_emoji)
+  File "lib\discord\client.py", line 949, in add_reaction
+    raise InvalidArgument('message argument must be a Message')
+discord.errors.InvalidArgument: message argument must be a Message
+[19/07/2017 02:35] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 388, in poll
+    await self.bot.add_reaction(Message.message, up_emoji)
+NameError: name 'Message' is not defined
+[19/07/2017 02:40] ERROR red load_cogs 575: No module named 'cogs.message'
+Traceback (most recent call last):
+  File "red.py", line 572, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 902, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 662, in exec_module
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 14, in <module>
+    from .message import Message
+ImportError: No module named 'cogs.message'
+[19/07/2017 02:43] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 389, in poll
+    await self.bot.add_reaction(Message.message, up_emoji)
+AttributeError: type object 'Message' has no attribute 'message'
+[19/07/2017 02:45] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 388, in poll
+    await self.bot.add_reaction(message.Message.channel, up_emoji)
+AttributeError: 'str' object has no attribute 'Message'
+[19/07/2017 22:48] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 388, in poll
+    await self.bot.add_reaction(message.Message.channel, up_emoji)
+AttributeError: 'str' object has no attribute 'Message'
+[19/07/2017 22:49] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 388, in poll
+    await self.bot.add_reaction(message.channel, up_emoji)
+AttributeError: 'str' object has no attribute 'channel'
+[19/07/2017 22:50] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 388, in poll
+    await self.bot.add_reaction(message.channel, up_emoji)
+AttributeError: 'str' object has no attribute 'channel'
+[19/07/2017 22:50] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 388, in poll
+    await self.bot.add_reaction(message, up_emoji)
+  File "lib\discord\client.py", line 949, in add_reaction
+    raise InvalidArgument('message argument must be a Message')
+discord.errors.InvalidArgument: message argument must be a Message
+[19/07/2017 22:53] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 388, in poll
+    await self.bot.add_reaction(up_emoji)
+TypeError: add_reaction() missing 1 required positional argument: 'emoji'
+[19/07/2017 22:55] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 389, in poll
+    await self.bot.add_reaction(poll_message, up_emoji)
+  File "lib\discord\client.py", line 949, in add_reaction
+    raise InvalidArgument('message argument must be a Message')
+discord.errors.InvalidArgument: message argument must be a Message
+[19/07/2017 22:56] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 388, in poll
+    await self.bot.add_reaction(ctx.message.channel, up_emoji)
+  File "lib\discord\client.py", line 949, in add_reaction
+    raise InvalidArgument('message argument must be a Message')
+discord.errors.InvalidArgument: message argument must be a Message
+[19/07/2017 22:58] ERROR red load_cogs 575: ('positional argument follows keyword argument', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\general.py', 388, 57, 'await self.bot.add_reaction(message=message, up_emoji)\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 902, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 388
+    await self.bot.add_reaction(message=message, up_emoji)
+                                                         ^
+SyntaxError: positional argument follows keyword argument
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 572, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 906, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ('positional argument follows keyword argument', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\general.py', 388, 57, 'await self.bot.add_reaction(message=message, up_emoji)\n'))
+[19/07/2017 22:59] ERROR red load_cogs 575: ('positional argument follows keyword argument', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\general.py', 388, 57, 'await self.bot.add_reaction(message=message, up_emoji)\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 902, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 388
+    await self.bot.add_reaction(message=message, up_emoji)
+                                                         ^
+SyntaxError: positional argument follows keyword argument
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 572, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 906, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ('positional argument follows keyword argument', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\general.py', 388, 57, 'await self.bot.add_reaction(message=message, up_emoji)\n'))
+[19/07/2017 23:00] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 388, in poll
+    await self.bot.add_reaction(message=message, emoji=up_emoji)
+  File "lib\discord\client.py", line 949, in add_reaction
+    raise InvalidArgument('message argument must be a Message')
+discord.errors.InvalidArgument: message argument must be a Message
+[19/07/2017 23:06] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 389, in poll
+    await self.bot.add_reaction(message=pollmsg, emoji=up_emoji)
+  File "lib\discord\client.py", line 949, in add_reaction
+    raise InvalidArgument('message argument must be a Message')
+discord.errors.InvalidArgument: message argument must be a Message
+[19/07/2017 23:12] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 383, in poll
+    pollmsg = message.id
+AttributeError: 'str' object has no attribute 'id'
+[19/07/2017 23:12] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 383, in poll
+    pollmsg = message.Message.id
+AttributeError: 'str' object has no attribute 'Message'
+[19/07/2017 23:14] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 383, in poll
+    pollmsg = self.message.id
+AttributeError: 'General' object has no attribute 'message'
+[19/07/2017 23:14] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 389, in poll
+    await self.bot.add_reaction(pollmsg, emoji=up_emoji)
+  File "lib\discord\client.py", line 949, in add_reaction
+    raise InvalidArgument('message argument must be a Message')
+discord.errors.InvalidArgument: message argument must be a Message
+[19/07/2017 23:15] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 383, in poll
+    pollmsg = Message.message.id
+NameError: name 'Message' is not defined
+[19/07/2017 23:16] ERROR red load_cogs 575: No module named 'message'
+Traceback (most recent call last):
+  File "red.py", line 572, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 902, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 662, in exec_module
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 14, in <module>
+    from message import Message
+ImportError: No module named 'message'
+[19/07/2017 23:18] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 384, in poll
+    pollmsg = Message.message.id
+AttributeError: type object 'Message' has no attribute 'message'
+[19/07/2017 23:19] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 383, in poll
+    pollmsg = Message.id
+NameError: name 'Message' is not defined
+[19/07/2017 23:20] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 383, in poll
+    pollmsg = self.id
+AttributeError: 'General' object has no attribute 'id'
+[19/07/2017 23:24] ERROR red load_cogs 575: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\general.py', 382, 33, '    async def poll(self, ctx, **, message):\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 902, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 382
+    async def poll(self, ctx, **, message):
+                                ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 572, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 906, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\general.py', 382, 33, '    async def poll(self, ctx, **, message):\n'))
+[19/07/2017 23:26] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 383, in poll
+    pollmsg = message.id
+AttributeError: 'dict' object has no attribute 'id'
+[19/07/2017 23:30] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 383, in poll
+    pollmsg = message.id
+AttributeError: 'str' object has no attribute 'id'
+[19/07/2017 23:32] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 383, in poll
+    pollmsg = message.content
+AttributeError: 'str' object has no attribute 'content'
+[19/07/2017 23:33] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 383, in poll
+    pollmsg = message.id
+AttributeError: 'int' object has no attribute 'id'
+[19/07/2017 23:33] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 383, in poll
+    pollmsg = message.id
+AttributeError: 'int' object has no attribute 'id'
+[19/07/2017 23:34] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 389, in poll
+    await self.bot.add_reaction(pollmsg, emoji=up_emoji)
+  File "lib\discord\client.py", line 949, in add_reaction
+    raise InvalidArgument('message argument must be a Message')
+discord.errors.InvalidArgument: message argument must be a Message
+[19/07/2017 23:35] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 389, in poll
+    await self.bot.add_reaction(pollmsg, emoji=up_emoji)
+  File "lib\discord\client.py", line 949, in add_reaction
+    raise InvalidArgument('message argument must be a Message')
+discord.errors.InvalidArgument: message argument must be a Message
+[19/07/2017 23:41] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 388, in poll
+    await self.bot.add_reaction(reaction.message, emoji=up_emoji)
+NameError: name 'reaction' is not defined
+[19/07/2017 23:42] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 388, in poll
+    await self.bot.add_reaction(Reaction.message, emoji=up_emoji)
+NameError: name 'Reaction' is not defined
+[19/07/2017 23:43] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 388, in poll
+    await self.bot.add_reaction(discord.Reaction.message, emoji=up_emoji)
+  File "lib\discord\client.py", line 949, in add_reaction
+    raise InvalidArgument('message argument must be a Message')
+discord.errors.InvalidArgument: message argument must be a Message
+[19/07/2017 23:45] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 388, in poll
+    await self.bot.add_reaction(discord.Message.message, emoji=up_emoji)
+AttributeError: type object 'Message' has no attribute 'message'
+[19/07/2017 23:47] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 383, in poll
+    pollmsg = discord.Message.id(message)
+TypeError: 'member_descriptor' object is not callable
+[19/07/2017 23:47] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 383, in poll
+    pollmsg = discord.Message.content(message)
+TypeError: 'member_descriptor' object is not callable
+[19/07/2017 23:50] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 383, in poll
+    pollmsg = self.id(message)
+AttributeError: 'General' object has no attribute 'id'
+[19/07/2017 23:50] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 383, in poll
+    pollmsg = discord.Message.self.content(message)
+AttributeError: type object 'Message' has no attribute 'self'
+[19/07/2017 23:52] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 383, in poll
+    pollmsg = discord.Message._update.content(message)
+AttributeError: 'function' object has no attribute 'content'
+[19/07/2017 23:53] ERROR red load_cogs 575: cannot import name '_update'
+Traceback (most recent call last):
+  File "red.py", line 572, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 902, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 662, in exec_module
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 14, in <module>
+    from discord.message import _update
+ImportError: cannot import name '_update'
+[19/07/2017 23:55] ERROR red load_cogs 575: No module named 'discord.message.Message'; 'discord.message' is not a package
+Traceback (most recent call last):
+  File "red.py", line 572, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 902, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 662, in exec_module
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 14, in <module>
+    from discord.message.Message import _update
+ImportError: No module named 'discord.message.Message'; 'discord.message' is not a package
+[20/07/2017 00:01] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 384, in poll
+    pollmsg = self.content(message)
+AttributeError: 'General' object has no attribute 'content'
+[20/07/2017 00:02] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 384, in poll
+    pollmsg = _update.content(message)
+NameError: name '_update' is not defined
+[20/07/2017 00:10] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 384, in poll
+    pollmsg = Message._update.content(message)
+AttributeError: 'function' object has no attribute 'content'
+[20/07/2017 00:12] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 384, in poll
+    pollmsg = Message._update.self.content(message)
+AttributeError: 'function' object has no attribute 'self'
+[20/07/2017 00:13] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 384, in poll
+    pollmsg = Message.content(message)
+TypeError: 'member_descriptor' object is not callable
+[20/07/2017 00:14] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 385, in poll
+    pollmsg = Message.content(message)
+TypeError: 'member_descriptor' object is not callable
+[20/07/2017 00:15] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 390, in poll
+    await self.bot.add_reaction(pollmsg, emoji=up_emoji)
+  File "lib\discord\client.py", line 949, in add_reaction
+    raise InvalidArgument('message argument must be a Message')
+discord.errors.InvalidArgument: message argument must be a Message
+[20/07/2017 00:19] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 390, in poll
+    await self.bot.add_reaction(pollmsg, emoji=up_emoji)
+  File "lib\discord\client.py", line 949, in add_reaction
+    raise InvalidArgument('message argument must be a Message')
+discord.errors.InvalidArgument: message argument must be a Message
+[20/07/2017 01:03] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 385, in poll
+    up_emoji = self.fix_custom_emoji(message.server,
+AttributeError: 'str' object has no attribute 'server'
+[20/07/2017 01:03] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 385, in poll
+    up_emoji = self.fix_custom_emoji(message.server,
+AttributeError: 'Context' object has no attribute 'server'
+[20/07/2017 01:04] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 385, in poll
+    up_emoji = self.fix_custom_emoji(ctx.message.server,
+NameError: name 'ctx' is not defined
+[20/07/2017 01:16] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 385, in poll
+    up_emoji = self.fix_custom_emoji(message.server,
+AttributeError: 'Context' object has no attribute 'server'
+[20/07/2017 01:16] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 385, in poll
+    up_emoji = self.fix_custom_emoji(message.server,
+AttributeError: 'tuple' object has no attribute 'server'
+[20/07/2017 01:17] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+TypeError: poll() takes 1 positional argument but 2 were given
+[20/07/2017 01:20] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+TypeError: poll() takes 1 positional argument but 2 were given
+[20/07/2017 01:25] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+TypeError: poll() takes 1 positional argument but 2 were given
+[20/07/2017 01:27] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 389, in poll
+    await self.bot.add_reaction(message, up_emoji)
+  File "lib\discord\client.py", line 949, in add_reaction
+    raise InvalidArgument('message argument must be a Message')
+discord.errors.InvalidArgument: message argument must be a Message
+[20/07/2017 01:29] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 384, in poll
+    message = discord.Message(str(message))
+TypeError: __init__() takes 1 positional argument but 2 were given
+[20/07/2017 01:30] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 384, in poll
+    message = discord.Message._update(str(message))
+  File "lib\discord\message.py", line 128, in _update
+    self.edited_timestamp = utils.parse_time(data.get('edited_timestamp'))
+AttributeError: 'str' object has no attribute 'edited_timestamp'
+[20/07/2017 04:27] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 384, in poll
+    message = discord.Message._update.content(str(message))
+AttributeError: 'function' object has no attribute 'content'
+[20/07/2017 05:02] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 384, in poll
+    message = discord.Message._update.content(str(message))
+AttributeError: 'function' object has no attribute 'content'
+[20/07/2017 05:11] ERROR red on_command_error 371: Exception in command 'poll'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 384, in poll
+    message = discord.Message._update.content(str(message))
+AttributeError: 'function' object has no attribute 'content'
