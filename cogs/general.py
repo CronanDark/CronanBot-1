@@ -353,6 +353,22 @@ class General:
             await self.bot.say(author.mention + ", your spinner spun for " + duration + " seconds!")
             self.spinners.remove(author.id)
 
+    @commands.command()
+    async def suggest(self):
+        """Suggest stuff for CronanBot"""
+        suggest_link = "https://goo.gl/forms/VANDeJ0ktM1CJRlC2"
+        click_here = "[{}]({})".format("Click Here", suggest_link)
+        
+        emb = discord.Embed(colour=discord.Colour.red())
+        emb.add_field(name="Suggest new content here", value=click_here)
+
+
+        try:
+            await self.bot.say(embed=emb)
+        except discord.HTTPException:
+            await self.bot.say("I need the `Embed links` permission "
+                               "to send this")
+
 
 
 def setup(bot):
