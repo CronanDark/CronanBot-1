@@ -2337,3 +2337,346 @@ Traceback (most recent call last):
   File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 384, in poll
     message = discord.Message._update.content(str(message))
 AttributeError: 'function' object has no attribute 'content'
+[20/07/2017 12:55] ERROR red on_command_error 368: Exception in command 'bob'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+TypeError: bob() takes 1 positional argument but 2 were given
+[20/07/2017 12:55] ERROR red on_command_error 368: Exception in command 'bob'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 356, in bob
+    for shouldwork in message:
+TypeError: 'Context' object is not iterable
+[20/07/2017 13:09] ERROR red on_command_error 368: Exception in command 'bob'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 355, in bob
+    embid.set_image(bob_pic)
+TypeError: set_image() takes 1 positional argument but 2 were given
+[20/07/2017 13:13] ERROR red on_command_error 368: Exception in command 'bob'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 360, in bob
+    await self.bot.send_file(channel, 'data/memes/spongebobicon.jpg')
+NameError: name 'channel' is not defined
+[20/07/2017 13:14] ERROR red on_command_error 368: Exception in command 'bob'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 360, in bob
+    await self.bot.send_file(channel, 'data/memes/spongebobicon.jpg')
+NameError: name 'channel' is not defined
+[20/07/2017 13:15] ERROR red on_command_error 368: Exception in command 'bob'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 360, in bob
+    await self.bot.send_file('data/memes/spongebobicon.jpg')
+TypeError: send_file() missing 1 required positional argument: 'fp'
+[20/07/2017 13:17] ERROR red on_command_error 368: Exception in command 'bob'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 360, in bob
+    await self.bot.send_file(message.channel, 'data/memes/spongebobicon.jpg')
+AttributeError: 'str' object has no attribute 'channel'
+[20/07/2017 13:20] ERROR red on_command_error 368: Exception in command 'bob'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 360, in bob
+    await self.bot.send_file(ctx.channel, 'data/memes/spongebobicon.jpg')
+AttributeError: 'Context' object has no attribute 'channel'
+[20/07/2017 13:22] ERROR red on_command_error 368: Exception in command 'bob'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 360, in bob
+    await self.bot.send_file(Message.channel, 'data/memes/spongebobicon.jpg')
+  File "lib\discord\client.py", line 1223, in send_file
+    channel_id, guild_id = yield from self._resolve_destination(destination)
+  File "lib\discord\client.py", line 289, in _resolve_destination
+    raise InvalidArgument(fmt.format(destination))
+discord.errors.InvalidArgument: Destination must be Channel, PrivateChannel, User, or Object. Received member_descriptor
+[20/07/2017 13:29] ERROR red on_command_error 368: Exception in command 'bob'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 360, in bob
+    await self.bot.send_file(Message._update.channel, 'data/memes/spongebobicon.jpg')
+AttributeError: 'function' object has no attribute 'channel'
+[20/07/2017 13:31] ERROR red on_command_error 368: Exception in command 'bob'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 360, in bob
+    await self.bot.send_file(Message._update.self.channel, 'data/memes/spongebobicon.jpg')
+AttributeError: 'function' object has no attribute 'self'
+[20/07/2017 13:35] ERROR red on_command_error 368: Exception in command 'bob'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 360, in bob
+    await self.bot.send_file(fp='data/memes/spongebobicon.jpg')
+TypeError: send_file() missing 1 required positional argument: 'destination'
+[20/07/2017 13:36] ERROR red on_command_error 368: Exception in command 'bob'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 360, in bob
+    await self.bot.send_file(Channel.message.channel, 'data/memes/spongebobicon.jpg')
+NameError: name 'Channel' is not defined
+[20/07/2017 13:37] ERROR red on_command_error 368: Exception in command 'bob'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 360, in bob
+    await self.bot.send_file(disocrd.channel.Channel.message.channel, 'data/memes/spongebobicon.jpg')
+NameError: name 'disocrd' is not defined
+[20/07/2017 13:39] ERROR red on_command_error 368: Exception in command 'bob'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 360, in bob
+    await self.bot.send_file(Message._update.channel, 'data/memes/spongebobicon.jpg')
+AttributeError: 'function' object has no attribute 'channel'
+[20/07/2017 13:40] ERROR red on_command_error 368: Exception in command 'bob'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 360, in bob
+    await self.bot.send_file(Message.__slots__.channel, 'data/memes/spongebobicon.jpg')
+AttributeError: 'list' object has no attribute 'channel'
+[20/07/2017 13:41] ERROR red load_cogs 568: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\general.py', 360, 34, "        await self.bot.send_file(, 'data/memes/spongebobicon.jpg')\n"))
+Traceback (most recent call last):
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 902, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 360
+    await self.bot.send_file(, 'data/memes/spongebobicon.jpg')
+                             ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 906, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\general.py', 360, 34, "        await self.bot.send_file(, 'data/memes/spongebobicon.jpg')\n"))
+[20/07/2017 13:42] ERROR red on_command_error 368: Exception in command 'bob'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 355, in bob
+    for shouldwork in message:
+TypeError: 'Context' object is not iterable
+[20/07/2017 13:43] ERROR red on_command_error 368: Exception in command 'bob'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 361, in bob
+    await self.bot.send_file(message, 'data/memes/spongebobicon.jpg')
+  File "lib\discord\client.py", line 1223, in send_file
+    channel_id, guild_id = yield from self._resolve_destination(destination)
+  File "lib\discord\client.py", line 289, in _resolve_destination
+    raise InvalidArgument(fmt.format(destination))
+discord.errors.InvalidArgument: Destination must be Channel, PrivateChannel, User, or Object. Received Context
+[20/07/2017 13:45] ERROR red load_cogs 568: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\general.py', 353, 25, '        if len(message) =/= 0:\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 902, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 353
+    if len(message) =/= 0:
+                    ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 906, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\general.py', 353, 25, '        if len(message) =/= 0:\n'))
+[20/07/2017 13:46] ERROR red on_command_error 368: Exception in command 'bob'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 353, in bob
+    if len(message) == 0:
+TypeError: object of type 'Context' has no len()
+[20/07/2017 13:51] ERROR red load_cogs 568: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\general.py', 353, 25, '        if [len(message):] == 0:\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 902, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 353
+    if [len(message):] == 0:
+                    ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 906, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\general.py', 353, 25, '        if [len(message):] == 0:\n'))
+[20/07/2017 13:52] ERROR red on_command_error 368: Exception in command 'bob'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 353, in bob
+    numberofmsg = len(message)
+TypeError: object of type 'Context' has no len()
+[20/07/2017 13:54] ERROR red on_command_error 368: Exception in command 'bob'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 353, in bob
+    numberofmsg = message.content[len(message)]
+AttributeError: 'Context' object has no attribute 'content'
+[20/07/2017 13:56] ERROR red on_command_error 368: Exception in command 'bob'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 366, in bob
+    await self.bot.send_file(message, 'data/memes/spongebobicon.jpg')
+  File "lib\discord\client.py", line 1223, in send_file
+    channel_id, guild_id = yield from self._resolve_destination(destination)
+  File "lib\discord\client.py", line 289, in _resolve_destination
+    raise InvalidArgument(fmt.format(destination))
+discord.errors.InvalidArgument: Destination must be Channel, PrivateChannel, User, or Object. Received Context
+[20/07/2017 13:58] ERROR red on_command_error 368: Exception in command 'bob'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 365, in bob
+    await self.bot.send_file(message, 'data/memes/spongebobicon.jpg')
+  File "lib\discord\client.py", line 1223, in send_file
+    channel_id, guild_id = yield from self._resolve_destination(destination)
+  File "lib\discord\client.py", line 289, in _resolve_destination
+    raise InvalidArgument(fmt.format(destination))
+discord.errors.InvalidArgument: Destination must be Channel, PrivateChannel, User, or Object. Received Context
+[20/07/2017 14:00] ERROR red on_command_error 368: Exception in command 'bob'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 365, in bob
+    await self.bot.send_file(message, 'data/memes/spongebobicon.jpg')
+  File "lib\discord\client.py", line 1223, in send_file
+    channel_id, guild_id = yield from self._resolve_destination(destination)
+  File "lib\discord\client.py", line 289, in _resolve_destination
+    raise InvalidArgument(fmt.format(destination))
+discord.errors.InvalidArgument: Destination must be Channel, PrivateChannel, User, or Object. Received Context
+[20/07/2017 14:05] ERROR red load_cogs 568: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\general.py', 367, 3, 'def setup(bot):\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 902, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 367
+    def setup(bot):
+      ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 906, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\general.py', 367, 3, 'def setup(bot):\n'))
+[20/07/2017 14:07] ERROR red on_command_error 368: Exception in command 'bob'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 355, in bob
+    embid.set_image("http://i2.kym-cdn.com/entries/icons/original/000/022/940/spongebobicon.jpg")
+TypeError: set_image() takes 1 positional argument but 2 were given
+[20/07/2017 14:11] ERROR red on_command_error 368: Exception in command 'bob'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 363, in bob
+    await self.bot.say(maybework)
+  File "lib\discord\ext\commands\bot.py", line 309, in _augmented_msg
+    msg = yield from coro
+  File "red.py", line 89, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1152, in send_message
+    data = yield from self.http.send_message(channel_id, content, guild_id=guild_id, tts=tts, embed=embed)
+  File "lib\discord\http.py", line 200, in request
+    raise HTTPException(r, data)
+discord.errors.HTTPException: BAD REQUEST (status code: 400): Cannot send an empty message
+[20/07/2017 14:12] ERROR red load_cogs 568: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\general.py', 365, 14, '        except discord.errors.HTTPException:\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 902, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 365
+    except discord.errors.HTTPException:
+         ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 906, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\general.py', 365, 14, '        except discord.errors.HTTPException:\n'))

@@ -347,6 +347,25 @@ class General:
             await self.bot.say("I need the `Embed links` permission "
                                "to send this")
 
+    @commands.command()
+    async def bob(self, *, message):
+        """spongebob meme"""
+        try:
+            embid = discord.Embed(colour=discord.Colour.red())
+            embid.set_image(url="http://i2.kym-cdn.com/entries/icons/original/000/022/940/spongebobicon.jpg")
+
+            maybework = ''
+            hopingwork = True
+            for shouldwork in message:
+                maybework += shouldwork.upper() if hopingwork else shouldwork.lower()
+                if shouldwork.isalpha():
+                    hopingwork = not hopingwork
+            await self.bot.say(maybework)
+            await self.bot.say(embed=embid)
+        except discord.errors.HTTPException:
+            await self.bot.say("```->bob <message>\n\n"
+                               "spongebob meme\n\n```")
+
 
 
 def setup(bot):
