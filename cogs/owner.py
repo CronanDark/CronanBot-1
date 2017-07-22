@@ -675,7 +675,6 @@ class Owner:
                 pass
 
     @commands.command()
-    @checks.is_owner()
     async def join(self):
         """Shows Cronan's invite URL"""
         if self.bot.user.bot:

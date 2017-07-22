@@ -3194,3 +3194,20 @@ Traceback (most recent call last):
   File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 375, in _iterencode_dict
     raise TypeError("key " + repr(key) + " is not a string")
 TypeError: key <discord.member.Member object at 0x0000019AF0F6B7B8> is not a string
+[22/07/2017 02:49] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 30, in subscribe
+    dataIO.save_json(self.file_path, self.subscribers)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 18, in save_json
+    self._save_json(tmp_file, data)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 52, in _save_json
+    separators=(',',' : '))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\__init__.py", line 178, in dump
+    for chunk in iterable:
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 429, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 352, in _iterencode_dict
+    items = sorted(dct.items(), key=lambda kv: kv[0])
+TypeError: unorderable types: Member() < Member()
