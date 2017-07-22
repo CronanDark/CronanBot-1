@@ -788,7 +788,7 @@ class Owner:
         """Shows info about Cronan"""
         author_repo = "https://github.com/CronanDark/"
         red_repo = author_repo + "/CronanBot"
-        server_url = "https://discord.gg/yEPCqYk"
+        server_url = "https://discord.gg/hEFFpsc"
         dpy_repo = "https://github.com/Rapptz/discord.py"
         python_url = "https://www.python.org/"
         since = datetime.datetime(2016, 1, 2, 0, 0)
@@ -839,7 +839,7 @@ class Owner:
     @commands.command()
     async def botserver(self):
         """show's the invite link to tthe bot owner's server"""
-        server_url = "https://discord.gg/yEPCqYk"
+        server_url = "https://discord.gg/hEFFpsc"
         embed = discord.Embed(colour=discord.Colour.red())
         embed.add_field(name="Bot Owner's Server:", value=server_url)
 
