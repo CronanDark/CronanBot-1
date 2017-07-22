@@ -92,7 +92,7 @@
     },
     "Red-Portal-Cogs" : {
         "redportal" : {
-            "INSTALLED" : true,
+            "INSTALLED" : false,
             "file" : "data\\downloader\\Red-Portal-Cogs\\redportal\\redportal.py",
             "folder" : "data\\downloader\\Red-Portal-Cogs\\redportal"
         },

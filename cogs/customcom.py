@@ -29,9 +29,6 @@ class CustomCommands:
 
         Example:
         [p]customcom add yourcommand Text you want
-
-        CCs can be enhanced with arguments:
-        https://twentysix26.github.io/Red-Docs/red_guide_command_args/
         """
         server = ctx.message.server
         command = command.lower()

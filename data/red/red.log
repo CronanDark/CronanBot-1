@@ -2680,3 +2680,517 @@ Traceback (most recent call last):
   File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 906, in _load_cog
     raise CogLoadError(*e.args)
 cogs.owner.CogLoadError: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\general.py', 365, 14, '        except discord.errors.HTTPException:\n'))
+[21/07/2017 13:58] ERROR red on_command_error 368: Exception in command 'cog uninstall'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\downloader.py", line 371, in uninstall
+    os.remove(os.path.join("cogs", cog + ".py"))
+FileNotFoundError: [WinError 2] The system cannot find the file specified: 'cogs\\redportal.py'
+[21/07/2017 14:01] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 35, in subscribe
+    self.subscribers.insert(person)
+TypeError: insert() takes exactly 2 arguments (1 given)
+[21/07/2017 14:03] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 46, in unsubscribe
+    userisin = self.get_subscribers(person)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 57, in get_subscribers
+    if s.author == author:
+AttributeError: 'Member' object has no attribute 'author'
+[21/07/2017 14:04] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 46, in unsubscribe
+    userisin = self.get_subscribers(person)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 57, in get_subscribers
+    if s.author == author:
+AttributeError: 'Member' object has no attribute 'author'
+[21/07/2017 14:05] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 45, in unsubscribe
+    userisin = self.get_subscribers(ctx.message.author)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 56, in get_subscribers
+    if s.author == author:
+AttributeError: 'Member' object has no attribute 'author'
+[21/07/2017 14:06] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 45, in unsubscribe
+    userisin = self.get_subscribers(ctx.message.author)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 56, in get_subscribers
+    if s.author == author:
+AttributeError: 'Member' object has no attribute 'author'
+[21/07/2017 14:17] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 47, in unsubscribe
+    await self.bot.dispatch("unsubscribing", self)
+TypeError: object NoneType can't be used in 'await' expression
+[21/07/2017 21:16] ERROR red load_cogs 568: name 'defaultdict' is not defined
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 904, in _load_cog
+    self.bot.load_extension(mod_obj.__name__)
+  File "lib\discord\ext\commands\bot.py", line 738, in load_extension
+    lib.setup(self)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 101, in setup
+    n = Subscription(bot)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 27, in __init__
+    self.settings = defaultdict(dict, settings)
+NameError: name 'defaultdict' is not defined
+[21/07/2017 21:17] ERROR red load_cogs 568: [WinError 183] Cannot create a file when that file already exists: 'data/subscription'
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 904, in _load_cog
+    self.bot.load_extension(mod_obj.__name__)
+  File "lib\discord\ext\commands\bot.py", line 738, in load_extension
+    lib.setup(self)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 103, in setup
+    check_folders()
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 80, in check_folders
+    os.makedirs("data/subscription")
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\os.py", line 241, in makedirs
+    mkdir(name, mode)
+FileExistsError: [WinError 183] Cannot create a file when that file already exists: 'data/subscription'
+[21/07/2017 21:18] ERROR red load_cogs 568: name 'check_folders' is not defined
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 904, in _load_cog
+    self.bot.load_extension(mod_obj.__name__)
+  File "lib\discord\ext\commands\bot.py", line 738, in load_extension
+    lib.setup(self)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 79, in setup
+    check_folders()
+NameError: name 'check_folders' is not defined
+[21/07/2017 21:18] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 37, in subscribe
+    userisin = self.get_subscribers(author)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 63, in get_subscribers
+    if s.author == author:
+AttributeError: 'list' object has no attribute 'author'
+[21/07/2017 21:38] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 39, in subscribe
+    dataIO.save_json("data/subscription/subscribers.json", self.subscribers)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 18, in save_json
+    self._save_json(tmp_file, data)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 52, in _save_json
+    separators=(',',' : '))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\__init__.py", line 178, in dump
+    for chunk in iterable:
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 427, in _iterencode
+    yield from _iterencode_list(o, _current_indent_level)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 324, in _iterencode_list
+    yield from chunks
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 436, in _iterencode
+    o = _default(o)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 180, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <discord.member.Member object at 0x000001E4C6FC72F0> is not JSON serializable
+[21/07/2017 21:42] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 37, in subscribe
+    userisin = self.get_subscribers(author)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 64, in get_subscribers
+    if s.author == author:
+AttributeError: 'str' object has no attribute 'author'
+[21/07/2017 21:44] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 36, in subscribe
+    userisin = self.get_subscribers(author)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 64, in get_subscribers
+    if s.author == author:
+AttributeError: 'str' object has no attribute 'author'
+[21/07/2017 21:45] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 36, in subscribe
+    userisin = self.get_subscribers(author)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 64, in get_subscribers
+    if s.author == author:
+AttributeError: 'str' object has no attribute 'author'
+[21/07/2017 21:46] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 36, in subscribe
+    userisin = self.get_subscribers(author)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 64, in get_subscribers
+    if s.author == author:
+AttributeError: 'str' object has no attribute 'author'
+[21/07/2017 21:47] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 36, in subscribe
+    userisin = self.get_subscribers(author)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 62, in get_subscribers
+    if s.author == author:
+AttributeError: 'str' object has no attribute 'author'
+[21/07/2017 22:04] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 36, in subscribe
+    userisin = self.get_subscribers(author)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 62, in get_subscribers
+    if s.author == author:
+AttributeError: 'str' object has no attribute 'author'
+[21/07/2017 22:05] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 36, in subscribe
+    userisin = self.get_subscribers(author)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 62, in get_subscribers
+    if s.author == author:
+AttributeError: 'str' object has no attribute 'author'
+[21/07/2017 22:07] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 36, in subscribe
+    userisin = self.get_subscribers(author)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 62, in get_subscribers
+    if s.author == author:
+AttributeError: 'str' object has no attribute 'author'
+[21/07/2017 22:08] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 35, in subscribe
+    userisin = self.get_subscribers(author)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 61, in get_subscribers
+    if s.author == author:
+AttributeError: 'str' object has no attribute 'author'
+[21/07/2017 22:30] ERROR red load_cogs 568: ('unexpected indent', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\subscription.py', 50, 12, '            if author in sublist:\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 902, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 50
+    if author in sublist:
+    ^
+IndentationError: unexpected indent
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 906, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ('unexpected indent', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\subscription.py', 50, 12, '            if author in sublist:\n'))
+[21/07/2017 22:32] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 38, in subscribe
+    dataIO.save_json(self.file_path, self.subscribers)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 18, in save_json
+    self._save_json(tmp_file, data)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 52, in _save_json
+    separators=(',',' : '))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\__init__.py", line 178, in dump
+    for chunk in iterable:
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 436, in _iterencode
+    o = _default(o)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 180, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <discord.member.Member object at 0x00000218B56381E0> is not JSON serializable
+[21/07/2017 22:37] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 53, in unsubscribe
+    sublist.pop(strauthor, None)
+AttributeError: 'str' object has no attribute 'pop'
+[21/07/2017 22:39] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 42, in unsubscribe
+    sublist.pop(strauthor, None)
+AttributeError: 'str' object has no attribute 'pop'
+[21/07/2017 22:40] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 42, in unsubscribe
+    sublist.remove(strauthor, None)
+AttributeError: 'str' object has no attribute 'remove'
+[21/07/2017 22:44] ERROR red load_cogs 568: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 904, in _load_cog
+    self.bot.load_extension(mod_obj.__name__)
+  File "lib\discord\ext\commands\bot.py", line 738, in load_extension
+    lib.setup(self)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 53, in setup
+    n = Subscription(bot)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 14, in __init__
+    self.subscribers = dataIO.load_json(self.file_path)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 32, in load_json
+    return self._read_json(filename)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 46, in _read_json
+    data = json.load(f)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\__init__.py", line 268, in load
+    parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\__init__.py", line 319, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+[22/07/2017 00:02] ERROR red load_cogs 568: Expecting value: line 1 column 1 (char 0)
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 904, in _load_cog
+    self.bot.load_extension(mod_obj.__name__)
+  File "lib\discord\ext\commands\bot.py", line 738, in load_extension
+    lib.setup(self)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 54, in setup
+    n = Subscription(bot)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 14, in __init__
+    self.subscribers = dataIO.load_json(self.file_path)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 32, in load_json
+    return self._read_json(filename)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 46, in _read_json
+    data = json.load(f)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\__init__.py", line 268, in load
+    parse_constant=parse_constant, object_pairs_hook=object_pairs_hook, **kw)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\__init__.py", line 319, in loads
+    return _default_decoder.decode(s)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\decoder.py", line 339, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\decoder.py", line 357, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+[22/07/2017 00:03] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 28, in subscribe
+    dataIO.save_json(self.file_path, self.subscribers)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 18, in save_json
+    self._save_json(tmp_file, data)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 52, in _save_json
+    separators=(',',' : '))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\__init__.py", line 178, in dump
+    for chunk in iterable:
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 429, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 375, in _iterencode_dict
+    raise TypeError("key " + repr(key) + " is not a string")
+TypeError: key <discord.member.Member object at 0x00000153C5438268> is not a string
+[22/07/2017 00:17] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 22, in subscribe
+    user = member.user
+NameError: name 'member' is not defined
+[22/07/2017 00:18] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 22, in subscribe
+    user = member.user
+NameError: name 'member' is not defined
+[22/07/2017 00:22] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 22, in subscribe
+    user = member.user
+AttributeError: 'dict' object has no attribute 'user'
+[22/07/2017 00:23] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 22, in subscribe
+    user = member.user
+AttributeError: 'tuple' object has no attribute 'user'
+[22/07/2017 00:35] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 22, in subscribe
+    user = member.user
+NameError: name 'member' is not defined
+[22/07/2017 00:39] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 22, in subscribe
+    user = ctx.member.user
+AttributeError: 'Context' object has no attribute 'member'
+[22/07/2017 00:40] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 22, in subscribe
+    user = ctx.message.author
+AttributeError: 'Context' object has no attribute 'member'
+[22/07/2017 00:40] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 27, in subscribe
+    sublist[iden] = author
+NameError: name 'author' is not defined
+[22/07/2017 00:41] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 29, in subscribe
+    dataIO.save_json(self.file_path, self.subscribers)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 18, in save_json
+    self._save_json(tmp_file, data)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 52, in _save_json
+    separators=(',',' : '))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\__init__.py", line 178, in dump
+    for chunk in iterable:
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 429, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 375, in _iterencode_dict
+    raise TypeError("key " + repr(key) + " is not a string")
+TypeError: key <discord.member.Member object at 0x000001AD25619158> is not a string
+[22/07/2017 00:42] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 30, in subscribe
+    dataIO.save_json(self.file_path, self.subscribers)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 18, in save_json
+    self._save_json(tmp_file, data)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 52, in _save_json
+    separators=(',',' : '))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\__init__.py", line 178, in dump
+    for chunk in iterable:
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 429, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 375, in _iterencode_dict
+    raise TypeError("key " + repr(key) + " is not a string")
+TypeError: key <discord.member.Member object at 0x0000019C5EBE9378> is not a string
+[22/07/2017 00:44] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 29, in subscribe
+    dataIO.save_json(self.file_path, self.subscribers)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 18, in save_json
+    self._save_json(tmp_file, data)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 52, in _save_json
+    separators=(',',' : '))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\__init__.py", line 178, in dump
+    for chunk in iterable:
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 429, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 375, in _iterencode_dict
+    raise TypeError("key " + repr(key) + " is not a string")
+TypeError: key <discord.member.Member object at 0x000001C3D0BD7268> is not a string
+[22/07/2017 00:44] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 29, in subscribe
+    dataIO.save_json(self.file_path, self.subscribers)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 18, in save_json
+    self._save_json(tmp_file, data)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 52, in _save_json
+    separators=(',',' : '))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\__init__.py", line 178, in dump
+    for chunk in iterable:
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 429, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 375, in _iterencode_dict
+    raise TypeError("key " + repr(key) + " is not a string")
+TypeError: key <discord.member.Member object at 0x0000015C44FB7378> is not a string
+[22/07/2017 02:31] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 28, in subscribe
+    dataIO.save_json(self.file_path, self.subscribers)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 18, in save_json
+    self._save_json(tmp_file, data)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 52, in _save_json
+    separators=(',',' : '))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\__init__.py", line 178, in dump
+    for chunk in iterable:
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 429, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 375, in _iterencode_dict
+    raise TypeError("key " + repr(key) + " is not a string")
+TypeError: key <discord.member.Member object at 0x0000021655CF8268> is not a string
+[22/07/2017 02:33] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 29, in subscribe
+    dataIO.save_json(self.file_path, self.subscribers)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 18, in save_json
+    self._save_json(tmp_file, data)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 52, in _save_json
+    separators=(',',' : '))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\__init__.py", line 178, in dump
+    for chunk in iterable:
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 429, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 375, in _iterencode_dict
+    raise TypeError("key " + repr(key) + " is not a string")
+TypeError: key <discord.member.Member object at 0x0000026F47297268> is not a string
+[22/07/2017 02:34] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 30, in subscribe
+    dataIO.save_json(self.file_path, self.subscribers)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 18, in save_json
+    self._save_json(tmp_file, data)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 52, in _save_json
+    separators=(',',' : '))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\__init__.py", line 178, in dump
+    for chunk in iterable:
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 429, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 375, in _iterencode_dict
+    raise TypeError("key " + repr(key) + " is not a string")
+TypeError: key <discord.member.Member object at 0x0000019AF0F6B7B8> is not a string
