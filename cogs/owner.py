@@ -810,8 +810,8 @@ class Owner:
             owner = "Cronan"
 
         about = (
-            "This is a Discord bot created by Cronan The Dark Gamer "
-            "for his own server. Make sure to check out Cronan at https://www.youtube.com/c/CronanTheDarkGamer"
+            "This is a Discord bot created by Cronan The Dark Gamer. "
+            "Make sure to check out Cronan at https://www.youtube.com/c/CronanTheDarkGamer"
             "".format(red_repo, author_repo, server_url))
 
         embed = discord.Embed(colour=discord.Colour.red())
@@ -838,7 +838,7 @@ class Owner:
 
     @commands.command()
     async def botserver(self):
-        """show's the invite link to tthe bot owner's server"""
+        """show's the invite link to the bot owner's server"""
         server_url = "https://discord.gg/hEFFpsc"
         embed = discord.Embed(colour=discord.Colour.red())
         embed.add_field(name="Bot Owner's Server:", value=server_url)

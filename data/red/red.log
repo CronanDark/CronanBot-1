@@ -3211,3 +3211,194 @@ Traceback (most recent call last):
   File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 352, in _iterencode_dict
     items = sorted(dct.items(), key=lambda kv: kv[0])
 TypeError: unorderable types: Member() < Member()
+[22/07/2017 18:38] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 30, in subscribe
+    dataIO.save_json(self.file_path, self.subscribers)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 18, in save_json
+    self._save_json(tmp_file, data)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 52, in _save_json
+    separators=(',',' : '))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\__init__.py", line 178, in dump
+    for chunk in iterable:
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 429, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 375, in _iterencode_dict
+    raise TypeError("key " + repr(key) + " is not a string")
+TypeError: key <discord.member.Member object at 0x0000018848BF8378> is not a string
+[22/07/2017 18:39] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 29, in subscribe
+    dataIO.save_json(self.file_path, self.subscribers)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 18, in save_json
+    self._save_json(tmp_file, data)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 52, in _save_json
+    separators=(',',' : '))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\__init__.py", line 178, in dump
+    for chunk in iterable:
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 429, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 375, in _iterencode_dict
+    raise TypeError("key " + repr(key) + " is not a string")
+TypeError: key <discord.member.Member object at 0x00000126E77691E0> is not a string
+[22/07/2017 19:10] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 38, in unsubscribe
+    if user in person:
+TypeError: 'in <string>' requires string as left operand, not Member
+[22/07/2017 19:13] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 40, in unsubscribe
+    person.pop(struser, None)
+AttributeError: 'str' object has no attribute 'pop'
+[22/07/2017 19:14] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 38, in unsubscribe
+    if user in person:
+TypeError: 'in <string>' requires string as left operand, not Member
+[22/07/2017 19:15] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 39, in unsubscribe
+    person.pop(user, None)
+AttributeError: 'str' object has no attribute 'pop'
+[22/07/2017 19:20] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 40, in unsubscribe
+    person.remove(struser)
+AttributeError: 'str' object has no attribute 'remove'
+[22/07/2017 19:24] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 40, in unsubscribe
+    person.strip(user)
+TypeError: strip arg must be None or str
+[22/07/2017 19:34] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 26, in subscribe
+    dataIO.save_json(self.file_path, self.subscribers)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 18, in save_json
+    self._save_json(tmp_file, data)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 52, in _save_json
+    separators=(',',' : '))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\__init__.py", line 178, in dump
+    for chunk in iterable:
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 429, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 375, in _iterencode_dict
+    raise TypeError("key " + repr(key) + " is not a string")
+TypeError: key <discord.member.Member object at 0x00000207075C91E0> is not a string
+[22/07/2017 19:35] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 41, in unsubscribe
+    person.pop(user.id, None)
+AttributeError: 'str' object has no attribute 'pop'
+[22/07/2017 19:37] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 26, in subscribe
+    dataIO.save_json(self.file_path, self.subscribers)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 18, in save_json
+    self._save_json(tmp_file, data)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 52, in _save_json
+    separators=(',',' : '))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\__init__.py", line 178, in dump
+    for chunk in iterable:
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 429, in _iterencode
+    yield from _iterencode_dict(o, _current_indent_level)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 403, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 436, in _iterencode
+    o = _default(o)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 180, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <discord.member.Member object at 0x0000027C53DE91E0> is not JSON serializable
+[22/07/2017 19:39] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 38, in unsubscribe
+    if user in person:
+TypeError: 'in <string>' requires string as left operand, not Member
+[22/07/2017 19:40] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 39, in unsubscribe
+    person.pop(str(user), None)
+AttributeError: 'str' object has no attribute 'pop'
+[22/07/2017 19:43] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 39, in unsubscribe
+    if str(user) in person:
+TypeError: argument of type 'Member' is not iterable
+[22/07/2017 19:44] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 40, in unsubscribe
+    person.pop(user, None)
+AttributeError: 'Member' object has no attribute 'pop'
+[22/07/2017 19:46] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 40, in unsubscribe
+    person.pop(user, None)
+TypeError: pop() takes at most 1 argument (2 given)
+[22/07/2017 19:46] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 40, in unsubscribe
+    person.pop(user)
+TypeError: 'Member' object cannot be interpreted as an integer
+[22/07/2017 19:50] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 39, in unsubscribe
+    person = [str(use)]
+NameError: name 'use' is not defined
+[22/07/2017 19:50] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 40, in unsubscribe
+    person.pop(user)
+TypeError: 'Member' object cannot be interpreted as an integer
+[22/07/2017 19:53] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 36, in unsubscribe
+    userdude = user.lower()
+AttributeError: 'Member' object has no attribute 'lower'
+[22/07/2017 19:59] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 43, in unsubscribe
+    person.pop(userdude, None)
+AttributeError: 'str' object has no attribute 'pop'
