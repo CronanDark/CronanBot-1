@@ -31,6 +31,10 @@ class DataIO():
         """Loads json file"""
         return self._read_json(filename)
 
+    def loads_json(self, filename):
+        """something"""
+        return self._read_jsons(filename)
+
     def is_valid_json(self, filename):
         """Verifies if json file exists / is readable"""
         try:
@@ -44,6 +48,11 @@ class DataIO():
     def _read_json(self, filename):
         with open(filename, encoding='utf-8', mode="r") as f:
             data = json.load(f)
+        return data
+
+    def _read_jsons(self, filename):
+        with open(filename, encoding='utf-8', mode="r") as f:
+            data = json.loads(f)
         return data
 
     def _save_json(self, filename, data):

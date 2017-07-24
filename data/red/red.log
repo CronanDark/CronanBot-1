@@ -3402,3 +3402,1042 @@ Traceback (most recent call last):
   File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\subscription.py", line 43, in unsubscribe
     person.pop(userdude, None)
 AttributeError: 'str' object has no attribute 'pop'
+[22/07/2017 21:17] ERROR red load_cogs 568: ('invalid syntax', ('C:\\Users\\nicos\\OneDrive\\Documents\\CronanBot\\cogs\\subscription.py', 68, 3, 'def setup(bot):\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\owner.py", line 901, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 68
+    def setup(bot):
+      ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\owner.py", line 905, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ('invalid syntax', ('C:\\Users\\nicos\\OneDrive\\Documents\\CronanBot\\cogs\\subscription.py', 68, 3, 'def setup(bot):\n'))
+[22/07/2017 21:18] ERROR red load_cogs 568: ('invalid syntax', ('C:\\Users\\nicos\\OneDrive\\Documents\\CronanBot\\cogs\\subscription.py', 68, 3, 'def setup(bot):\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\owner.py", line 901, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 68
+    def setup(bot):
+      ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\owner.py", line 905, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ('invalid syntax', ('C:\\Users\\nicos\\OneDrive\\Documents\\CronanBot\\cogs\\subscription.py', 68, 3, 'def setup(bot):\n'))
+[22/07/2017 21:21] ERROR red load_cogs 568: name 'check' is not defined
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\owner.py", line 901, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 662, in exec_module
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 10, in <module>
+    class Subscription:
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 57, in Subscription
+    @check.is_owner()
+NameError: name 'check' is not defined
+[22/07/2017 21:23] ERROR red load_cogs 568: name 'check' is not defined
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\owner.py", line 901, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 662, in exec_module
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 18, in <module>
+    class Subscription:
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 65, in Subscription
+    @check.is_owner()
+NameError: name 'check' is not defined
+[22/07/2017 21:28] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 74, in pmannounce
+    await self.bot.send_message(msger, message)
+  File "red.py", line 89, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1145, in send_message
+    channel_id, guild_id = yield from self._resolve_destination(destination)
+  File "lib\discord\client.py", line 289, in _resolve_destination
+    raise InvalidArgument(fmt.format(destination))
+discord.errors.InvalidArgument: Destination must be Channel, PrivateChannel, User, or Object. Received str
+[22/07/2017 21:29] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 74, in pmannounce
+    for i, s in enumerate(msger):
+TypeError: 'int' object is not iterable
+[22/07/2017 21:32] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 73, in pmannounce
+    msger = re.finditer(msger)
+TypeError: finditer() missing 1 required positional argument: 'string'
+[22/07/2017 21:47] ERROR red load_cogs 568: ('unindent does not match any outer indentation level', ('C:\\Users\\nicos\\OneDrive\\Documents\\CronanBot\\cogs\\subscription.py', 69, 38, '       for i, s in enumerate(person):\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\owner.py", line 901, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 69
+    for i, s in enumerate(person):
+                                 ^
+IndentationError: unindent does not match any outer indentation level
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\owner.py", line 905, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ('unindent does not match any outer indentation level', ('C:\\Users\\nicos\\OneDrive\\Documents\\CronanBot\\cogs\\subscription.py', 69, 38, '       for i, s in enumerate(person):\n'))
+[22/07/2017 21:49] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 70, in pmannounce
+    msger = person[i][user1][hello]
+KeyError: 0
+[22/07/2017 21:51] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 70, in pmannounce
+    idper = person[i]
+KeyError: 0
+[22/07/2017 21:59] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 70, in pmannounce
+    idper = person[i]
+KeyError: 0
+[22/07/2017 22:00] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 70, in pmannounce
+    idper = person[i]
+KeyError: 1
+[22/07/2017 22:05] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 70, in pmannounce
+    idper = s["user1"]
+TypeError: string indices must be integers
+[23/07/2017 11:48] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 70, in pmannounce
+    idper = person[i]
+KeyError: 0
+[23/07/2017 11:57] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 71, in pmannounce
+    await self.bot.send_message(msger, message)
+NameError: name 'msger' is not defined
+[23/07/2017 11:58] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 71, in pmannounce
+    await self.bot.send_message(msger, message)
+  File "red.py", line 89, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1145, in send_message
+    channel_id, guild_id = yield from self._resolve_destination(destination)
+  File "lib\discord\client.py", line 289, in _resolve_destination
+    raise InvalidArgument(fmt.format(destination))
+discord.errors.InvalidArgument: Destination must be Channel, PrivateChannel, User, or Object. Received str
+[23/07/2017 12:01] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 71, in pmannounce
+    msger = msger()
+TypeError: 'str' object is not callable
+[23/07/2017 12:06] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 72, in pmannounce
+    await self.bot.send_message(msger, message)
+  File "red.py", line 89, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1145, in send_message
+    channel_id, guild_id = yield from self._resolve_destination(destination)
+  File "lib\discord\client.py", line 289, in _resolve_destination
+    raise InvalidArgument(fmt.format(destination))
+discord.errors.InvalidArgument: Destination must be Channel, PrivateChannel, User, or Object. Received int
+[23/07/2017 12:08] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 71, in pmannounce
+    msger = eval(msger)
+  File "<string>", line 1, in <module>
+NameError: name 'C' is not defined
+[23/07/2017 12:12] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 72, in pmannounce
+    await self.bot.send_message(msger, message)
+  File "red.py", line 89, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1145, in send_message
+    channel_id, guild_id = yield from self._resolve_destination(destination)
+  File "lib\discord\client.py", line 289, in _resolve_destination
+    raise InvalidArgument(fmt.format(destination))
+discord.errors.InvalidArgument: Destination must be Channel, PrivateChannel, User, or Object. Received dict
+[23/07/2017 12:16] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 73, in pmannounce
+    msger = eval(msger)
+  File "<string>", line 1, in <module>
+NameError: name 'C' is not defined
+[23/07/2017 12:17] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 71, in pmannounce
+    hiper = idper["hello"]
+TypeError: string indices must be integers
+[23/07/2017 12:18] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 72, in pmannounce
+    hiper = idper[hello]
+TypeError: string indices must be integers
+[23/07/2017 12:36] ERROR red load_cogs 568: ('invalid syntax', ('C:\\Users\\nicos\\OneDrive\\Documents\\CronanBot\\cogs\\subscription.py', 59, 26, '            if s["NAME"] = person:\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\owner.py", line 901, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 59
+    if s["NAME"] = person:
+                 ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\owner.py", line 905, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ('invalid syntax', ('C:\\Users\\nicos\\OneDrive\\Documents\\CronanBot\\cogs\\subscription.py', 59, 26, '            if s["NAME"] = person:\n'))
+[23/07/2017 12:38] ERROR red load_cogs 568: ('invalid syntax', ('C:\\Users\\nicos\\OneDrive\\Documents\\CronanBot\\cogs\\subscription.py', 59, 26, '            if s["NAME"] = person:\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\owner.py", line 901, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 59
+    if s["NAME"] = person:
+                 ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\owner.py", line 905, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ('invalid syntax', ('C:\\Users\\nicos\\OneDrive\\Documents\\CronanBot\\cogs\\subscription.py', 59, 26, '            if s["NAME"] = person:\n'))
+[23/07/2017 12:39] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 47, in subscribe
+    person.append(data)
+AttributeError: 'dict' object has no attribute 'append'
+[23/07/2017 12:41] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 46, in subscribe
+    person.append(data)
+AttributeError: 'dict' object has no attribute 'append'
+[23/07/2017 12:43] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 47, in subscribe
+    person.append(data)
+AttributeError: 'dict' object has no attribute 'append'
+[23/07/2017 12:45] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 48, in subscribe
+    dataIO.save_json("data/subscription/subscribers.json", self.subscribers)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\utils\dataIO.py", line 18, in save_json
+    self._save_json(tmp_file, data)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\utils\dataIO.py", line 52, in _save_json
+    separators=(',',' : '))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\__init__.py", line 178, in dump
+    for chunk in iterable:
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 427, in _iterencode
+    yield from _iterencode_list(o, _current_indent_level)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 324, in _iterencode_list
+    yield from chunks
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 403, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 436, in _iterencode
+    o = _default(o)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 180, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <discord.member.Member object at 0x0000021B567F8730> is not JSON serializable
+[23/07/2017 12:48] ERROR red on_command_error 368: Exception in command 'subscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 35, in subscribe
+    if s["ID"] != person["ID"]:
+TypeError: list indices must be integers or slices, not str
+[23/07/2017 12:54] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 71, in unsubscribe
+    person.remove(data)
+ValueError: list.remove(x): x not in list
+[23/07/2017 13:24] ERROR red <module> 629: Fatal exception, attempting graceful logout
+Traceback (most recent call last):
+  File "lib\aiohttp\connector.py", line 601, in _create_direct_connection
+    local_addr=self._local_addr)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 645, in create_connection
+    raise exceptions[0]
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 632, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 358, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 290, in _wakeup
+    future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\selector_events.py", line 436, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+OSError: [Errno 10065] Connect call failed ('104.16.58.5', 443)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "lib\aiohttp\connector.py", line 304, in connect
+    yield from self._create_connection(req)
+  File "lib\aiohttp\connector.py", line 578, in _create_connection
+    transport, proto = yield from self._create_direct_connection(req)
+  File "lib\aiohttp\connector.py", line 624, in _create_direct_connection
+    (req.host, req.port, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10065] Can not connect to discordapp.com:443 [Connect call failed ('104.16.58.5', 443)]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "red.py", line 609, in <module>
+    loop.run_until_complete(main(bot))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 337, in run_until_complete
+    return future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "red.py", line 598, in main
+    yield from bot.connect()
+  File "lib\discord\client.py", line 452, in connect
+    self.ws = yield from DiscordWebSocket.from_client(self, resume=resume)
+  File "lib\discord\gateway.py", line 203, in from_client
+    gateway = yield from client.http.get_gateway()
+  File "lib\discord\http.py", line 633, in get_gateway
+    data = yield from self.request(Route('GET', '/gateway'))
+  File "lib\discord\http.py", line 137, in request
+    r = yield from self.session.request(method, url, **kwargs)
+  File "lib\aiohttp\client.py", line 555, in __iter__
+    resp = yield from self._coro
+  File "lib\aiohttp\client.py", line 198, in _request
+    conn = yield from self._connector.connect(req)
+  File "lib\aiohttp\connector.py", line 314, in connect
+    .format(key, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10065] Cannot connect to host discordapp.com:443 ssl:True [Can not connect to discordapp.com:443 [Connect call failed ('104.16.58.5', 443)]]
+[23/07/2017 18:16] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 69, in unsubscribe
+    person.remove(data)
+ValueError: list.remove(x): x not in list
+[23/07/2017 18:18] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 68, in unsubscribe
+    person[i].remove(data)
+AttributeError: 'dict' object has no attribute 'remove'
+[23/07/2017 18:18] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 68, in unsubscribe
+    person[i].pop(data)
+TypeError: unhashable type: 'dict'
+[23/07/2017 18:20] ERROR red on_command_error 368: Exception in command 'unsubscribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 67, in unsubscribe
+    person[i]["NAME"].remove(str(user))
+AttributeError: 'str' object has no attribute 'remove'
+[23/07/2017 18:35] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 81, in pmannounce
+    msger = s[i]["NAME"]
+KeyError: 0
+[23/07/2017 18:36] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 81, in pmannounce
+    msger[i] = s[i]["NAME"]
+KeyError: 0
+[23/07/2017 19:49] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 79, in pmannounce
+    await self.bot.send_message(msger, message)
+  File "red.py", line 89, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1145, in send_message
+    channel_id, guild_id = yield from self._resolve_destination(destination)
+  File "lib\discord\client.py", line 289, in _resolve_destination
+    raise InvalidArgument(fmt.format(destination))
+discord.errors.InvalidArgument: Destination must be Channel, PrivateChannel, User, or Object. Received str
+[23/07/2017 19:50] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 79, in pmannounce
+    msger = eval(msger)
+  File "<string>", line 1
+    Cronan The Dark Gamer#8570
+             ^
+SyntaxError: invalid syntax
+[23/07/2017 19:51] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 79, in pmannounce
+    msger = eval(msger)
+TypeError: eval() arg 1 must be a string, bytes or code object
+[23/07/2017 19:51] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 79, in pmannounce
+    msger = eval(msger)
+  File "<string>", line 1
+    Cronan The Dark Gamer#8570
+             ^
+SyntaxError: invalid syntax
+[23/07/2017 19:53] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 79, in pmannounce
+    msger = eval(msger)
+  File "<string>", line 1
+    Cronan The Dark Gamer#8570
+             ^
+SyntaxError: invalid syntax
+[23/07/2017 19:53] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 79, in pmannounce
+    msger = exec(msger)
+  File "<string>", line 1
+    Cronan The Dark Gamer#8570
+             ^
+SyntaxError: invalid syntax
+[23/07/2017 19:56] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 79, in pmannounce
+    msger = u.encode('ascii', msger)
+NameError: name 'u' is not defined
+[23/07/2017 19:59] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 79, in pmannounce
+    msger = await r.json(encoding='utf-8')
+NameError: name 'r' is not defined
+[23/07/2017 20:00] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 81, in pmannounce
+    msger = await r.json(encoding='utf-8')
+NameError: name 'r' is not defined
+[23/07/2017 20:02] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 82, in pmannounce
+    async with session.get(msger) as r:
+  File "lib\aiohttp\client.py", line 565, in __aenter__
+    self._resp = yield from self._coro
+  File "lib\aiohttp\client.py", line 195, in _request
+    proxy=proxy, proxy_auth=proxy_auth, timeout=timeout)
+  File "lib\aiohttp\client_reqrep.py", line 91, in __init__
+    self.update_host(url)
+  File "lib\aiohttp\client_reqrep.py", line 111, in update_host
+    raise ValueError('Host could not be detected.')
+ValueError: Host could not be detected.
+[23/07/2017 20:03] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 82, in pmannounce
+    await self.bot.send_message(msger, message)
+  File "red.py", line 89, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1145, in send_message
+    channel_id, guild_id = yield from self._resolve_destination(destination)
+  File "lib\discord\client.py", line 289, in _resolve_destination
+    raise InvalidArgument(fmt.format(destination))
+discord.errors.InvalidArgument: Destination must be Channel, PrivateChannel, User, or Object. Received str
+[23/07/2017 20:03] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 81, in pmannounce
+    await self.bot.send_message(msger, message)
+  File "red.py", line 89, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1145, in send_message
+    channel_id, guild_id = yield from self._resolve_destination(destination)
+  File "lib\discord\client.py", line 289, in _resolve_destination
+    raise InvalidArgument(fmt.format(destination))
+discord.errors.InvalidArgument: Destination must be Channel, PrivateChannel, User, or Object. Received str
+[23/07/2017 20:04] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 81, in pmannounce
+    await self.bot.send_message(msger, message)
+  File "red.py", line 89, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1145, in send_message
+    channel_id, guild_id = yield from self._resolve_destination(destination)
+  File "lib\discord\client.py", line 289, in _resolve_destination
+    raise InvalidArgument(fmt.format(destination))
+discord.errors.InvalidArgument: Destination must be Channel, PrivateChannel, User, or Object. Received str
+[23/07/2017 20:04] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 81, in pmannounce
+    msger = eval(msger)
+TypeError: eval() arg 1 must be a string, bytes or code object
+[23/07/2017 20:05] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 81, in pmannounce
+    msger = exec(msger)
+TypeError: exec() arg 1 must be a string, bytes or code object
+[23/07/2017 20:05] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 81, in pmannounce
+    msger = int(msger)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'list'
+[23/07/2017 20:06] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 82, in pmannounce
+    msger = int(msger)
+ValueError: invalid literal for int() with base 10: "['169593870777057280']"
+[23/07/2017 20:09] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 79, in pmannounce
+    msger = msger.split()
+AttributeError: 'list' object has no attribute 'split'
+[23/07/2017 20:13] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 80, in pmannounce
+    await self.bot.send_message(msger, message)
+  File "red.py", line 89, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1145, in send_message
+    channel_id, guild_id = yield from self._resolve_destination(destination)
+  File "lib\discord\client.py", line 289, in _resolve_destination
+    raise InvalidArgument(fmt.format(destination))
+discord.errors.InvalidArgument: Destination must be Channel, PrivateChannel, User, or Object. Received str
+[23/07/2017 20:14] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 81, in pmannounce
+    await self.bot.send_message(msger, message)
+  File "red.py", line 89, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1145, in send_message
+    channel_id, guild_id = yield from self._resolve_destination(destination)
+  File "lib\discord\client.py", line 289, in _resolve_destination
+    raise InvalidArgument(fmt.format(destination))
+discord.errors.InvalidArgument: Destination must be Channel, PrivateChannel, User, or Object. Received int
+[23/07/2017 20:15] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 80, in pmannounce
+    msger = snowflake(msger)
+NameError: name 'snowflake' is not defined
+[23/07/2017 20:16] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 80, in pmannounce
+    msger = snowflake.connector.connect(msger)
+NameError: name 'snowflake' is not defined
+[23/07/2017 20:17] ERROR red load_cogs 568: No module named 'nowflake'
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\owner.py", line 901, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 662, in exec_module
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 18, in <module>
+    import nowflake.connector
+ImportError: No module named 'nowflake'
+[23/07/2017 20:17] ERROR red load_cogs 568: No module named 'snowflake'
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\owner.py", line 901, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 662, in exec_module
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 18, in <module>
+    import snowflake.connector
+ImportError: No module named 'snowflake'
+[23/07/2017 20:22] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 81, in pmannounce
+    await self.bot.send_message(msger, message)
+  File "red.py", line 89, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1145, in send_message
+    channel_id, guild_id = yield from self._resolve_destination(destination)
+  File "lib\discord\client.py", line 289, in _resolve_destination
+    raise InvalidArgument(fmt.format(destination))
+discord.errors.InvalidArgument: Destination must be Channel, PrivateChannel, User, or Object. Received int
+[23/07/2017 20:31] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 80, in pmannounce
+    msger = getattr(discord.user, msger)
+AttributeError: module 'discord.user' has no attribute '169593870777057280'
+[23/07/2017 20:33] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 80, in pmannounce
+    msger = getattr(discord.user[__init__], msger)
+NameError: name '__init__' is not defined
+[23/07/2017 20:34] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 80, in pmannounce
+    msger = getattr(discord.user.User[__init__], msger)
+NameError: name '__init__' is not defined
+[23/07/2017 20:37] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 82, in pmannounce
+    await self.bot.send_message(msger, message)
+  File "red.py", line 89, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1145, in send_message
+    channel_id, guild_id = yield from self._resolve_destination(destination)
+  File "lib\discord\client.py", line 289, in _resolve_destination
+    raise InvalidArgument(fmt.format(destination))
+discord.errors.InvalidArgument: Destination must be Channel, PrivateChannel, User, or Object. Received str
+[23/07/2017 20:43] ERROR red load_cogs 568: ('invalid syntax', ('C:\\Users\\nicos\\OneDrive\\Documents\\CronanBot\\cogs\\subscription.py', 82, 22, '            yeild from self.bot.send_message(msger, message)\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\owner.py", line 901, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 82
+    yeild from self.bot.send_message(msger, message)
+             ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\owner.py", line 905, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ('invalid syntax', ('C:\\Users\\nicos\\OneDrive\\Documents\\CronanBot\\cogs\\subscription.py', 82, 22, '            yeild from self.bot.send_message(msger, message)\n'))
+[23/07/2017 20:44] ERROR red load_cogs 568: ("'yield from' inside async function", ('C:\\Users\\nicos\\OneDrive\\Documents\\CronanBot\\cogs\\subscription.py', 82, 12, 'yield from self.bot.send_message(msger, message)\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\owner.py", line 901, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 82
+    yield from self.bot.send_message(msger, message)
+               ^
+SyntaxError: 'yield from' inside async function
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\owner.py", line 905, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ("'yield from' inside async function", ('C:\\Users\\nicos\\OneDrive\\Documents\\CronanBot\\cogs\\subscription.py', 82, 12, 'yield from self.bot.send_message(msger, message)\n'))
+[23/07/2017 21:02] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 81, in pmannounce
+    await self.bot.send_message(msger, message)
+  File "red.py", line 89, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1145, in send_message
+    channel_id, guild_id = yield from self._resolve_destination(destination)
+  File "lib\discord\client.py", line 289, in _resolve_destination
+    raise InvalidArgument(fmt.format(destination))
+discord.errors.InvalidArgument: Destination must be Channel, PrivateChannel, User, or Object. Received str
+[23/07/2017 21:03] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 80, in pmannounce
+    await self.bot.send_message(msger, message)
+  File "red.py", line 89, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1145, in send_message
+    channel_id, guild_id = yield from self._resolve_destination(destination)
+  File "lib\discord\client.py", line 289, in _resolve_destination
+    raise InvalidArgument(fmt.format(destination))
+discord.errors.InvalidArgument: Destination must be Channel, PrivateChannel, User, or Object. Received list
+[23/07/2017 21:07] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 84, in pmannounce
+    msger = {name: userobject(theid) for theid in msger}
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 84, in <dictcomp>
+    msger = {name: userobject(theid) for theid in msger}
+NameError: name 'name' is not defined
+[23/07/2017 21:08] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 85, in pmannounce
+    await self.bot.send_message(msger[theid].theid, message)
+NameError: name 'theid' is not defined
+[23/07/2017 21:09] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 86, in pmannounce
+    await self.bot.send_message(msger1[msgerstr].theid, message)
+KeyError: "['169593870777057280']"
+[23/07/2017 21:11] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 86, in pmannounce
+    await self.bot.send_message(msger1[msgerstr].theid, message)
+TypeError: list indices must be integers or slices, not str
+[23/07/2017 21:12] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 84, in pmannounce
+    msgerstr = int(msger)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'list'
+[23/07/2017 21:13] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 85, in pmannounce
+    msgerstr = int(msger5)
+ValueError: invalid literal for int() with base 10: "['169593870777057280']"
+[23/07/2017 21:27] ERROR red load_cogs 568: the JSON object must be str, not 'TextIOWrapper'
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\owner.py", line 903, in _load_cog
+    self.bot.load_extension(mod_obj.__name__)
+  File "lib\discord\ext\commands\bot.py", line 738, in load_extension
+    lib.setup(self)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 91, in setup
+    n = Subscription(bot)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 30, in __init__
+    self.forannounce = dataIO.loads_json("data/subscription/subscribers.json")
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\utils\dataIO.py", line 36, in loads_json
+    return self._read_jsons(filename)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\utils\dataIO.py", line 55, in _read_jsons
+    data = json.loads(f)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\__init__.py", line 312, in loads
+    s.__class__.__name__))
+TypeError: the JSON object must be str, not 'TextIOWrapper'
+[23/07/2017 21:31] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 85, in pmannounce
+    msger = dataIO.loads_json(msger)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\utils\dataIO.py", line 36, in loads_json
+    return self._read_jsons(filename)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\utils\dataIO.py", line 54, in _read_jsons
+    with open(filename, encoding='utf-8', mode="r") as f:
+FileNotFoundError: [Errno 2] No such file or directory: '169593870777057280'
+[23/07/2017 21:37] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 87, in pmannounce
+    await self.bot.send_message(msger(), message)
+  File "red.py", line 89, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1145, in send_message
+    channel_id, guild_id = yield from self._resolve_destination(destination)
+  File "lib\discord\client.py", line 289, in _resolve_destination
+    raise InvalidArgument(fmt.format(destination))
+discord.errors.InvalidArgument: Destination must be Channel, PrivateChannel, User, or Object. Received function
+[23/07/2017 21:40] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 85, in pmannounce
+    await self.bot.send_message(self.msger(msger), message)
+AttributeError: 'Subscription' object has no attribute 'msger'
+[23/07/2017 21:40] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 85, in pmannounce
+    await self.bot.send_message(msger.msger(msger), message)
+AttributeError: 'str' object has no attribute 'msger'
+[23/07/2017 21:41] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 85, in pmannounce
+    await self.bot.send_message(Msger.msger(msger), message)
+AttributeError: type object 'Msger' has no attribute 'msger'
+[23/07/2017 21:42] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 86, in pmannounce
+    await self.bot.send_message(Msger.msging(msger), message)
+  File "red.py", line 89, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1145, in send_message
+    channel_id, guild_id = yield from self._resolve_destination(destination)
+  File "lib\discord\client.py", line 289, in _resolve_destination
+    raise InvalidArgument(fmt.format(destination))
+discord.errors.InvalidArgument: Destination must be Channel, PrivateChannel, User, or Object. Received coroutine
+[23/07/2017 21:43] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 86, in pmannounce
+    await self.bot.send_message(Msger.msging(msger), message)
+  File "red.py", line 89, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1145, in send_message
+    channel_id, guild_id = yield from self._resolve_destination(destination)
+  File "lib\discord\client.py", line 289, in _resolve_destination
+    raise InvalidArgument(fmt.format(destination))
+discord.errors.InvalidArgument: Destination must be Channel, PrivateChannel, User, or Object. Received str
+[23/07/2017 21:43] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 86, in pmannounce
+    await self.bot.send_message(Msger.msging(msger), message)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 23, in msging
+    return msger()
+TypeError: 'str' object is not callable
+[23/07/2017 21:44] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 87, in pmannounce
+    await self.bot.send_message(Msger.msging(msger), message)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 23, in msging
+    self.msgs = msger
+NameError: name 'self' is not defined
+[23/07/2017 21:44] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 87, in pmannounce
+    await self.bot.send_message(Msger.msging(msger), message)
+TypeError: msging() missing 1 required positional argument: 'msger'
+[23/07/2017 21:45] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 87, in pmannounce
+    personmsg = Msger.msging(msger)
+TypeError: msging() missing 1 required positional argument: 'msger'
+[23/07/2017 21:45] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 87, in pmannounce
+    personmsg = Msger.msging(msger)
+TypeError: msging() missing 1 required positional argument: 'msger'
+[23/07/2017 21:47] ERROR red on_command_error 368: Exception in command 'pmannounce'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\OneDrive\Documents\CronanBot\cogs\subscription.py", line 87, in pmannounce
+    await self.bot.send_message(personmsg, message)
+  File "red.py", line 89, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1145, in send_message
+    channel_id, guild_id = yield from self._resolve_destination(destination)
+  File "lib\discord\client.py", line 289, in _resolve_destination
+    raise InvalidArgument(fmt.format(destination))
+discord.errors.InvalidArgument: Destination must be Channel, PrivateChannel, User, or Object. Received Msger
