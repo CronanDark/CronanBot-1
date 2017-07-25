@@ -1,6 +1,7 @@
 {
     "cogs.alias" : true,
     "cogs.audio" : false,
+    "cogs.cleverbot" : true,
     "cogs.customcom" : true,
     "cogs.downloader" : true,
     "cogs.economy" : true,
