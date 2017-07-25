@@ -791,7 +791,7 @@ class Owner:
         server_url = "https://discord.gg/hEFFpsc"
         dpy_repo = "https://github.com/Rapptz/discord.py"
         python_url = "https://www.python.org/"
-        since = datetime.datetime(2016, 1, 2, 0, 0)
+        since = datetime.datetime(2016, 11, 11, 0, 0)
         days_since = (datetime.datetime.utcnow() - since).days
         dpy_version = "[{}]({})".format(discord.__version__, dpy_repo)
         py_version = "[{}.{}.{}]({})".format(*os.sys.version_info[:3],
@@ -819,7 +819,7 @@ class Owner:
         embed.add_field(name="Python", value=py_version)
         embed.add_field(name="discord.py", value=dpy_version)
         embed.add_field(name="About Cronan", value=about, inline=False)
-        embed.set_footer(text="Bringing joy since 02 Jan 2016 (over "
+        embed.set_footer(text="Bringing joy since 11 Nov 2016 (over "
                          "{} days ago!)".format(days_since))
 
         try:
