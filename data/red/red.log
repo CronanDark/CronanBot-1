@@ -4479,3 +4479,544 @@ Traceback (most recent call last):
   File "lib\discord\http.py", line 196, in request
     raise Forbidden(r, data)
 discord.errors.Forbidden: FORBIDDEN (status code: 403): Cannot send messages to this user
+[25/07/2017 16:40] ERROR red <module> 629: Fatal exception, attempting graceful logout
+Traceback (most recent call last):
+  File "lib\aiohttp\connector.py", line 601, in _create_direct_connection
+    local_addr=self._local_addr)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 645, in create_connection
+    raise exceptions[0]
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 632, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 358, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 290, in _wakeup
+    future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\selector_events.py", line 436, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+OSError: [Errno 10013] Connect call failed ('104.16.59.5', 443)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "lib\aiohttp\connector.py", line 304, in connect
+    yield from self._create_connection(req)
+  File "lib\aiohttp\connector.py", line 578, in _create_connection
+    transport, proto = yield from self._create_direct_connection(req)
+  File "lib\aiohttp\connector.py", line 624, in _create_direct_connection
+    (req.host, req.port, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10013] Can not connect to discordapp.com:443 [Connect call failed ('104.16.59.5', 443)]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "red.py", line 609, in <module>
+    loop.run_until_complete(main(bot))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 337, in run_until_complete
+    return future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "red.py", line 598, in main
+    yield from bot.connect()
+  File "lib\discord\client.py", line 452, in connect
+    self.ws = yield from DiscordWebSocket.from_client(self, resume=resume)
+  File "lib\discord\gateway.py", line 203, in from_client
+    gateway = yield from client.http.get_gateway()
+  File "lib\discord\http.py", line 633, in get_gateway
+    data = yield from self.request(Route('GET', '/gateway'))
+  File "lib\discord\http.py", line 137, in request
+    r = yield from self.session.request(method, url, **kwargs)
+  File "lib\aiohttp\client.py", line 555, in __iter__
+    resp = yield from self._coro
+  File "lib\aiohttp\client.py", line 198, in _request
+    conn = yield from self._connector.connect(req)
+  File "lib\aiohttp\connector.py", line 314, in connect
+    .format(key, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10013] Cannot connect to host discordapp.com:443 ssl:True [Can not connect to discordapp.com:443 [Connect call failed ('104.16.59.5', 443)]]
+[26/07/2017 14:42] INFO economy _set 393: Cronan The Dark Gamer(169593870777057280) set 1000000000000000000 credits to Cronan The Dark Gamer (169593870777057280)
+[26/07/2017 14:43] INFO economy _set 393: Cronan The Dark Gamer(169593870777057280) set 100 credits to Cronan The Dark Gamer (169593870777057280)
+[26/07/2017 15:07] ERROR red on_command_error 368: Exception in command 'rank'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\leveler.py", line 167, in rank
+    await self.draw_rank(user, server)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\leveler.py", line 2381, in draw_rank
+    profile_image = Image.open('data/leveler/temp/{}_temp_rank_profile.png'.format(user.id)).convert('RGBA')
+  File "lib\PIL\Image.py", line 2519, in open
+    % (filename if filename else fp))
+OSError: cannot identify image file 'data/leveler/temp/169593870777057280_temp_rank_profile.png'
+[26/07/2017 15:56] INFO economy _set 393: Cronan The Dark Gamer(169593870777057280) set 0 credits to Cronan The Dark Gamer (169593870777057280)
+[26/07/2017 18:36] ERROR red <module> 629: Fatal exception, attempting graceful logout
+Traceback (most recent call last):
+  File "lib\aiohttp\connector.py", line 601, in _create_direct_connection
+    local_addr=self._local_addr)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 645, in create_connection
+    raise exceptions[0]
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 632, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 358, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 290, in _wakeup
+    future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\selector_events.py", line 436, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+OSError: [Errno 10051] Connect call failed ('104.16.59.5', 443)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "lib\aiohttp\connector.py", line 304, in connect
+    yield from self._create_connection(req)
+  File "lib\aiohttp\connector.py", line 578, in _create_connection
+    transport, proto = yield from self._create_direct_connection(req)
+  File "lib\aiohttp\connector.py", line 624, in _create_direct_connection
+    (req.host, req.port, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10051] Can not connect to discordapp.com:443 [Connect call failed ('104.16.59.5', 443)]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "red.py", line 609, in <module>
+    loop.run_until_complete(main(bot))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 337, in run_until_complete
+    return future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "red.py", line 598, in main
+    yield from bot.connect()
+  File "lib\discord\client.py", line 452, in connect
+    self.ws = yield from DiscordWebSocket.from_client(self, resume=resume)
+  File "lib\discord\gateway.py", line 203, in from_client
+    gateway = yield from client.http.get_gateway()
+  File "lib\discord\http.py", line 633, in get_gateway
+    data = yield from self.request(Route('GET', '/gateway'))
+  File "lib\discord\http.py", line 137, in request
+    r = yield from self.session.request(method, url, **kwargs)
+  File "lib\aiohttp\client.py", line 555, in __iter__
+    resp = yield from self._coro
+  File "lib\aiohttp\client.py", line 198, in _request
+    conn = yield from self._connector.connect(req)
+  File "lib\aiohttp\connector.py", line 314, in connect
+    .format(key, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10051] Cannot connect to host discordapp.com:443 ssl:True [Can not connect to discordapp.com:443 [Connect call failed ('104.16.59.5', 443)]]
+[28/07/2017 12:19] ERROR red <module> 629: Fatal exception, attempting graceful logout
+Traceback (most recent call last):
+  File "lib\aiohttp\connector.py", line 601, in _create_direct_connection
+    local_addr=self._local_addr)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 645, in create_connection
+    raise exceptions[0]
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 632, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 358, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 290, in _wakeup
+    future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\selector_events.py", line 436, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+OSError: [Errno 10065] Connect call failed ('104.16.59.5', 443)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "lib\aiohttp\connector.py", line 304, in connect
+    yield from self._create_connection(req)
+  File "lib\aiohttp\connector.py", line 578, in _create_connection
+    transport, proto = yield from self._create_direct_connection(req)
+  File "lib\aiohttp\connector.py", line 624, in _create_direct_connection
+    (req.host, req.port, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10065] Can not connect to discordapp.com:443 [Connect call failed ('104.16.59.5', 443)]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "red.py", line 609, in <module>
+    loop.run_until_complete(main(bot))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 337, in run_until_complete
+    return future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "red.py", line 598, in main
+    yield from bot.connect()
+  File "lib\discord\client.py", line 452, in connect
+    self.ws = yield from DiscordWebSocket.from_client(self, resume=resume)
+  File "lib\discord\gateway.py", line 203, in from_client
+    gateway = yield from client.http.get_gateway()
+  File "lib\discord\http.py", line 633, in get_gateway
+    data = yield from self.request(Route('GET', '/gateway'))
+  File "lib\discord\http.py", line 137, in request
+    r = yield from self.session.request(method, url, **kwargs)
+  File "lib\aiohttp\client.py", line 555, in __iter__
+    resp = yield from self._coro
+  File "lib\aiohttp\client.py", line 198, in _request
+    conn = yield from self._connector.connect(req)
+  File "lib\aiohttp\connector.py", line 314, in connect
+    .format(key, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10065] Cannot connect to host discordapp.com:443 ssl:True [Can not connect to discordapp.com:443 [Connect call failed ('104.16.59.5', 443)]]
+[28/07/2017 12:53] ERROR red <module> 629: Fatal exception, attempting graceful logout
+Traceback (most recent call last):
+  File "lib\aiohttp\connector.py", line 601, in _create_direct_connection
+    local_addr=self._local_addr)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 645, in create_connection
+    raise exceptions[0]
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 632, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 358, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 290, in _wakeup
+    future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\selector_events.py", line 436, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+OSError: [Errno 10065] Connect call failed ('104.16.59.5', 443)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "lib\aiohttp\connector.py", line 304, in connect
+    yield from self._create_connection(req)
+  File "lib\aiohttp\connector.py", line 578, in _create_connection
+    transport, proto = yield from self._create_direct_connection(req)
+  File "lib\aiohttp\connector.py", line 624, in _create_direct_connection
+    (req.host, req.port, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10065] Can not connect to discordapp.com:443 [Connect call failed ('104.16.59.5', 443)]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "red.py", line 609, in <module>
+    loop.run_until_complete(main(bot))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 337, in run_until_complete
+    return future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "red.py", line 598, in main
+    yield from bot.connect()
+  File "lib\discord\client.py", line 452, in connect
+    self.ws = yield from DiscordWebSocket.from_client(self, resume=resume)
+  File "lib\discord\gateway.py", line 203, in from_client
+    gateway = yield from client.http.get_gateway()
+  File "lib\discord\http.py", line 633, in get_gateway
+    data = yield from self.request(Route('GET', '/gateway'))
+  File "lib\discord\http.py", line 137, in request
+    r = yield from self.session.request(method, url, **kwargs)
+  File "lib\aiohttp\client.py", line 555, in __iter__
+    resp = yield from self._coro
+  File "lib\aiohttp\client.py", line 198, in _request
+    conn = yield from self._connector.connect(req)
+  File "lib\aiohttp\connector.py", line 314, in connect
+    .format(key, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10065] Cannot connect to host discordapp.com:443 ssl:True [Can not connect to discordapp.com:443 [Connect call failed ('104.16.59.5', 443)]]
+[01/08/2017 12:02] ERROR red on_command_error 368: Exception in command 'command'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 613, in command_disabler
+    perserv = self.disabled_commands[server.id]
+TypeError: list indices must be integers or slices, not str
+[01/08/2017 12:16] ERROR red on_command_error 368: Exception in command 'command'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 613, in command_disabler
+    perserv = self.disabled_commands[server.id]
+TypeError: list indices must be integers or slices, not str
+[01/08/2017 12:17] ERROR red on_command_error 368: Exception in command 'command'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 613, in command_disabler
+    perserv = self.disabled_commands["CMD"]
+TypeError: list indices must be integers or slices, not str
+[01/08/2017 12:17] ERROR red on_command_error 368: Exception in command 'command'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 613, in command_disabler
+    perserv = self.disabled_commands["CMD"]
+TypeError: list indices must be integers or slices, not str
+[01/08/2017 12:19] ERROR red on_command_error 368: Exception in command 'command'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 615, in command_disabler
+    if self.disabled_commands["SERVER"]:
+TypeError: list indices must be integers or slices, not str
+[01/08/2017 12:20] ERROR red on_command_error 368: Exception in command 'command disable'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 625, in disable
+    server = ctx.message.server
+NameError: name 'ctx' is not defined
+[01/08/2017 12:25] ERROR red on_command_error 368: Exception in command 'command disable'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 646, in disable
+    self.save_disabled_commands()
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 1033, in save_disabled_commands
+    dataIO.save_json("data/red/disabled_commands.json", self.disabled_commands)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 18, in save_json
+    self._save_json(tmp_file, data)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\utils\dataIO.py", line 61, in _save_json
+    separators=(',',' : '))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\__init__.py", line 178, in dump
+    for chunk in iterable:
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 427, in _iterencode
+    yield from _iterencode_list(o, _current_indent_level)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 324, in _iterencode_list
+    yield from chunks
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 403, in _iterencode_dict
+    yield from chunks
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 436, in _iterencode
+    o = _default(o)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\json\encoder.py", line 180, in default
+    raise TypeError(repr(o) + " is not JSON serializable")
+TypeError: <discord.ext.commands.core.Command object at 0x000002584D12C5C0> is not JSON serializable
+[01/08/2017 12:26] ERROR red on_command_error 368: Exception in command 'command enable'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 660, in enable
+    servers[i]["CMD"].remove(command)
+AttributeError: 'str' object has no attribute 'remove'
+[01/08/2017 12:54] ERROR red load_cogs 568: You must run `pip3 install tabulate`.
+Traceback (most recent call last):
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\permissions.py", line 14, in <module>
+    from tabulate import tabulate
+ImportError: No module named 'tabulate'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 901, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 662, in exec_module
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\permissions.py", line 16, in <module>
+    raise RuntimeError("You must run `pip3 install tabulate`.") from e
+RuntimeError: You must run `pip3 install tabulate`.
+[01/08/2017 12:58] ERROR red on_command_error 368: Exception in command 'p role allow'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\permissions.py", line 758, in role_allow
+    role = self._get_role(server.roles, role)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\permissions.py", line 238, in _get_role
+    raise RoleNotFound(roles[0].server, role_string)
+  File "lib\discord\ext\commands\errors.py", line 46, in __init__
+    m = message.replace('@everyone', '@\u200beveryone').replace('@here', '@\u200bhere')
+AttributeError: 'Server' object has no attribute 'replace'
+[01/08/2017 12:59] ERROR red on_command_error 368: Exception in command 'p role allow'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\permissions.py", line 758, in role_allow
+    role = self._get_role(server.roles, role)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\permissions.py", line 238, in _get_role
+    raise RoleNotFound(roles[0].server, role_string)
+  File "lib\discord\ext\commands\errors.py", line 46, in __init__
+    m = message.replace('@everyone', '@\u200beveryone').replace('@here', '@\u200bhere')
+AttributeError: 'Server' object has no attribute 'replace'
+[01/08/2017 13:15] ERROR red on_command_error 368: Exception in command 'p role allow'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\permissions.py", line 759, in role_allow
+    role = self._get_role(server.roles, role)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\permissions.py", line 239, in _get_role
+    raise RoleNotFound(roles[0].server, role_string)
+  File "lib\discord\ext\commands\errors.py", line 46, in __init__
+    m = message.replace('@everyone', '@\u200beveryone').replace('@here', '@\u200bhere')
+AttributeError: 'Server' object has no attribute 'replace'
+[01/08/2017 13:17] ERROR red load_cogs 568: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\permissions.py', 239, 22, '            await self.bot.say("Unknown role given, try without quotes or @"\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 901, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\permissions.py", line 239
+    await self.bot.say("Unknown role given, try without quotes or @"
+             ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 905, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\permissions.py', 239, 22, '            await self.bot.say("Unknown role given, try without quotes or @"\n'))
+[01/08/2017 13:18] ERROR red load_cogs 568: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\permissions.py', 239, 22, '            await self.bot.say("Unknown role given, try without quotes or @")\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 901, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\permissions.py", line 239
+    await self.bot.say("Unknown role given, try without quotes or @")
+             ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 905, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\permissions.py', 239, 22, '            await self.bot.say("Unknown role given, try without quotes or @")\n'))
+[01/08/2017 13:28] ERROR red load_cogs 568: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\permissions.py', 230, 13, '    aysnc def _get_role(self, roles, role_string):\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 901, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\permissions.py", line 230
+    aysnc def _get_role(self, roles, role_string):
+            ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 905, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\permissions.py', 230, 13, '    aysnc def _get_role(self, roles, role_string):\n'))
+[01/08/2017 13:30] ERROR red load_cogs 568: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\permissions.py', 238, 22, '            await self.bot.say("Unknown role given, try without quotes or @")\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 901, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\permissions.py", line 238
+    await self.bot.say("Unknown role given, try without quotes or @")
+             ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 905, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\permissions.py', 238, 22, '            await self.bot.say("Unknown role given, try without quotes or @")\n'))
+[01/08/2017 13:31] ERROR red load_cogs 568: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\permissions.py', 239, 26, '                await self.bot.say("Unknown role given, try without quotes or @")\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 901, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\permissions.py", line 239
+    await self.bot.say("Unknown role given, try without quotes or @")
+             ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 565, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 905, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\permissions.py', 239, 26, '                await self.bot.say("Unknown role given, try without quotes or @")\n'))
+[01/08/2017 13:34] ERROR red on_command_error 368: Exception in command 'p role allow'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\permissions.py", line 760, in role_allow
+    await self._set_permission(command_obj, server, role=role)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\permissions.py", line 528, in _set_permission
+    await self._set_role(command, server, role, allow)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\permissions.py", line 552, in _set_role
+    "{}{}".format(allow, cmd_dot_name)
+AttributeError: 'coroutine' object has no attribute 'id'
+[01/08/2017 13:47] ERROR red on_command_error 368: Exception in command 'p role allow'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\permissions.py", line 760, in role_allow
+    await self._set_permission(command_obj, server, role=role)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\permissions.py", line 525, in _set_permission
+    await self._set_role(command, server, role, allow)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\permissions.py", line 549, in _set_role
+    "{}{}".format(allow, cmd_dot_name)
+AttributeError: 'coroutine' object has no attribute 'id'
+[01/08/2017 13:50] ERROR red on_command_error 368: Exception in command 'p role allow'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\permissions.py", line 763, in role_allow
+    await self._set_permission(command_obj, server, role=role)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\permissions.py", line 528, in _set_permission
+    await self._set_role(command, server, role, allow)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\permissions.py", line 552, in _set_role
+    "{}{}".format(allow, cmd_dot_name)
+AttributeError: 'coroutine' object has no attribute 'id'
