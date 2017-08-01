@@ -856,6 +856,16 @@ class Owner:
             await self.bot.say("I need the `Embed links` permission "
                                "to send this")
 
+    @commands.command()
+    async def patreon(self):
+        """show's the bot's patreon link"""
+        patreon_url = "https://www.patreon.com/CronanBot"
+        embed = discord.Embed(colour=discord.Colour.red())
+        embed.add_field(name="Bot Patreon:", value=patreon_url)
+
+        await self.bot.say(embed=embed)
+        
+
     @commands.command(pass_context=True)
     @checks.is_owner()
     async def traceback(self, ctx, public: bool=False):
