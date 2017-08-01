@@ -1,4 +1,5 @@
 {
+    "cogs.admin" : true,
     "cogs.alias" : true,
     "cogs.audio" : false,
     "cogs.customcom" : true,
