@@ -11,6 +11,7 @@
     "cogs.mod" : true,
     "cogs.msgvote" : true,
     "cogs.permissions" : true,
+    "cogs.rift" : true,
     "cogs.streams" : true,
     "cogs.subscription" : true,
     "cogs.trivia" : true

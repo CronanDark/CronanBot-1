@@ -1,4 +1,11 @@
 {
+    "313861916076277761" : {
+        "ADMIN_ROLE" : "Transistor",
+        "MOD_ROLE" : "Process",
+        "PREFIXES" : [
+            "&"
+        ]
+    },
     "EMAIL" : null,
     "OWNER" : "169593870777057280",
     "PASSWORD" : null,
