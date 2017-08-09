@@ -713,7 +713,49 @@ class Owner:
         for page in pagify(msg, ['\n']):
             await self.bot.say(page)
 
+    @commands.command(pass_context=True)
+    @checks.is_owner()
+    async def serverchannels(self, ctx, servername):
+        """list channels on a certain server"""
+        servers = sorted(list(self.bot.servers),
+                         key=lambda s: s.name.lower())
+        for i, server in enumerate(servers):
+            mychoice = str(servername)
+            theserv = str(server.name)
+            if theserv == mychoice:
+                correctserv = server.id
 
+        correctserv = self.bot.get_server(correctserv)
+        thechannels = correctserv.channels
+        channelsforit = sorted(list(thechannels),
+                               key=lambda s: s.name.lower())
+        channels = []
+        for i, c in enumerate(channelsforit):
+            daadd = self.bot.get_channel(c.id)
+            channels.append(daadd)
+        textchannels = [c for c in channels if c.type == discord.ChannelType.text]
+        msg = ""
+        for i, channelname in enumerate(textchannels):
+            msg += "{}: {}\n".format(i, channelname.name)
+
+        for page in pagify(msg, ['\n']):
+            await self.bot.say(page)
+
+
+    @commands.command(pass_context=True)
+    @checks.is_owner()
+    async def serverowner(self, ctx, servername):
+        """says who owns a certain server"""
+        servers = sorted(list(self.bot.servers),
+                         key=lambda s: s.name.lower())
+        for i, server in enumerate(servers):
+            mychoice = str(servername)
+            theserv = str(server.name)
+            if theserv == mychoice:
+                correctserv = server.id
+
+        correctserv = self.bot.get_server(correctserv)
+        await self.bot.say(correctserv.owner)
 
     async def leave_confirmation(self, server, owner, ctx):
         await self.bot.say("Are you sure you want me "
