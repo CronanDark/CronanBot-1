@@ -51,7 +51,10 @@ class Rift:
         person = ctx.message.author
         place = ctx.message.channel
         theid = await self.getid(person, place, channel)
-        await self.bot.say(theid)
+        if theid is None:
+            await self.bot.say("you didnt pick in time")
+        else:
+            await self.bot.say(theid)
 
 
     async def _confirm_rift(self, otherplace):
@@ -94,7 +97,7 @@ class Rift:
         if len(channels) > 1:
             msg = "Multiple results found.\nChoose a server:\n"
             for i, channel in enumerate(channels):
-                msg += "{} - {} ({})\n".format(i, channel.server, channel.id)
+                msg += "{} - {}\n".format(i, channel.server)
             for page in pagify(msg):
                 await self.bot.say(page)
             choice = await self.bot.wait_for_message(author=author,
@@ -102,8 +105,7 @@ class Rift:
                                                      check=check,
                                                      channel=author_channel)
             if choice is None:
-                await self.bot.say("You haven't chosen anything.")
-                return
+                return None
             channel = channels[int(choice.content)]
         else:
             channel = channels[0]

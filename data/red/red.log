@@ -6438,3 +6438,18 @@ Traceback (most recent call last):
   File "lib\discord\channel.py", line 120, in _update
     if overridden_id == everyone_id:
 NameError: name 'everyone_id' is not defined
+[09/08/2017 14:04] ERROR red on_command_error 368: Exception in command 'channelid'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\rift.py", line 54, in channelid
+    await self.bot.say(theid)
+  File "lib\discord\ext\commands\bot.py", line 309, in _augmented_msg
+    msg = yield from coro
+  File "red.py", line 89, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1152, in send_message
+    data = yield from self.http.send_message(channel_id, content, guild_id=guild_id, tts=tts, embed=embed)
+  File "lib\discord\http.py", line 200, in request
+    raise HTTPException(r, data)
+discord.errors.HTTPException: BAD REQUEST (status code: 400): Cannot send an empty message
