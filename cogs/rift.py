@@ -48,9 +48,26 @@ class Rift:
     @commands.command(pass_context=True)
     async def channelid(self, ctx, channel):
         """Get the id of a channel"""
-        theid = self.getid(self, ctx, channel)
+        person = ctx.message.author
+        place = ctx.message.channel
+        theid = await self.getid(person, place, channel)
         await self.bot.say(theid)
 
+
+    async def _confirm_rift(self, otherplace):
+        answers = ("yes", "y")
+        dadudeplace = self.bot.get_channel(otherplace)
+        await self.bot.send_message(dadudeplace, "Someone wants to form a rift."
+                                    "do you accept? (yes/no)")
+        msg = await self.bot.wait_for_message(timeout=20, channel=dadudeplace)
+        if msg is None:
+            await self.bot.send_message(dadudeplace, "I guess not.")
+            return False
+        elif msg.content.lower().strip() in answers:
+            return True
+        else:
+            await self.bot.send_message(dadudeplace, "Alright then.")
+            return False
 
 
     async def getid(self, dauser, daplace, channel):
@@ -123,12 +140,16 @@ class Rift:
                     await self.bot.say("There is already a rift in that channel.")
                     return
 
-            
-            data = {"chan1":[channel],
-                    "chan2": [author_channel.id]}
-            rafts.append(data)
-            dataIO.save_json("data/rift/settings.json", self.settings)
-            await self.bot.say("Rift opened")
+
+            confirmation = await self._confirm_rift(channel)
+            if confirmation is True:
+                data = {"chan1":[channel],
+                        "chan2": [author_channel.id]}
+                rafts.append(data)
+                dataIO.save_json("data/rift/settings.json", self.settings)
+                await self.bot.say("Rift opened")
+            else:
+                await self.bot.say("Rift has been denied")
         else:
             await self.bot.say("I did not get two unique channel IDs")
 
@@ -147,6 +168,14 @@ class Rift:
             if author_channel.id in s["chan2"]:
                 rafts[i]["chan2"].remove(author_channel.id)
                 if not s["chan2"]:
+                    rafts.remove(s)
+                dataIO.save_json("data/rift/settings.json", self.settings)
+                await self.bot.say("Rift closed")
+                return
+
+            if author_channel.id in s["chan1"]:
+                rafts[i]["chan1"].remove(author_channel.id)
+                if not s["chan1"]:
                     rafts.remove(s)
                 dataIO.save_json("data/rift/settings.json", self.settings)
                 await self.bot.say("Rift closed")
