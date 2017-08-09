@@ -1,5 +1,6 @@
 {
     "cogs.admin" : true,
+    "cogs.advgoogle" : true,
     "cogs.alias" : true,
     "cogs.audio" : false,
     "cogs.customcom" : true,
@@ -10,9 +11,12 @@
     "cogs.leveler" : true,
     "cogs.mod" : true,
     "cogs.msgvote" : true,
+    "cogs.owner" : true,
     "cogs.permissions" : true,
+    "cogs.picturequotes" : true,
     "cogs.rift" : true,
     "cogs.streams" : true,
     "cogs.subscription" : true,
+    "cogs.trigger" : true,
     "cogs.trivia" : true
 }

@@ -702,26 +702,18 @@ class Owner:
     @commands.command(pass_context=True)
     @checks.is_owner()
     async def servers(self, ctx):
-        """Lists and allows to leave servers"""
+        """Lists servers"""
         owner = ctx.message.author
         servers = sorted(list(self.bot.servers),
                          key=lambda s: s.name.lower())
         msg = ""
         for i, server in enumerate(servers):
             msg += "{}: {}\n".format(i, server.name)
-        msg += "\nTo leave a server just type its number."
 
         for page in pagify(msg, ['\n']):
             await self.bot.say(page)
 
-        while msg is not None:
-            msg = await self.bot.wait_for_message(author=owner, timeout=15)
-            try:
-                msg = int(msg.content)
-                await self.leave_confirmation(servers[msg], owner, ctx)
-                break
-            except (IndexError, ValueError, AttributeError):
-                pass
+
 
     async def leave_confirmation(self, server, owner, ctx):
         await self.bot.say("Are you sure you want me "
@@ -796,6 +788,12 @@ class Owner:
         dpy_version = "[{}]({})".format(discord.__version__, dpy_repo)
         py_version = "[{}.{}.{}]({})".format(*os.sys.version_info[:3],
                                              python_url)
+        wordgit = "CronanBot"
+        worduse = "CronanDark"
+        wordserv = "Dark Army HQ"
+        gitstr = "[{}]({})".format(wordgit, red_repo)
+        usestr = "[{}]({})".format(worduse, author_repo)
+        servstr = "[{}]({})".format(wordserv, server_url)
         
         owner_set = self.bot.settings.owner is not None
         owner = self.bot.settings.owner if owner_set else None
@@ -811,13 +809,15 @@ class Owner:
 
         about = (
             "This is a Discord bot created by Cronan The Dark Gamer. "
-            "Make sure to check out Cronan at https://www.youtube.com/c/CronanTheDarkGamer"
-            "".format(red_repo, author_repo, server_url))
+            "Make sure to check out Cronan at https://www.youtube.com/c/CronanTheDarkGamer ")
 
         embed = discord.Embed(colour=discord.Colour.red())
         embed.add_field(name="Bot owned by", value=str(owner))
         embed.add_field(name="Python", value=py_version)
         embed.add_field(name="discord.py", value=dpy_version)
+        embed.add_field(name="Bot's Github", value=gitstr)
+        embed.add_field(name="Bot Owner's Github", value=usestr)
+        embed.add_field(name="Bot's Official Discord Server", value=servstr)
         embed.add_field(name="About Cronan", value=about, inline=False)
         embed.set_footer(text="Bringing joy since 11 Nov 2016 (over "
                          "{} days ago!)".format(days_since))

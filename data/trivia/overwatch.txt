@@ -1,11 +1,11 @@
-In which month and year was Overwatch released?`May 2016
+﻿In which month and year was Overwatch released?`May 2016
 On what map is the attacking team tasked with escorting an EMP device?`King's Row
 What was the first map the Overwatch team developed for the game?`King's Row
 What country is the practice range supposedly located in?`Russia
 What country is Oasis located in?`Iraq
 What was the name of the war between humans and omnics`Omnic Crisis`The Omnic Crisis
 What does D.Va say when she self destructs her mech?`Nerf this
-Who has the most expensive/rarest emote in the game?`D.Va
+Who has the most expensive/rarest emote in the game?`D.Va`Dva
 Who killed Mondatta?`Widowmaker
 How old is Zenyatta?`20`twenty
 What is D.Va's real name?`Hana Song
@@ -43,8 +43,8 @@ What was Widowmaker afraid of as a girl?`Spiders
 Who has an ability named "Concussion Mine"?`Junkrat
 Which hero's ultimate is called "RIP-Tire"?`Junkrat
 Which hero has a skin called Jailbird?`Junkrat
-Which hero is a fan of Lucio's music?`D.Va
-Which hero is a fan of Mei and reads "Mei's Adventures"?`D.Va
+Which hero is a fan of Lucio's music?`D.Va`dva
+Which hero is a fan of Mei and reads "Mei's Adventures"?`D.Va`dva
 Which hero is a fan of D.va?`Lucio
 Which hero says "In Russia, Game Plays You"?`Zarya
 Which hero has an achievement called "Power Overwhelming"?`Zarya
@@ -87,7 +87,7 @@ Which hero has the achievement "Storm, Earth and Fire"?`Reinhardt
 Who accompanies Reinhardt as he wanders across Europe and repairs his armour?`Brigitte
 What is the name of the gang Reinhardt fought in the second comic?`The Dragons
 What country was Reinhardt in at the time of the Overwatch recall?`Greenland
-Which hero is Reinhardt a fan of?`D.Va
+Which hero is Reinhardt a fan of?`D.Va`dva
 What is the name of the Bastion skin gotten with the origins edition?`Overgrown
 What is the name of the 4th web comic?`A Better World
 Which hero has the achievement "Triple Threat"?`Bastion
@@ -154,7 +154,7 @@ What is the name of the games narrator?`Athena
 What is the name of D.Va's "Cute Spray" achievement?`Game over
 What is the name of Ana's default voice line?`Justice delivered
 What is the name of Bastion's default voice line?`Doo-woo`doowoo`doo woo
-What is the name of D.Va's default voice line?`Love, D.Va`love d.va`
+What is the name of D.Va's default voice line?`Love, D.Va`love d.va`love, dva`love dva
 What is the name of Genji's default voice line?`A Steady blade
 What is the name of Hanzo's default voice line?`Expect nothing less
 What is the name of Junkrat's default voice line?`tick-tock-tick-tock`tick tock tick tock`ticktockticktock

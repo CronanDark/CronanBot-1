@@ -2,10 +2,12 @@ import discord
 from discord.ext import commands
 from .utils.chat_formatting import escape_mass_mentions, italics, pagify
 from random import randint
+from random import sample
 from random import choice
 from enum import Enum
 from urllib.parse import quote_plus
 import datetime
+import string
 import time
 import aiohttp
 import asyncio
@@ -14,6 +16,7 @@ from .utils.dataIO import dataIO
 from discord.message import Message
 from cogs.utils import checks
 import os
+import urllib
 
 settings = {"POLL_DURATION" : 60}
 
@@ -182,6 +185,20 @@ class General:
             msg = "(づ￣ ³￣)づ{} ⊂(´・ω・｀⊂)".format(name)
         await self.bot.say(msg)
 
+
+    @commands.command(pass_context=True, no_pm=True)
+    async def userid(self, ctx, *, user: discord.Member=None):
+        """Shows users's id"""
+        author = ctx.message.author
+        server = ctx.message.server
+
+        if not user:
+            user = author
+
+        roles = [x.name for x in user.roles if x.name != "@everyone"]
+
+        await self.bot.say(user.id)
+
     @commands.command(pass_context=True, no_pm=True)
     async def userinfo(self, ctx, *, user: discord.Member=None):
         """Shows users's informations"""
@@ -329,6 +346,32 @@ class General:
         except:
             await self.bot.say("Error.")
 
+    @commands.command(hidden=True)
+    @checks.is_owner()
+    async def randinv(self, number : int, times : int):
+        """get a random instant invite"""
+        for _ in range(times):
+            discord = "https://discord.gg/"
+            randomcode = await self.randomforinv(number)
+            if randomcode is None:
+                await self.bot.say("Not Valid")
+            else:
+                randomcode = str(randomcode)
+                invlink = discord + randomcode
+                await self.bot.say(invlink)
+
+
+
+
+    async def randomforinv(self, number):
+        """getting the random"""
+        samplelist = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','0','1','2','3','4','5','6','7','8','9']
+        if number == 6:
+            return ''.join(random.choice(samplelist) for _ in range(number))
+        elif number == 7:
+            return ''.join(random.choice(samplelist) for _ in range(number))
+        else:
+            return None
 
 
     @commands.command()
@@ -365,6 +408,38 @@ class General:
         except discord.errors.HTTPException:
             await self.bot.say("```->bob <message>\n\n"
                                "spongebob meme\n\n```")
+
+    @commands.command()
+    async def custombot(self):
+        """Get the link to buy a custom discord bot"""
+        await self.bot.say("http://bit.ly/CustomBot")
+
+    @commands.command(pass_context=True, no_pm=True)
+    async def membercount(self, ctx):
+        """Shows how many members are on a server"""
+        server = ctx.message.server
+        total_users = len(server.members)
+        strcount = str(total_users)
+        memcount = "There is a total of " + strcount + " members on this server."
+        await self.bot.say(memcount)
+
+    @commands.command(pass_context=True)
+    async def randomcolor(self, ctx):
+        """Generate a random color with a hex code"""
+        colour = ''.join([choice('0123456789ABCDEF') for x in range(6)])
+        colour = int(colour, 16)
+        colourstr = str(colour)
+        uri = "https://www.google.com/search?tbm=isch&q="
+        encode = urllib.parse.quote_plus(colourstr, encoding='utf-8', errors='replace')
+        colorpic = uri + encode
+
+        endid = discord.Embed(colour=discord.Colour(value=colour))
+        endid.set_author(name=colourstr)
+        endid.set_image(url=colorpic)
+
+        await self.bot.say(embed=endid)
+
+
 
 
     def fetch_joined_at(self, user, server):
