@@ -700,7 +700,6 @@ class Owner:
             await self.bot.say("Ok I'll stay here then.")
 
     @commands.command(pass_context=True)
-    @checks.is_owner()
     async def servers(self, ctx):
         """Lists servers"""
         owner = ctx.message.author
@@ -714,7 +713,6 @@ class Owner:
             await self.bot.say(page)
 
     @commands.command(pass_context=True)
-    @checks.is_owner()
     async def serverchannels(self, ctx, servername):
         """list channels on a certain server"""
         servers = sorted(list(self.bot.servers),
@@ -743,7 +741,6 @@ class Owner:
 
 
     @commands.command(pass_context=True)
-    @checks.is_owner()
     async def serverowner(self, ctx, servername):
         """says who owns a certain server"""
         servers = sorted(list(self.bot.servers),

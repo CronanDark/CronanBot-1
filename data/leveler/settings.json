@@ -3,7 +3,9 @@
     "bg_price" : 0,
     "chat_cooldown" : 120,
     "disabled_servers" : [],
-    "lvl_msg" : [],
+    "lvl_msg" : [
+        "333502128691740675"
+    ],
     "mention" : true,
     "rep_cooldown" : 43200,
     "server_roles" : {},

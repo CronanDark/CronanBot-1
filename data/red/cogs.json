@@ -6,6 +6,7 @@
     "cogs.customcom" : true,
     "cogs.downloader" : true,
     "cogs.economy" : true,
+    "cogs.fun" : true,
     "cogs.general" : true,
     "cogs.image" : true,
     "cogs.leveler" : true,

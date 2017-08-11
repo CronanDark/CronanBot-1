@@ -306,7 +306,7 @@ class Economy:
 
     @_bank.command(pass_context=True, no_pm=True)
     async def register(self, ctx):
-        """Registers an account at the Twentysix bank"""
+        """Registers an account at the Cronan bank"""
         settings = self.settings[ctx.message.server.id]
         author = ctx.message.author
         credits = 0
@@ -318,7 +318,7 @@ class Economy:
                                "".format(author.mention, account.balance))
         except AccountAlreadyExists:
             await self.bot.say("{} You already have an account at the"
-                               " Twentysix bank.".format(author.mention))
+                               " Cronan bank.".format(author.mention))
 
     @_bank.command(pass_context=True)
     async def balance(self, ctx, user: discord.Member=None):
@@ -332,7 +332,7 @@ class Economy:
                     user.mention, self.bank.get_balance(user)))
             except NoAccount:
                 await self.bot.say("{} You don't have an account at the"
-                                   " Twentysix bank. Type `{}bank register`"
+                                   " Cronan bank. Type `{}bank register`"
                                    " to open one.".format(user.mention,
                                                           ctx.prefix))
         else:
@@ -369,9 +369,9 @@ class Economy:
         Passing positive and negative values will add/remove credits instead
 
         Examples:
-            bank set @Twentysix 26 - Sets 26 credits
-            bank set @Twentysix +2 - Adds 2 credits
-            bank set @Twentysix -6 - Removes 6 credits"""
+            bank set @Cronan 26 - Sets 26 credits
+            bank set @Cronan +2 - Adds 2 credits
+            bank set @Cronan -6 - Removes 6 credits"""
         author = ctx.message.author
         try:
             if credits.operation == "deposit":
