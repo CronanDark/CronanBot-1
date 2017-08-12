@@ -34,7 +34,7 @@ class DaDudePlace:
 
     
 class Rift:
-    """Mess"""
+    """Message across servers/channels"""
 
     def __init__(self, bot):
         self.bot = bot
@@ -59,18 +59,27 @@ class Rift:
 
     async def _confirm_rift(self, otherplace):
         answers = ("yes", "y")
+        nope = ("no", "n")
+        stuff = ("yes", "y", "no", "n")
         dadudeplace = self.bot.get_channel(otherplace)
         await self.bot.send_message(dadudeplace, "Someone wants to form a rift."
                                     "do you accept? (yes/no)")
-        msg = await self.bot.wait_for_message(timeout=20, channel=dadudeplace)
-        if msg is None:
-            await self.bot.send_message(dadudeplace, "I guess not.")
-            return False
-        elif msg.content.lower().strip() in answers:
-            return True
-        else:
-            await self.bot.send_message(dadudeplace, "Alright then.")
-            return False
+        correctmsg = False
+        while correctmsg is False:
+            msg = await self.bot.wait_for_message(timeout=20, channel=dadudeplace)
+            if msg is None:
+                correctmsg = True
+            elif msg.content.lower().strip() in stuff:
+                correctmsg = True
+            if correctmsg is True:
+                if msg is None:
+                    await self.bot.send_message(dadudeplace, "I guess not.")
+                    return False
+                elif msg.content.lower().strip() in answers:
+                    return True
+                elif msg.content.lower().strip() in nope:
+                    await self.bot.send_message(dadudeplace, "Alright then.")
+                    return False
 
 
     async def getid(self, dauser, daplace, channel):

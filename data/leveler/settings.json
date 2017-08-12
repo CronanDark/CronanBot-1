@@ -4,7 +4,8 @@
     "chat_cooldown" : 120,
     "disabled_servers" : [],
     "lvl_msg" : [
-        "333502128691740675"
+        "333502128691740675",
+        "344575096930959362"
     ],
     "mention" : true,
     "rep_cooldown" : 43200,
