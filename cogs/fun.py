@@ -49,7 +49,7 @@ class Fun:
         await self.bot.say(author.mention + " has eaten " + str(randint(2, 120)) + " slices of pizza today.")
 
     @commands.command(pass_context=True)
-    async def bribe(self, ctx, *, user : discord.Member):
+    async def bribe(self, ctx, *, user : discord.Member=None):
         """Find out who is paying under the table"""
         author = ctx.message.author
         if user is None:
