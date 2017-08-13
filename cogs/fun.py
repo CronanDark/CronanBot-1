@@ -49,11 +49,15 @@ class Fun:
         await self.bot.say(author.mention + " has eaten " + str(randint(2, 120)) + " slices of pizza today.")
 
     @commands.command(pass_context=True)
-    async def bribe(self, ctx):
+    async def bribe(self, ctx, *, user : discord.Member):
         """Find out who is paying under the table"""
         author = ctx.message.author
-        await self.bot.say(author.mention + " has bribed " + self.bot.user.mention + " with " +
-                           str(randint(10, 10000)) + " dollars!")
+        if user is None:
+            await self.bot.say(author.mention + " has bribed " + self.bot.user.mention + " with " +
+                               str(randint(10, 10000)) + " dollars!")
+        else:
+            await self.bot.say(author.mention + " has bribed " + user.mention + " with " +
+                               str(randint(10, 10000)) + " dollars!")
 
     @commands.command(pass_context=True)
     async def daddy(self, ctx):

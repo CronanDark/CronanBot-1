@@ -2,7 +2,9 @@
     "badge_type" : "circles",
     "bg_price" : 0,
     "chat_cooldown" : 120,
-    "disabled_servers" : [],
+    "disabled_servers" : [
+        "344575096930959362"
+    ],
     "lvl_msg" : [
         "324973536831733761",
         "344575096930959362",

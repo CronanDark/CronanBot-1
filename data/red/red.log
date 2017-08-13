@@ -6990,3 +6990,76 @@ Traceback (most recent call last):
   File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\rift.py", line 72, in _confirm_rift
     if msg.content.lower().strip() in stuff:
 AttributeError: 'NoneType' object has no attribute 'content'
+[12/08/2017 20:06] ERROR red <module> 629: Fatal exception, attempting graceful logout
+Traceback (most recent call last):
+  File "lib\aiohttp\connector.py", line 601, in _create_direct_connection
+    local_addr=self._local_addr)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 645, in create_connection
+    raise exceptions[0]
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 632, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 358, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 290, in _wakeup
+    future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\selector_events.py", line 436, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+OSError: [Errno 10065] Connect call failed ('104.16.58.5', 443)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "lib\aiohttp\connector.py", line 304, in connect
+    yield from self._create_connection(req)
+  File "lib\aiohttp\connector.py", line 578, in _create_connection
+    transport, proto = yield from self._create_direct_connection(req)
+  File "lib\aiohttp\connector.py", line 624, in _create_direct_connection
+    (req.host, req.port, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10065] Can not connect to discordapp.com:443 [Connect call failed ('104.16.58.5', 443)]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "red.py", line 609, in <module>
+    loop.run_until_complete(main(bot))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 337, in run_until_complete
+    return future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "red.py", line 598, in main
+    yield from bot.connect()
+  File "lib\discord\client.py", line 452, in connect
+    self.ws = yield from DiscordWebSocket.from_client(self, resume=resume)
+  File "lib\discord\gateway.py", line 203, in from_client
+    gateway = yield from client.http.get_gateway()
+  File "lib\discord\http.py", line 633, in get_gateway
+    data = yield from self.request(Route('GET', '/gateway'))
+  File "lib\discord\http.py", line 137, in request
+    r = yield from self.session.request(method, url, **kwargs)
+  File "lib\aiohttp\client.py", line 555, in __iter__
+    resp = yield from self._coro
+  File "lib\aiohttp\client.py", line 198, in _request
+    conn = yield from self._connector.connect(req)
+  File "lib\aiohttp\connector.py", line 314, in connect
+    .format(key, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10065] Cannot connect to host discordapp.com:443 ssl:True [Can not connect to discordapp.com:443 [Connect call failed ('104.16.58.5', 443)]]
+[12/08/2017 20:38] ERROR red on_command_error 368: Exception in command 'adminset selfroles'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\admin.py", line 127, in adminset_selfroles
+    parsed_role_set = list({r.name for r in parsed_roles})
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\admin.py", line 127, in <setcomp>
+    parsed_role_set = list({r.name for r in parsed_roles})
+AttributeError: 'NoneType' object has no attribute 'name'
+[13/08/2017 19:22] ERROR red on_command_error 368: Exception in command 'bribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\fun.py", line 60, in bribe
+    damention += user
+TypeError: Can't convert 'Member' object to str implicitly

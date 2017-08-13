@@ -1,4 +1,6 @@
 {
-    "blacklist" : [],
+    "blacklist" : [
+        "267159451788640257"
+    ],
     "whitelist" : []
 }
