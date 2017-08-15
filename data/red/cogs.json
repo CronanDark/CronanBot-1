@@ -20,5 +20,6 @@
     "cogs.streams" : true,
     "cogs.subscription" : true,
     "cogs.trigger" : true,
-    "cogs.trivia" : true
+    "cogs.trivia" : true,
+    "cogs.whoplays" : true
 }
