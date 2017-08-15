@@ -18,6 +18,7 @@
     "cogs.picturequotes" : true,
     "cogs.rift" : true,
     "cogs.streams" : true,
+    "cogs.stupid" : true,
     "cogs.subscription" : true,
     "cogs.trigger" : true,
     "cogs.trivia" : true,
