@@ -1,4 +1,5 @@
 {
+    "cogs.Chatter" : true,
     "cogs.admin" : true,
     "cogs.advgoogle" : true,
     "cogs.alias" : true,
@@ -16,7 +17,6 @@
     "cogs.permissions" : true,
     "cogs.picturequotes" : true,
     "cogs.rift" : true,
-    "cogs.serverannouncer" : true,
     "cogs.streams" : true,
     "cogs.subscription" : true,
     "cogs.trigger" : true,

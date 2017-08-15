@@ -27,7 +27,7 @@
             "ew... y do u like that cringy yter who cant even code me right or have me alive 24/7"
         ],
         "server" : "246496365713162240",
-        "triggered" : 25,
+        "triggered" : 28,
         "triggered_by" : "cronan",
         "type" : "all"
     },
@@ -61,6 +61,38 @@
         "server" : "310613725805543424",
         "triggered" : 18,
         "triggered_by" : "who",
+        "type" : "all"
+    },
+    {
+        "active" : true,
+        "case_sensitive" : false,
+        "channels" : {},
+        "cooldown" : 1,
+        "name" : "cronan2",
+        "owner" : "169593870777057280",
+        "regex" : false,
+        "responses" : [
+            "ew... y do u like that cringy yter who cant even code me right or have me alive 24/7"
+        ],
+        "server" : "346748209906974741",
+        "triggered" : 1,
+        "triggered_by" : "cronan",
+        "type" : "all"
+    },
+    {
+        "active" : true,
+        "case_sensitive" : false,
+        "channels" : {},
+        "cooldown" : 1,
+        "name" : "abomb3",
+        "owner" : "169593870777057280",
+        "regex" : false,
+        "responses" : [
+            "<@300122760338997258>"
+        ],
+        "server" : "333502128691740675",
+        "triggered" : 12,
+        "triggered_by" : "o",
         "type" : "all"
     }
 ]

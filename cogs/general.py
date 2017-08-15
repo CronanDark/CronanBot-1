@@ -8,6 +8,7 @@ from enum import Enum
 from urllib.parse import quote_plus
 import datetime
 import string
+import re
 import time
 import aiohttp
 import asyncio
@@ -22,435 +23,453 @@ settings = {"POLL_DURATION" : 60}
 
 
 class RPS(Enum):
-    rock     = "\N{MOYAI}"
-    paper    = "\N{PAGE FACING UP}"
-    scissors = "\N{BLACK SCISSORS}"
+	rock     = "\N{MOYAI}"
+	paper    = "\N{PAGE FACING UP}"
+	scissors = "\N{BLACK SCISSORS}"
 
 
 class RPSParser:
-    def __init__(self, argument):
-        argument = argument.lower()
-        if argument == "rock":
-            self.choice = RPS.rock
-        elif argument == "paper":
-            self.choice = RPS.paper
-        elif argument == "scissors":
-            self.choice = RPS.scissors
-        else:
-            raise
+	def __init__(self, argument):
+		argument = argument.lower()
+		if argument == "rock":
+			self.choice = RPS.rock
+		elif argument == "paper":
+			self.choice = RPS.paper
+		elif argument == "scissors":
+			self.choice = RPS.scissors
+		else:
+			raise
 
 
 
 
 
 class General:
-    """General commands."""
-
-    def __init__(self, bot):
-        self.bot = bot
-        self.stopwatches = {}
-        self.ball = ["As I see it, yes", "It is certain", "It is decidedly so", "Most likely", "Outlook good",
-                     "Signs point to yes", "Without a doubt", "Yes", "Yes – definitely", "You may rely on it", "Reply hazy, try again",
-                     "Ask again later", "Better not tell you now", "Cannot predict now", "Concentrate and ask again",
-                     "Don't count on it", "My reply is no", "My sources say no", "Outlook not so good", "Very doubtful"]
-
-    @commands.command(hidden=True)
-    async def ping(self):
-        """Pong."""
-        await self.bot.say("Pong.")
-
-    @commands.command()
-    async def choose(self, *choices):
-        """Chooses between multiple choices.
-
-        To denote multiple choices, you should use double quotes.
-        """
-        choices = [escape_mass_mentions(c) for c in choices]
-        if len(choices) < 2:
-            await self.bot.say('Not enough choices to pick from.')
-        else:
-            await self.bot.say(choice(choices))
-
-    @commands.command(pass_context=True)
-    async def roll(self, ctx, number : int = 100):
-        """Rolls random number (between 1 and user choice)
-
-        Defaults to 100.
-        """
-        author = ctx.message.author
-        if number > 1:
-            n = randint(1, number)
-            await self.bot.say("{} :game_die: {} :game_die:".format(author.mention, n))
-        else:
-            await self.bot.say("{} Maybe higher than 1? ;P".format(author.mention))
-
-    @commands.command(pass_context=True)
-    async def flip(self, ctx, user : discord.Member=None):
-        """Flips a coin... or a user.
-
-        Defaults to coin.
-        """
-        if user != None:
-            msg = ""
-            if user.id == self.bot.user.id:
-                user = ctx.message.author
-                msg = "Nice try. You think this is funny? How about *this* instead:\n\n"
-            char = "abcdefghijklmnopqrstuvwxyz"
-            tran = "ɐqɔpǝɟƃɥᴉɾʞlɯuodbɹsʇnʌʍxʎz"
-            table = str.maketrans(char, tran)
-            name = user.display_name.translate(table)
-            char = char.upper()
-            tran = "∀qƆpƎℲפHIſʞ˥WNOԀQᴚS┴∩ΛMX⅄Z"
-            table = str.maketrans(char, tran)
-            name = name.translate(table)
-            await self.bot.say(msg + "(╯°□°）╯︵ " + name[::-1])
-        else:
-            await self.bot.say("*flips a coin and... " + choice(["HEADS!*", "TAILS!*"]))
-
-    @commands.command(pass_context=True)
-    async def rps(self, ctx, your_choice : RPSParser):
-        """Play rock paper scissors"""
-        author = ctx.message.author
-        player_choice = your_choice.choice
-        red_choice = choice((RPS.rock, RPS.paper, RPS.scissors))
-        cond = {
-                (RPS.rock,     RPS.paper)    : False,
-                (RPS.rock,     RPS.scissors) : True,
-                (RPS.paper,    RPS.rock)     : True,
-                (RPS.paper,    RPS.scissors) : False,
-                (RPS.scissors, RPS.rock)     : False,
-                (RPS.scissors, RPS.paper)    : True
-               }
-
-        if red_choice == player_choice:
-            outcome = None # Tie
-        else:
-            outcome = cond[(player_choice, red_choice)]
-
-        if outcome is True:
-            await self.bot.say("{} You win {}!"
-                               "".format(red_choice.value, author.mention))
-        elif outcome is False:
-            await self.bot.say("{} You lose {}!"
-                               "".format(red_choice.value, author.mention))
-        else:
-            await self.bot.say("{} We're square {}!"
-                               "".format(red_choice.value, author.mention))
-
-    @commands.command(name="8", aliases=["8ball"])
-    async def _8ball(self, *, question : str):
-        """Ask 8 ball a question
-
-        Question must end with a question mark.
-        """
-        if question.endswith("?") and question != "?":
-            await self.bot.say("`" + choice(self.ball) + "`")
-        else:
-            await self.bot.say("That doesn't look like a question.")
-
-    @commands.command(aliases=["sw"], pass_context=True)
-    async def stopwatch(self, ctx):
-        """Starts/stops stopwatch"""
-        author = ctx.message.author
-        if not author.id in self.stopwatches:
-            self.stopwatches[author.id] = int(time.perf_counter())
-            await self.bot.say(author.mention + " Stopwatch started!")
-        else:
-            tmp = abs(self.stopwatches[author.id] - int(time.perf_counter()))
-            tmp = str(datetime.timedelta(seconds=tmp))
-            await self.bot.say(author.mention + " Stopwatch stopped! Time: **" + tmp + "**")
-            self.stopwatches.pop(author.id, None)
-
-    @commands.command()
-    async def lmgtfy(self, *, search_terms : str):
-        """Creates a lmgtfy link"""
-        search_terms = escape_mass_mentions(search_terms.replace(" ", "+"))
-        await self.bot.say("https://lmgtfy.com/?q={}".format(search_terms))
-
-    @commands.command(no_pm=True, hidden=True)
-    async def hug(self, user : discord.Member, intensity : int=1):
-        """Because everyone likes hugs
-
-        Up to 10 intensity levels."""
-        name = italics(user.display_name)
-        if intensity <= 0:
-            msg = "(っ˘̩╭╮˘̩)っ" + name
-        elif intensity <= 3:
-            msg = "(っ´▽｀)っ" + name
-        elif intensity <= 6:
-            msg = "╰(*´︶`*)╯" + name
-        elif intensity <= 9:
-            msg = "(つ≧▽≦)つ" + name
-        elif intensity >= 10:
-            msg = "(づ￣ ³￣)づ{} ⊂(´・ω・｀⊂)".format(name)
-        await self.bot.say(msg)
-
-
-    @commands.command(pass_context=True, no_pm=True)
-    async def userid(self, ctx, *, user: discord.Member=None):
-        """Shows users's id"""
-        author = ctx.message.author
-        server = ctx.message.server
-
-        if not user:
-            user = author
-
-        roles = [x.name for x in user.roles if x.name != "@everyone"]
-
-        await self.bot.say(user.id)
-
-    @commands.command(pass_context=True, no_pm=True)
-    async def userinfo(self, ctx, *, user: discord.Member=None):
-        """Shows users's informations"""
-        author = ctx.message.author
-        server = ctx.message.server
-
-        if not user:
-            user = author
-
-        roles = [x.name for x in user.roles if x.name != "@everyone"]
-
-        joined_at = self.fetch_joined_at(user, server)
-        since_created = (ctx.message.timestamp - user.created_at).days
-        since_joined = (ctx.message.timestamp - joined_at).days
-        user_joined = joined_at.strftime("%d %b %Y %H:%M")
-        user_created = user.created_at.strftime("%d %b %Y %H:%M")
-        member_number = sorted(server.members,
-                               key=lambda m: m.joined_at).index(user) + 1
-
-        created_on = "{}\n({} days ago)".format(user_created, since_created)
-        joined_on = "{}\n({} days ago)".format(user_joined, since_joined)
-
-        game = "Chilling in {} status".format(user.status)
-
-        if user.game is None:
-            pass
-        elif user.game.url is None:
-            game = "Playing {}".format(user.game)
-        else:
-            game = "Streaming: [{}]({})".format(user.game, user.game.url)
-
-        if roles:
-            roles = sorted(roles, key=[x.name for x in server.role_hierarchy
-                                       if x.name != "@everyone"].index)
-            roles = ", ".join(roles)
-        else:
-            roles = "None"
-
-        data = discord.Embed(description=game, colour=user.colour)
-        data.add_field(name="Joined Discord on", value=created_on)
-        data.add_field(name="Joined this server on", value=joined_on)
-        data.add_field(name="Roles", value=roles, inline=False)
-        data.set_footer(text="Member #{} | User ID:{}"
-                             "".format(member_number, user.id))
-
-        name = str(user)
-        name = " ~ ".join((name, user.nick)) if user.nick else name
-
-        if user.avatar_url:
-            data.set_author(name=name, url=user.avatar_url)
-            data.set_thumbnail(url=user.avatar_url)
-        else:
-            data.set_author(name=name)
-
-        try:
-            await self.bot.say(embed=data)
-        except discord.HTTPException:
-            await self.bot.say("I need the `Embed links` permission "
-                               "to send this")
-
-    @commands.command(pass_context=True, no_pm=True)
-    async def serverinfo(self, ctx):
-        """Shows server's informations"""
-        server = ctx.message.server
-        online = len([m.status for m in server.members
-                      if m.status == discord.Status.online or
-                      m.status == discord.Status.idle])
-        total_users = len(server.members)
-        text_channels = len([x for x in server.channels
-                             if x.type == discord.ChannelType.text])
-        voice_channels = len(server.channels) - text_channels
-        passed = (ctx.message.timestamp - server.created_at).days
-        created_at = ("Since {}. That's over {} days ago!"
-                      "".format(server.created_at.strftime("%d %b %Y %H:%M"),
-                                passed))
-
-        colour = ''.join([choice('0123456789ABCDEF') for x in range(6)])
-        colour = int(colour, 16)
-
-        data = discord.Embed(
-            description=created_at,
-            colour=discord.Colour(value=colour))
-        data.add_field(name="Region", value=str(server.region))
-        data.add_field(name="Users", value="{}/{}".format(online, total_users))
-        data.add_field(name="Text Channels", value=text_channels)
-        data.add_field(name="Voice Channels", value=voice_channels)
-        data.add_field(name="Roles", value=len(server.roles))
-        data.add_field(name="Owner", value=str(server.owner))
-        data.set_footer(text="Server ID: " + server.id)
-
-        if server.icon_url:
-            data.set_author(name=server.name, url=server.icon_url)
-            data.set_thumbnail(url=server.icon_url)
-        else:
-            data.set_author(name=server.name)
-
-        try:
-            await self.bot.say(embed=data)
-        except discord.HTTPException:
-            await self.bot.say("I need the `Embed links` permission "
-                               "to send this")
-
-    @commands.command()
-    async def urban(self, *, search_terms : str, definition_number : int=1):
-        """Urban Dictionary search
-
-        Definition number must be between 1 and 10"""
-        def encode(s):
-            return quote_plus(s, encoding='utf-8', errors='replace')
-
-        # definition_number is just there to show up in the help
-        # all this mess is to avoid forcing double quotes on the user
-
-        search_terms = search_terms.split(" ")
-        try:
-            if len(search_terms) > 1:
-                pos = int(search_terms[-1]) - 1
-                search_terms = search_terms[:-1]
-            else:
-                pos = 0
-            if pos not in range(0, 11): # API only provides the
-                pos = 0                 # top 10 definitions
-        except ValueError:
-            pos = 0
-
-        search_terms = "+".join([encode(s) for s in search_terms])
-        url = "http://api.urbandictionary.com/v0/define?term=" + search_terms
-        try:
-            async with aiohttp.get(url) as r:
-                result = await r.json()
-            if result["list"]:
-                definition = result['list'][pos]['definition']
-                example = result['list'][pos]['example']
-                defs = len(result['list'])
-                msg = ("**Definition #{} out of {}:\n**{}\n\n"
-                       "**Example:\n**{}".format(pos+1, defs, definition,
-                                                 example))
-                msg = pagify(msg, ["\n"])
-                for page in msg:
-                    await self.bot.say(page)
-            else:
-                await self.bot.say("Your search terms gave no results.")
-        except IndexError:
-            await self.bot.say("There is no definition #{}".format(pos+1))
-        except:
-            await self.bot.say("Error.")
-
-    @commands.command(hidden=True)
-    @checks.is_owner()
-    async def randinv(self, number : int, times : int):
-        """get a random instant invite"""
-        for _ in range(times):
-            discord = "https://discord.gg/"
-            randomcode = await self.randomforinv(number)
-            if randomcode is None:
-                await self.bot.say("Not Valid")
-            else:
-                randomcode = str(randomcode)
-                invlink = discord + randomcode
-                await self.bot.say(invlink)
-
-
-
-
-    async def randomforinv(self, number):
-        """getting the random"""
-        samplelist = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','0','1','2','3','4','5','6','7','8','9']
-        if number == 6:
-            return ''.join(random.choice(samplelist) for _ in range(number))
-        elif number == 7:
-            return ''.join(random.choice(samplelist) for _ in range(number))
-        else:
-            return None
-
-
-    @commands.command()
-    async def suggest(self):
-        """Suggest stuff for CronanBot"""
-        suggest_link = "https://goo.gl/forms/VANDeJ0ktM1CJRlC2"
-        click_here = "[{}]({})".format("Click Here", suggest_link)
-        
-        emb = discord.Embed(colour=discord.Colour.red())
-        emb.add_field(name="Suggest new content here", value=click_here)
-
-
-        try:
-            await self.bot.say(embed=emb)
-        except discord.HTTPException:
-            await self.bot.say("I need the `Embed links` permission "
-                               "to send this")
-
-    @commands.command()
-    async def bob(self, *, message):
-        """spongebob meme"""
-        try:
-            embid = discord.Embed(colour=discord.Colour.darker_grey())
-            embid.set_image(url="http://i2.kym-cdn.com/entries/icons/original/000/022/940/spongebobicon.jpg")
-
-            maybework = ''
-            hopingwork = True
-            for shouldwork in message:
-                maybework += shouldwork.upper() if hopingwork else shouldwork.lower()
-                if shouldwork.isalpha():
-                    hopingwork = not hopingwork
-            await self.bot.say(maybework)
-            await self.bot.say(embed=embid)
-        except discord.errors.HTTPException:
-            await self.bot.say("```->bob <message>\n\n"
-                               "spongebob meme\n\n```")
-
-    @commands.command()
-    async def custombot(self):
-        """Get the link to buy a custom discord bot"""
-        await self.bot.say("http://bit.ly/CustomBot")
-
-    @commands.command(pass_context=True, no_pm=True)
-    async def membercount(self, ctx):
-        """Shows how many members are on a server"""
-        server = ctx.message.server
-        total_users = len(server.members)
-        strcount = str(total_users)
-        memcount = "There is a total of " + strcount + " members on this server."
-        await self.bot.say(memcount)
-
-    @commands.command(pass_context=True)
-    async def randomcolor(self, ctx):
-        """Generate a random color with a hex code"""
-        colour = ''.join([choice('0123456789ABCDEF') for x in range(6)])
-        colour = int(colour, 16)
-        colourstr = str(colour)
-        uri = "https://www.google.com/search?tbm=isch&q="
-        encode = urllib.parse.quote_plus(colourstr, encoding='utf-8', errors='replace')
-        colorpic = uri + encode
-
-        endid = discord.Embed(colour=discord.Colour(value=colour))
-        endid.set_author(name=colourstr)
-        endid.set_image(url=colorpic)
-
-        await self.bot.say(embed=endid)
-
-
-
-
-    def fetch_joined_at(self, user, server):
-        """Just a special case for someone special :^)"""
-        if user.id == "96130341705637888" and server.id == "133049272517001216":
-            return datetime.datetime(2016, 1, 10, 6, 8, 4, 443000)
-        else:
-            return user.joined_at
+	"""General commands."""
+	
+	def __init__(self, bot):
+		self.bot = bot
+		self.stopwatches = {}
+		self.regional_map = {"z": "🇿", "y": "🇾", "x": "🇽", "w": "🇼", "v": "🇻", "u": "🇺", "t": "🇹", "s": "🇸", "r": "🇷", "q": "🇶", "p": "🇵", "o": "🇴", "n": "🇳", "m": "🇲", "l": "🇱", "k": "🇰", "j": "🇯", "i": "🇮", "h": "🇭", "g": "🇬", "f": "🇫", "e": "🇪", "d": "🇩", "c": "🇨", "b": "🇧", "a": "🇦"}
+		self.emote_regex = re.compile(r'<:.*:(?P<id>\d*)>')
+		self.retro_regex = re.compile(r"((https)(\:\/\/|)?u3\.photofunia\.com\/.\/results\/.\/.\/.*(\.jpg\?download))")
+		self.scrap_regex = re.compile(",\"ou\":\"([^`]*?)\"")
+		self.ball = ["As I see it, yes", "It is certain", "It is decidedly so", "Most likely", "Outlook good",
+					 "Signs point to yes", "Without a doubt", "Yes", "Yes – definitely", "You may rely on it", "Reply hazy, try again",
+					 "Ask again later", "Better not tell you now", "Cannot predict now", "Concentrate and ask again",
+					 "Don't count on it", "My reply is no", "My sources say no", "Outlook not so good", "Very doubtful"]
+
+	@commands.command(hidden=True)
+	async def ping(self):
+		"""Pong."""
+		await self.bot.say("Pong.")
+
+	@commands.command()
+	async def choose(self, *choices):
+		"""Chooses between multiple choices.
+		
+		To denote multiple choices, you should use double quotes.
+		"""
+		choices = [escape_mass_mentions(c) for c in choices]
+		if len(choices) < 2:
+			await self.bot.say('Not enough choices to pick from.')
+		else:
+			await self.bot.say(choice(choices))
+
+	@commands.command(pass_context=True)
+	async def roll(self, ctx, number : int = 100):
+		"""Rolls random number (between 1 and user choice)
+		
+		Defaults to 100.
+		"""
+		author = ctx.message.author
+		if number > 1:
+			n = randint(1, number)
+			await self.bot.say("{} :game_die: {} :game_die:".format(author.mention, n))
+		else:
+			await self.bot.say("{} Maybe higher than 1? ;P".format(author.mention))
+			
+	@commands.command(pass_context=True)
+	async def flip(self, ctx, user : discord.Member=None):
+		"""Flips a coin... or a user.
+		
+		Defaults to coin.
+		"""
+		if user != None:
+			msg = ""
+			if user.id == self.bot.user.id:
+				user = ctx.message.author
+				msg = "Nice try. You think this is funny? How about *this* instead:\n\n"
+			char = "abcdefghijklmnopqrstuvwxyz"
+			tran = "ɐqɔpǝɟƃɥᴉɾʞlɯuodbɹsʇnʌʍxʎz"
+			table = str.maketrans(char, tran)
+			name = user.display_name.translate(table)
+			char = char.upper()
+			tran = "∀qƆpƎℲפHIſʞ˥WNOԀQᴚS┴∩ΛMX⅄Z"
+			table = str.maketrans(char, tran)
+			name = name.translate(table)
+			await self.bot.say(msg + "(╯°□°）╯︵ " + name[::-1])
+		else:
+			await self.bot.say("*flips a coin and... " + choice(["HEADS!*", "TAILS!*"]))
+			
+	@commands.command(pass_context=True)
+	async def rps(self, ctx, your_choice : RPSParser):
+		"""Play rock paper scissors"""
+		author = ctx.message.author
+		player_choice = your_choice.choice
+		red_choice = choice((RPS.rock, RPS.paper, RPS.scissors))
+		cond = {
+				(RPS.rock,     RPS.paper)    : False,
+				(RPS.rock,     RPS.scissors) : True,
+				(RPS.paper,    RPS.rock)     : True,
+				(RPS.paper,    RPS.scissors) : False,
+				(RPS.scissors, RPS.rock)     : False,
+				(RPS.scissors, RPS.paper)    : True
+				}
+
+		if red_choice == player_choice:
+			outcome = None # Tie
+		else:
+			outcome = cond[(player_choice, red_choice)]
+
+		if outcome is True:
+			await self.bot.say("{} You win {}!"
+								"".format(red_choice.value, author.mention))
+		elif outcome is False:
+			await self.bot.say("{} You lose {}!"
+								"".format(red_choice.value, author.mention))
+		else:
+			await self.bot.say("{} We're square {}!"
+								"".format(red_choice.value, author.mention))
+
+	@commands.command(name="8", aliases=["8ball"])
+	async def _8ball(self, *, question : str):
+		"""Ask 8 ball a question
+
+		Question must end with a question mark.
+		"""
+		if question.endswith("?") and question != "?":
+			await self.bot.say("`" + choice(self.ball) + "`")
+		else:
+			await self.bot.say("That doesn't look like a question.")
+
+	@commands.command(aliases=["sw"], pass_context=True)
+	async def stopwatch(self, ctx):
+		"""Starts/stops stopwatch"""
+		author = ctx.message.author
+		if not author.id in self.stopwatches:
+			self.stopwatches[author.id] = int(time.perf_counter())
+			await self.bot.say(author.mention + " Stopwatch started!")
+		else:
+			tmp = abs(self.stopwatches[author.id] - int(time.perf_counter()))
+			tmp = str(datetime.timedelta(seconds=tmp))
+			await self.bot.say(author.mention + " Stopwatch stopped! Time: **" + tmp + "**")
+			self.stopwatches.pop(author.id, None)
+
+	@commands.command()
+	async def lmgtfy(self, *, search_terms : str):
+		"""Creates a lmgtfy link"""
+		search_terms = escape_mass_mentions(search_terms.replace(" ", "+"))
+		await self.bot.say("https://lmgtfy.com/?q={}".format(search_terms))
+
+
+	@commands.command(pass_context=True)
+	async def textmoji(self, ctx, *, txt:str):
+		"""make emoji words"""
+		deletethis = ctx.message
+		msg = ''
+		for s in txt.lower():
+			if s in self.regional_map:
+				msg += u' '+self.regional_map[s]
+			else:
+				msg += s
+		await self.bot.say(msg)
+		await self.bot.delete_message(deletethis)
+		
+	@commands.command(no_pm=True, hidden=True)
+	async def hug(self, user : discord.Member, intensity : int=1):
+		"""Because everyone likes hugs	
+		
+		Up to 10 intensity levels."""
+		name = italics(user.display_name)
+		if intensity <= 0:
+			msg = "(っ˘̩╭╮˘̩)っ" + name
+		elif intensity <= 3:
+			msg = "(っ´▽｀)っ" + name
+		elif intensity <= 6:
+			msg = "╰(*´︶`*)╯" + name
+		elif intensity <= 9:
+			msg = "(つ≧▽≦)つ" + name
+		elif intensity >= 10:
+			msg = "(づ￣ ³￣)づ{} ⊂(´・ω・｀⊂)".format(name)
+		await self.bot.say(msg)
+
+
+	@commands.command(pass_context=True, no_pm=True)
+	async def userid(self, ctx, *, user: discord.Member=None):
+		"""Shows users's id"""
+		author = ctx.message.author
+		server = ctx.message.server
+
+		if not user:
+			user = author
+
+		roles = [x.name for x in user.roles if x.name != "@everyone"]
+
+		await self.bot.say(user.id)
+
+	@commands.command(pass_context=True, no_pm=True)
+	async def userinfo(self, ctx, *, user: discord.Member=None):
+		"""Shows users's informations"""
+		author = ctx.message.author
+		server = ctx.message.server
+
+		if not user:
+			user = author
+
+		roles = [x.name for x in user.roles if x.name != "@everyone"]
+
+		joined_at = self.fetch_joined_at(user, server)
+		since_created = (ctx.message.timestamp - user.created_at).days
+		since_joined = (ctx.message.timestamp - joined_at).days
+		user_joined = joined_at.strftime("%d %b %Y %H:%M")
+		user_created = user.created_at.strftime("%d %b %Y %H:%M")
+		member_number = sorted(server.members,
+							   key=lambda m: m.joined_at).index(user) + 1
+
+		created_on = "{}\n({} days ago)".format(user_created, since_created)
+		joined_on = "{}\n({} days ago)".format(user_joined, since_joined)
+
+		game = "Chilling in {} status".format(user.status)
+
+		if user.game is None:
+			pass
+		elif user.game.url is None:
+			game = "Playing {}".format(user.game)
+		else:
+			game = "Streaming: [{}]({})".format(user.game, user.game.url)
+
+		if roles:
+			roles = sorted(roles, key=[x.name for x in server.role_hierarchy
+									   if x.name != "@everyone"].index)
+			roles = ", ".join(roles)
+		else:
+			roles = "None"
+
+		data = discord.Embed(description=game, colour=user.colour)
+		data.add_field(name="Joined Discord on", value=created_on)
+		data.add_field(name="Joined this server on", value=joined_on)
+		data.add_field(name="Roles", value=roles, inline=False)
+		data.set_footer(text="Member #{} | User ID:{}"
+							 "".format(member_number, user.id))
+
+		name = str(user)
+		name = " ~ ".join((name, user.nick)) if user.nick else name
+
+		if user.avatar_url:
+			data.set_author(name=name, url=user.avatar_url)
+			data.set_thumbnail(url=user.avatar_url)
+		else:
+			data.set_author(name=name)
+
+		try:
+			await self.bot.say(embed=data)
+		except discord.HTTPException:
+			await self.bot.say("I need the `Embed links` permission "
+							   "to send this")
+
+	@commands.command(pass_context=True, no_pm=True)
+	async def serverinfo(self, ctx):
+		"""Shows server's informations"""
+		server = ctx.message.server
+		online = len([m.status for m in server.members
+					  if m.status == discord.Status.online or
+					  m.status == discord.Status.idle])
+		total_users = len(server.members)
+		text_channels = len([x for x in server.channels
+							 if x.type == discord.ChannelType.text])
+		voice_channels = len(server.channels) - text_channels
+		passed = (ctx.message.timestamp - server.created_at).days
+		created_at = ("Since {}. That's over {} days ago!"
+					  "".format(server.created_at.strftime("%d %b %Y %H:%M"),
+								passed))
+
+		colour = ''.join([choice('0123456789ABCDEF') for x in range(6)])
+		colour = int(colour, 16)
+
+		data = discord.Embed(
+			description=created_at,
+			colour=discord.Colour(value=colour))
+		data.add_field(name="Region", value=str(server.region))
+		data.add_field(name="Users", value="{}/{}".format(online, total_users))
+		data.add_field(name="Text Channels", value=text_channels)
+		data.add_field(name="Voice Channels", value=voice_channels)
+		data.add_field(name="Roles", value=len(server.roles))
+		data.add_field(name="Owner", value=str(server.owner))
+		data.set_footer(text="Server ID: " + server.id)
+
+		if server.icon_url:
+			data.set_author(name=server.name, url=server.icon_url)
+			data.set_thumbnail(url=server.icon_url)
+		else:
+			data.set_author(name=server.name)
+
+		try:
+			await self.bot.say(embed=data)
+		except discord.HTTPException:
+			await self.bot.say("I need the `Embed links` permission "
+							   "to send this")
+
+	@commands.command()
+	async def urban(self, *, search_terms : str, definition_number : int=1):
+		"""Urban Dictionary search
+
+		Definition number must be between 1 and 10"""
+		def encode(s):
+			return quote_plus(s, encoding='utf-8', errors='replace')
+
+		# definition_number is just there to show up in the help
+		# all this mess is to avoid forcing double quotes on the user
+
+		search_terms = search_terms.split(" ")
+		try:
+			if len(search_terms) > 1:
+				pos = int(search_terms[-1]) - 1
+				search_terms = search_terms[:-1]
+			else:
+				pos = 0
+			if pos not in range(0, 11): # API only provides the
+				pos = 0                 # top 10 definitions
+		except ValueError:
+			pos = 0
+
+		search_terms = "+".join([encode(s) for s in search_terms])
+		url = "http://api.urbandictionary.com/v0/define?term=" + search_terms
+		try:
+			async with aiohttp.get(url) as r:
+				result = await r.json()
+			if result["list"]:
+				definition = result['list'][pos]['definition']
+				example = result['list'][pos]['example']
+				defs = len(result['list'])
+				msg = ("**Definition #{} out of {}:\n**{}\n\n"
+					   "**Example:\n**{}".format(pos+1, defs, definition,
+												 example))
+				msg = pagify(msg, ["\n"])
+				for page in msg:
+					await self.bot.say(page)
+			else:
+				await self.bot.say("Your search terms gave no results.")
+		except IndexError:
+			await self.bot.say("There is no definition #{}".format(pos+1))
+		except:
+			await self.bot.say("Error.")
+
+	@commands.command(hidden=True)
+	@checks.is_owner()
+	async def randinv(self, number : int, times : int):
+		"""get a random instant invite"""
+		for _ in range(times):
+			discord = "https://discord.gg/"
+			randomcode = await self.randomforinv(number)
+			if randomcode is None:
+				await self.bot.say("Not Valid")
+			else:
+				randomcode = str(randomcode)
+				invlink = discord + randomcode
+				await self.bot.say(invlink)
+
+
+
+
+	async def randomforinv(self, number):
+		"""getting the random"""
+		samplelist = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','0','1','2','3','4','5','6','7','8','9']
+		if number == 6:
+			return ''.join(random.choice(samplelist) for _ in range(number))
+		elif number == 7:
+			return ''.join(random.choice(samplelist) for _ in range(number))
+		else:
+			return None
+
+
+	@commands.command()
+	async def suggest(self):
+		"""Suggest stuff for CronanBot"""
+		suggest_link = "https://goo.gl/forms/VANDeJ0ktM1CJRlC2"
+		click_here = "[{}]({})".format("Click Here", suggest_link)
+		
+		emb = discord.Embed(colour=discord.Colour.red())
+		emb.add_field(name="Suggest new content here", value=click_here)
+
+
+		try:
+			await self.bot.say(embed=emb)
+		except discord.HTTPException:
+			await self.bot.say("I need the `Embed links` permission "
+							   "to send this")
+
+	@commands.command()
+	async def bob(self, *, message):
+		"""spongebob meme"""
+		try:
+			embid = discord.Embed(colour=discord.Colour.darker_grey())
+			embid.set_image(url="http://i2.kym-cdn.com/entries/icons/original/000/022/940/spongebobicon.jpg")
+
+			maybework = ''
+			hopingwork = True
+			for shouldwork in message:
+				maybework += shouldwork.upper() if hopingwork else shouldwork.lower()
+				if shouldwork.isalpha():
+					hopingwork = not hopingwork
+			await self.bot.say(maybework)
+			await self.bot.say(embed=embid)
+		except discord.errors.HTTPException:
+			await self.bot.say("```->bob <message>\n\n"
+							   "spongebob meme\n\n```")
+
+	@commands.command()
+	async def custombot(self):
+		"""Get the link to buy a custom discord bot"""
+		await self.bot.say("http://bit.ly/CustomBot")
+
+	@commands.command(pass_context=True, no_pm=True)
+	async def membercount(self, ctx):
+		"""Shows how many members are on a server"""
+		server = ctx.message.server
+		total_users = len(server.members)
+		strcount = str(total_users)
+		memcount = "There is a total of " + strcount + " members on this server."
+		await self.bot.say(memcount)
+
+	@commands.command(pass_context=True)
+	async def randomcolor(self, ctx):
+		"""Generate a random color with a hex code"""
+		colour = ''.join([choice('0123456789ABCDEF') for x in range(6)])
+		colour = int(colour, 16)
+		colourstr = str(colour)
+		uri = "https://www.google.com/search?tbm=isch&q="
+		encode = urllib.parse.quote_plus(colourstr, encoding='utf-8', errors='replace')
+		colorpic = uri + encode
+
+		endid = discord.Embed(colour=discord.Colour(value=colour))
+		endid.set_author(name=colourstr)
+		endid.set_image(url=colorpic)
+
+		await self.bot.say(embed=endid)
+
+
+
+
+	def fetch_joined_at(self, user, server):
+		"""Just a special case for someone special :^)"""
+		if user.id == "96130341705637888" and server.id == "133049272517001216":
+			return datetime.datetime(2016, 1, 10, 6, 8, 4, 443000)
+		else:
+			return user.joined_at
 
 
 
 def setup(bot):
-    n = General(bot)
-    bot.add_cog(n)
+	n = General(bot)
+	bot.add_cog(n)
