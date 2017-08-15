@@ -7,6 +7,7 @@ from copy import deepcopy
 import asyncio
 import logging
 import os
+from discord.server import Server
 
 
 log = logging.getLogger("red.admin")
@@ -354,7 +355,8 @@ class Admin:
                 continue
             if server == self._announce_server:
                 continue
-            chan = server.default_channel
+            chan = server.default_channel.id
+            chan = self.bot.get_channel(chan)
             log.debug("Looking to announce to {} on {}".format(chan.name,
                                                                server.name))
             me = server.me

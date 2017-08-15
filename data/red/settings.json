@@ -6,6 +6,20 @@
             "&"
         ]
     },
+    "344575096930959362" : {
+        "ADMIN_ROLE" : "Transistor",
+        "MOD_ROLE" : "Process",
+        "PREFIXES" : [
+            "/"
+        ]
+    },
+    "346748209906974741" : {
+        "ADMIN_ROLE" : "Transistor",
+        "MOD_ROLE" : "Process",
+        "PREFIXES" : [
+            "!"
+        ]
+    },
     "EMAIL" : null,
     "OWNER" : "169593870777057280",
     "PASSWORD" : null,

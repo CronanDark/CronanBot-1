@@ -16,6 +16,7 @@
     "cogs.permissions" : true,
     "cogs.picturequotes" : true,
     "cogs.rift" : true,
+    "cogs.serverannouncer" : true,
     "cogs.streams" : true,
     "cogs.subscription" : true,
     "cogs.trigger" : true,
