@@ -173,7 +173,7 @@ class General:
 		await self.bot.say("https://lmgtfy.com/?q={}".format(search_terms))
 
 
-	@commands.command(aliases=["textemoji"], pass_context=True)
+	@commands.command(aliases=["textemoji", "txtmoji", "txtemoji"], pass_context=True)
 	async def textmoji(self, ctx, *, txt:str):
 		"""make emoji words"""
 		deletethis = ctx.message
@@ -181,6 +181,8 @@ class General:
 		for s in txt.lower():
 			if s in self.regional_map:
 				msg += u' '+self.regional_map[s]
+			elif ' ' in s:
+				msg += '    '
 			else:
 				msg += s
 		await self.bot.say(msg)

@@ -7616,3 +7616,10 @@ Traceback (most recent call last):
   File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 954, in _load_cog
     raise CogLoadError(*e.args)
 cogs.owner.CogLoadError: ('inconsistent use of tabs and spaces in indentation', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\general.py', 187, 50, '        await self.bot.delete_message(deletethis)\n'))
+[16/08/2017 08:40] ERROR red on_command_error 368: Exception in command 'textmoji'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 180, in textmoji
+    if ' ' in txt.content():
+AttributeError: 'str' object has no attribute 'content'
