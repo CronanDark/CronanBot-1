@@ -173,7 +173,7 @@ class General:
 		await self.bot.say("https://lmgtfy.com/?q={}".format(search_terms))
 
 
-	@commands.command(pass_context=True)
+	@commands.command(aliases=["textemoji"], pass_context=True)
 	async def textmoji(self, ctx, *, txt:str):
 		"""make emoji words"""
 		deletethis = ctx.message
