@@ -6,7 +6,7 @@ from __main__ import send_cmd_help
 import platform, asyncio, string, operator, random, textwrap
 import os, re, aiohttp
 import math
-from .utils.dataIO import fileIO
+from .utils.dataIO import dataIO
 from cogs.utils import checks
 try:
     from pymongo import MongoClient
@@ -37,12 +37,12 @@ bg_credits = {
 # directory
 user_directory = "data/leveler/users"
 
-prefix = fileIO("data/red/settings.json", "load")['PREFIXES']
+prefix = dataIO.load_json("data/red/settings.json")['PREFIXES']
 default_avatar_url = "http://i.imgur.com/XPDO9VH.jpg"
 
 try:
     client = MongoClient()
-    db = client['leveler']
+    db = client['newleveler']
 except:
     print("Can't load database. Follow instructions on Git/online to install MongoDB.")
 
@@ -51,11 +51,12 @@ class Leveler:
 
     def __init__(self, bot):
         self.bot = bot
-        self.backgrounds = fileIO("data/leveler/backgrounds.json", "load")
-        self.badges = fileIO("data/leveler/badges.json", "load")
-        self.settings = fileIO("data/leveler/settings.json", "load")
-        bot_settings = fileIO("data/red/settings.json", "load")
+        self.backgrounds = dataIO.load_json("data/leveler/backgrounds.json")
+        self.badges = dataIO.load_json("data/leveler/badges.json")
+        self.settings = dataIO.load_json("data/leveler/settings.json")
+        bot_settings = dataIO.load_json("data/red/settings.json")
         self.owner = bot_settings["OWNER"]
+        self.userlevels = dataIO.load_json("data/leveler/userlevels.json")
 
         dbs = client.database_names()
         if 'leveler' not in dbs:
@@ -64,15 +65,45 @@ class Leveler:
     def pop_database(self):
         if os.path.exists("data/leveler/users"):
             for userid in os.listdir(user_directory):
-                userinfo = fileIO("data/leveler/users/{}/info.json".format(userid), "load")
+                userinfo = dataIO.load_json("data/leveler/users/{}/info.json".format(userid))
                 userinfo['user_id'] = userid
                 db.users.insert_one(userinfo)
 
     def create_global(self):
 
-                userinfo = fileIO("data/leveler/users/{}/info.json".format(userid), "load")
+                userinfo = dataIO.load_json("data/leveler/users/{}/info.json".format(userid))
                 userinfo['user_id'] = userid
                 db.users.insert_one(userinfo)
+
+
+    @commands.command()
+    async def rankupinfo(self):
+        """get the info on exp and all"""
+        await self.bot.say("EXP forum: 125*level+50")
+        await self.bot.say("Cooldown: 30 seconds")
+        await self.bot.say("EXP each msg: 25-50")
+
+    @commands.command(pass_context=True, no_pm=True)
+    async def expneeded(self, ctx, *, user : discord.Member=None):
+        """See how much exp is needed for next level and how much u have left"""
+        if user == None:
+            user = ctx.message.author
+        channel = ctx.message.channel
+        server = user.server
+        myexp = 0
+
+        if server.id in self.settings["disabled_servers"]:
+            await self.bot.say("**Leveler commands for this server are disabled!**")
+            return
+
+        userinfo = db.users.find_one({'user_id':user.id})
+
+        fullxp = self._required_exp(userinfo["servers"][server.id]["level"])
+        myexp =  userinfo["servers"][server.id]["current_exp"]
+
+        await self.bot.say("The amount of xp needed is: " + str(fullxp))
+        await self.bot.say("Your xp is: " + str(myexp))
+        await self.bot.say("The amount of xp you have till next level is: " + str(fullxp - myexp))
 
 
     @commands.cooldown(1, 10, commands.BucketType.user)
@@ -124,7 +155,8 @@ class Leveler:
         em.add_field(name="Server Rank:", value = '#{}'.format(await self._find_server_rank(user, server)))
         em.add_field(name="Server Level:", value = format(userinfo["servers"][server.id]["level"]))
         em.add_field(name="Total Exp:", value = userinfo["total_exp"])
-        em.add_field(name="Server Exp:", value = await self._find_server_exp(user, server))
+        em.add_field(name="Server Total Exp:", value = await self._find_server_exp(user, server))
+        em.add_field(name="Rank Exp:", value = userinfo["servers"][server.id]["current_exp"])
         try:
             bank = self.bot.get_cog('Economy').bank
             if bank.account_exists(user):
@@ -180,7 +212,8 @@ class Leveler:
         em.add_field(name="Server Rank", value = '#{}'.format(await self._find_server_rank(user, server)))
         em.add_field(name="Reps", value = userinfo["rep"])
         em.add_field(name="Server Level", value = userinfo["servers"][server.id]["level"])
-        em.add_field(name="Server Exp", value = await self._find_server_exp(user, server))
+        em.add_field(name="Server Total Exp", value = await self._find_server_exp(user, server))
+        em.add_field(nmae="Rank Exp", value = userinfo["servers"][server.id]["current_exp"])
         em.set_author(name="Rank and Statistics for {}".format(user.name), url = user.avatar_url)
         em.set_thumbnail(url=user.avatar_url)
         return em
@@ -384,7 +417,8 @@ class Leveler:
         for i in range(userinfo["servers"][server.id]["level"]):
             total_server_exp += self._required_exp(i)
         total_server_exp += userinfo["servers"][server.id]["current_exp"]
-        msg += "Server Exp: {}\n".format(total_server_exp)
+        msg += "Server Total Exp: {}\n".format(total_server_exp)
+        msg += "Rank Exp: {}\n".format(userinfo["servers"][server.id]["current_exp"])
         msg += "Total Exp: {}\n".format(userinfo["total_exp"])
         msg += "Info: {}\n".format(userinfo["info"])
         msg += "Profile background: {}\n".format(userinfo["profile_background"])
@@ -945,7 +979,7 @@ class Leveler:
         self.settings["msg_credits"][server.id] = credits
         await self.bot.say("**Credits per message logged set to `{}`.**".format(str(credits)))
 
-        fileIO('data/leveler/settings.json', "save", self.settings)
+        dataIO.save_json('data/leveler/settings.json', self.settings)
 
     @lvladmin.command(name="lock", pass_context=True, no_pm=True)
     async def lvlmsglock(self, ctx):
@@ -967,7 +1001,7 @@ class Leveler:
             self.settings["lvl_msg_lock"][server.id] = channel.id
             await self.bot.say("**Level-up messages locked to `#{}`**".format(channel.name))
 
-        fileIO('data/leveler/settings.json', "save", self.settings)
+        dataIO.save_json('data/leveler/settings.json', self.settings)
 
     async def _process_purchase(self, ctx):
         user = ctx.message.author
@@ -1022,7 +1056,7 @@ class Leveler:
         else:
             self.settings["bg_price"] = price
             await self.bot.say("**Background price set to: `{}`!**".format(price))
-            fileIO('data/leveler/settings.json', "save", self.settings)
+            dataIO.save_json('data/leveler/settings.json', self.settings)
 
     @checks.is_owner()
     @lvladmin.command(pass_context=True, no_pm=True)
@@ -1074,7 +1108,7 @@ class Leveler:
         else:
             self.settings["mention"] = True
             await self.bot.say("**Mentions enabled.**")
-        fileIO('data/leveler/settings.json', "save", self.settings)
+        dataIO.save_json('data/leveler/settings.json', self.settings)
 
     async def _valid_image_url(self, url):
         max_byte = 1000
@@ -1101,7 +1135,7 @@ class Leveler:
         else:
             self.settings["disabled_servers"].append(server.id)
             await self.bot.say("**Leveler disabled on `{}`.**".format(server.name))
-        fileIO('data/leveler/settings.json', "save", self.settings)
+        dataIO.save_json('data/leveler/settings.json', self.settings)
 
     @checks.admin_or_permissions(manage_server=True)
     @lvladmin.command(pass_context=True, no_pm=True)
@@ -1133,7 +1167,7 @@ class Leveler:
             else:
                 self.settings["text_only"].append(server.id)
                 await self.bot.say("**Text-only messages enabled for `{}`.**".format(server.name))
-        fileIO('data/leveler/settings.json', "save", self.settings)
+        dataIO.save_json('data/leveler/settings.json', self.settings)
 
     @checks.admin_or_permissions(manage_server=True)
     @lvladmin.command(name="alerts", pass_context=True, no_pm=True)
@@ -1165,7 +1199,7 @@ class Leveler:
             else:
                 self.settings["lvl_msg"].append(server.id)
                 await self.bot.say("**Level-up alerts enabled for `{}`.**".format(server.name))
-        fileIO('data/leveler/settings.json', "save", self.settings)
+        dataIO.save_json('data/leveler/settings.json', self.settings)
 
     @checks.admin_or_permissions(manage_server=True)
     @lvladmin.command(name="private", pass_context=True, no_pm=True)
@@ -1197,7 +1231,7 @@ class Leveler:
                 self.settings["private_lvl_msg"].append(server.id)
                 await self.bot.say("**Private level-up alerts enabled for `{}`.**".format(server.name))
 
-        fileIO('data/leveler/settings.json', "save", self.settings)
+        dataIO.save_json('data/leveler/settings.json', self.settings)
 
     @commands.group(pass_context=True)
     async def badge(self, ctx):
@@ -1494,7 +1528,7 @@ class Leveler:
 
         self.settings["badge_type"] = name.lower()
         await self.bot.say("**Badge type set to `{}`**".format(name.lower()))
-        fileIO('data/leveler/settings.json', "save", self.settings)
+        dataIO.save_json('data/leveler/settings.json', self.settings)
 
     def _is_hex(self, color:str):
         if color != None and len(color) != 4 and len(color) != 7:
@@ -1786,7 +1820,7 @@ class Leveler:
             await self.bot.say("**That is not a valid image url!**")
         else:
             self.backgrounds["profile"][name] = url
-            fileIO('data/leveler/backgrounds.json', "save", self.backgrounds)
+            dataIO.save_json('data/leveler/backgrounds.json', self.backgrounds)
             await self.bot.say("**New profile background(`{}`) added.**".format(name))
 
     @checks.is_owner()
@@ -1799,7 +1833,7 @@ class Leveler:
             await self.bot.say("**That is not a valid image url!**")
         else:
             self.backgrounds["rank"][name] = url
-            fileIO('data/leveler/backgrounds.json', "save", self.backgrounds)
+            dataIO.save_json('data/leveler/backgrounds.json', self.backgrounds)
             await self.bot.say("**New rank background(`{}`) added.**".format(name))
 
     @checks.is_owner()
@@ -1812,7 +1846,7 @@ class Leveler:
             await self.bot.say("**That is not a valid image url!**")
         else:
             self.backgrounds["levelup"][name] = url
-            fileIO('data/leveler/backgrounds.json', "save", self.backgrounds)
+            dataIO.save_json('data/leveler/backgrounds.json', self.backgrounds)
             await self.bot.say("**New level-up background(`{}`) added.**".format(name))
 
     @checks.is_owner()
@@ -1845,7 +1879,7 @@ class Leveler:
         '''Delete a profile background.'''
         if name in self.backgrounds["profile"].keys():
             del self.backgrounds["profile"][name]
-            fileIO('data/leveler/backgrounds.json', "save", self.backgrounds)
+            dataIO.save_json('data/leveler/backgrounds.json', self.backgrounds)
             await self.bot.say("**The profile background(`{}`) has been deleted.**".format(name))
         else:
             await self.bot.say("**That profile background name doesn't exist.**")
@@ -1856,7 +1890,7 @@ class Leveler:
         '''Delete a rank background.'''
         if name in self.backgrounds["rank"].keys():
             del self.backgrounds["rank"][name]
-            fileIO('data/leveler/backgrounds.json', "save", self.backgrounds)
+            dataIO.save_json('data/leveler/backgrounds.json', self.backgrounds)
             await self.bot.say("**The rank background(`{}`) has been deleted.**".format(name))
         else:
             await self.bot.say("**That rank background name doesn't exist.**")
@@ -1867,7 +1901,7 @@ class Leveler:
         '''Delete a level background.'''
         if name in self.backgrounds["levelup"].keys():
             del self.backgrounds["levelup"][name]
-            fileIO('data/leveler/backgrounds.json', "save", self.backgrounds)
+            dataIO.save_json('data/leveler/backgrounds.json', self.backgrounds)
             await self.bot.say("**The level-up background(`{}`) has been deleted.**".format(name))
         else:
             await self.bot.say("**That level-up background name doesn't exist.**")
@@ -2112,11 +2146,11 @@ class Leveler:
         lvl_left = 100
         label_align = 105
         _write_unicode(u"Rank:", label_align, 165, general_info_fnt, general_info_u_fnt, info_text_color)
-        draw.text((label_align, 180), "Exp:",  font=general_info_fnt, fill=info_text_color) # Exp
+        draw.text((label_align, 180), "Exp(r/t):",  font=general_info_fnt, fill=info_text_color) # Exp
         draw.text((label_align, 195), "Credits:",  font=general_info_fnt, fill=info_text_color) # Credits
 
         # local stats
-        num_local_align = 172
+        num_local_align = 190
         local_symbol = u"\U0001F3E0 "
         if "linux" in platform.system().lower():
             local_symbol = u"\U0001F3E0 "
@@ -2126,7 +2160,7 @@ class Leveler:
         s_rank_txt = local_symbol + self._truncate_text("#{}".format(await self._find_server_rank(user, server)), 8)
         _write_unicode(s_rank_txt, num_local_align - general_info_u_fnt.getsize(local_symbol)[0], 165, general_info_fnt, general_info_u_fnt, info_text_color) # Rank
 
-        s_exp_txt = self._truncate_text("{}".format(await self._find_server_exp(user, server)), 8)
+        s_exp_txt = self._truncate_text("{}/{}".format(userinfo["servers"][server.id]["current_exp"], await self._find_server_exp(user, server)), 8)
         _write_unicode(s_exp_txt, num_local_align, 180, general_info_fnt, general_info_u_fnt, info_text_color)  # Exp
         try:
             bank = self.bot.get_cog('Economy').bank
@@ -2140,7 +2174,7 @@ class Leveler:
         draw.text((num_local_align, 195), self._truncate_text(credit_txt, 18),  font=general_info_fnt, fill=info_text_color) # Credits
 
         # global stats
-        num_align = 230
+        num_align = 250
         if "linux" in platform.system().lower():
             global_symbol = u"\U0001F30E "
             fine_adjust = 1
@@ -2383,7 +2417,7 @@ class Leveler:
 
         # set canvas
         width = 360
-        height = 100
+        height = 120
         bg_color = (255,255,255, 0)
         result = Image.new('RGBA', (width, height), bg_color)
         process = Image.new('RGBA', (width, height), bg_color)
@@ -2405,7 +2439,7 @@ class Leveler:
 
         draw.rectangle([(left_pos - 20,vert_pos), (right_pos, vert_pos + title_height)], fill=(230,230,230,230)) # title box
         content_top = vert_pos + title_height + gap
-        content_bottom = 100 - vert_pos
+        content_bottom = 120 - vert_pos
 
         if "rank_info_color" in userinfo.keys():
             info_color = tuple(userinfo["rank_info_color"])
@@ -2499,19 +2533,22 @@ class Leveler:
         _write_unicode(self._truncate_text(self._name(user, 20), 20), left_text_align - 12, vert_pos + 3, name_fnt, header_u_fnt, grey_color) # Name
 
         # divider bar
-        draw.rectangle([(187, 45), (188, 85)], fill=(160,160,160,220))
+        draw.rectangle([(200, 45), (201, 105)], fill=(160,160,160,220))
 
         # labels
-        label_align = 200
+        label_align = 215
         draw.text((label_align, 38), "Server Rank:", font=general_info_fnt, fill=label_text_color) # Server Rank
-        draw.text((label_align, 58), "Server Exp:", font=general_info_fnt, fill=label_text_color) # Server Exp
-        draw.text((label_align, 78), "Credits:", font=general_info_fnt, fill=label_text_color) # Credit
+        draw.text((label_align, 58), "Server Total Exp:", font=general_info_fnt, fill=label_text_color) # Server Exp
+        draw.text((label_align, 78), "Rank Exp:", font=general_info_fnt, fill=label_text_color)
+        draw.text((label_align, 98), "Credits:", font=general_info_fnt, fill=label_text_color) # Credit
         # info
-        right_text_align = 290
+        right_text_align = 305
         rank_txt = "#{}".format(await self._find_server_rank(user, server))
-        draw.text((right_text_align, 38), self._truncate_text(rank_txt, 12) , font=general_info_fnt, fill=label_text_color) # Rank
+        draw.text((right_text_align, 38), self._truncate_text(rank_txt, 12), font=general_info_fnt, fill=label_text_color) # Rank
         exp_txt = "{}".format(await self._find_server_exp(user, server))
         draw.text((right_text_align, 58), self._truncate_text(exp_txt, 12), font=general_info_fnt, fill=label_text_color) # Exp
+        rankxp_text = "{}".format(userinfo["servers"][server.id]["current_exp"])
+        draw.text((right_text_align, 78), self._truncate_text(rankxp_text, 12), font=general_info_fnt, fill=label_text_color)
         try:
             bank = self.bot.get_cog('Economy').bank
             if bank.account_exists(user):
@@ -2521,7 +2558,7 @@ class Leveler:
         except:
             credits = 0
         credit_txt = "${}".format(credits)
-        draw.text((right_text_align, 78), self._truncate_text(credit_txt, 12),  font=general_info_fnt, fill=label_text_color) # Credits
+        draw.text((right_text_align, 98), self._truncate_text(credit_txt, 12),  font=general_info_fnt, fill=label_text_color) # Credits
 
         result = Image.alpha_composite(result, process)
         result.save('data/leveler/temp/{}_rank.png'.format(user.id),'PNG', quality=100)
@@ -2659,7 +2696,7 @@ class Leveler:
             userinfo["chat_block"] = 0
 
         if float(curr_time) - float(userinfo["chat_block"]) >= 30 and not any(text.startswith(x) for x in prefix):
-            await self._process_exp(message, userinfo, random.randint(15, 20))
+            await self._process_exp(message, userinfo, random.randint(25, 50))
             await self._give_chat_credit(user, server)
         #except AttributeError as e:
             #pass
@@ -2694,7 +2731,7 @@ class Leveler:
     async def _handle_levelup(self, user, userinfo, server, channel):
         if not isinstance(self.settings["lvl_msg"], list):
             self.settings["lvl_msg"] = []
-            fileIO("data/leveler/settings.json", "save", self.settings)
+            dataIO.save_json("data/leveler/settings.json", self.settings)
 
         if server.id in self.settings["lvl_msg"]: # if lvl msg is enabled
             # channel lock implementation
@@ -2747,10 +2784,59 @@ class Leveler:
                 await self.bot.send_typing(channel)
                 em = discord.Embed(description='**{} just gained a level{}! (LEVEL {})**'.format(name, server_identifier, new_level), colour=user.colour)
                 await self.bot.send_message(channel, '', embed = em)
+                lvluse = self.userlevels
+                for i, s in enumerate(lvluse):
+                    if s["SERVER"] == lvluse:
+                        continue
+
+
+                    if str(server.id) in s["SERVER"]:
+                        if str(user) in s["NAME"]:
+                            lvluse[i]["SERVER"].remove(server.id)
+                            if not s["SERVER"]:
+                                lvluse.remove(s)
+                            dataIO.save_json("data/leveler/userlevels.json", self.userlevels)
+                            data = {"SERVER": [server.id],
+                                    "NAME": str(user),
+                                    "LVL": str(new_level)}
+                            lvluse.append(data)
+                            dataIO.save_json("data/leveler/userlevels.json", self.userlevels)
+                            return
+                
+                data = {"SERVER": [server.id],
+                        "NAME": str(user),
+                        "LVL": str(new_level)}
+                lvluse.append(data)
+                datsIO.save_json("data/leveler/userlevels.json", self.userlevels)
             else:
                 await self.draw_levelup(user, server)
                 await self.bot.send_typing(channel)
                 await self.bot.send_file(channel, 'data/leveler/temp/{}_level.png'.format(user.id), content='**{} just gained a level{}!**'.format(name, server_identifier))
+                lvluse = self.userlevels
+                for i, s in enumerate(lvluse):
+                    if s["SERVER"] == lvluse:
+                        continue
+
+
+                    if str(server.id) in s["SERVER"]:
+                        if str(user) in s["NAME"]:
+                            lvluse[i]["SERVER"].remove(server.id)
+                            if not s["SERVER"]:
+                                lvluse.remove(s)
+                            dataIO.save_json("data/leveler/userlevels.json", self.userlevels)
+                            data = {"SERVER": [server.id],
+                                    "NAME": str(user),
+                                    "LVL": str(new_level)}
+                            lvluse.append(data)
+                            dataIO.save_json("data/leveler/userlevels.json", self.userlevels)
+                            return
+                
+                data = {"SERVER": [server.id],
+                        "NAME": str(user),
+                        "LVL": str(new_level)}
+                lvluse.append(data)
+                dataIO.save_json("data/leveler/userlevels.json", self.userlevels)
+                
 
     async def _find_server_rank(self, user, server):
         targetid = user.id
@@ -2898,12 +2984,12 @@ class Leveler:
     def _required_exp(self, level:int):
         if level < 0:
             return 0
-        return 139*level+65
+        return 125*level+50
 
     def _level_exp(self, level: int):
-        return level*65 + 139*level*(level-1)//2
+        return level*50 + 125*level*(level-1)//2
 # ------------------------------ setup ----------------------------------------
-def check_folders():
+def check_folder():
     if not os.path.exists("data/leveler"):
         print("Creating data/leveler folder...")
         os.makedirs("data/leveler")
@@ -2914,17 +3000,17 @@ def check_folders():
 
 def transfer_info():
     try:
-        users = fileIO("data/leveler/users.json", "load")
+        users = dataIO.load_json("data/leveler/users.json")
         for user_id in users:
             os.makedirs("data/leveler/users/{}".format(user_id))
             # create info.json
             f = "data/leveler/users/{}/info.json".format(user_id)
-            if not fileIO(f, "check"):
-                fileIO(f, "save", users[user_id])
+            if not dataIO.is_valid_json(f):
+                dataIO.save_json(f, users[user_id])
     except:
         pass
 
-def check_files():
+def check_file():
     default = {
         "bg_price": 0,
         "lvl_msg": [], # enabled lvl msg servers
@@ -2938,9 +3024,9 @@ def check_files():
         }
 
     settings_path = "data/leveler/settings.json"
-    if not os.path.isfile(settings_path):
+    if not dataIO.is_valid_json(settings_path):
         print("Creating default leveler settings.json...")
-        fileIO(settings_path, "save", default)
+        dataIO.save_json(settings_path, default)
 
     bgs = {
             "profile": {
@@ -2955,7 +3041,8 @@ def check_files():
                 "miraikuriyama": "http://i.imgur.com/jQ4s4jj.png",
                 "mountaindawn": "http://i.imgur.com/kJ1yYY6.jpg",
                 "waterlilies": "http://i.imgur.com/qwdcJjI.jpg",
-                "greenery": "http://i.imgur.com/70ZH6LX.png"
+                "greenery": "http://i.imgur.com/70ZH6LX.png",
+                "cronanpro" : "http://i.imgur.com/sY8KJAI.jpg"
             },
             "rank": {
                 "aurora" : "http://i.imgur.com/gVSbmYj.jpg",
@@ -2964,25 +3051,33 @@ def check_files():
                 "mountain" : "http://i.imgur.com/qYqEUYp.jpg",
                 "abstract" : "http://i.imgur.com/70ZH6LX.png",
                 "city": "http://i.imgur.com/yr2cUM9.jpg",
+                "cronanrank" : "http://i.imgur.com/haugIC7.jpg"
             },
             "levelup": {
                 "default" : "http://i.imgur.com/eEFfKqa.jpg",
+                "cronanup" : "http://i.imgur.com/haugIC7.jpg"
             },
         }
 
     bgs_path = "data/leveler/backgrounds.json"
-    if not os.path.isfile(bgs_path):
+    if not dataIO.is_valid_json(bgs_path):
         print("Creating default leveler backgrounds.json...")
-        fileIO(bgs_path, "save", bgs)
+        dataIO.save_json(bgs_path, bgs)
 
     f = "data/leveler/badges.json"
-    if not fileIO(f, "check"):
+    if not dataIO.is_valid_json(f):
         print("Creating badges.json...")
-        fileIO(f, "save", {})
+        dataIO.save_json(f, {})
+
+    us = "data/leveler/userlevels.json"
+    if not dataIO.is_valid_json(us):
+        print("Creating userlevels.json...")
+        dataIO.save_json(us, [])
+
 
 def setup(bot):
-    check_folders()
-    check_files()
+    check_folder()
+    check_file()
     n = Leveler(bot)
 
     bot.add_listener(n._handle_on_message, "on_message")

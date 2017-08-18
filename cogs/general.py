@@ -322,6 +322,21 @@ class General:
 			await self.bot.say("I need the `Embed links` permission "
 							   "to send this")
 
+							   
+							   
+	@commands.command()
+	async def math(self, equation):
+		"""do math"""
+		if "/0" in equation:
+			await self.bot.say("ERROR: You can't divide by 0 idiot")
+			return
+		answer1 = eval(equation)
+		answer1 = str(answer1)
+		answer = discord.Embed(color=discord.Color.red())
+		answer.add_field(name="The Answer is:", value=answer1)
+		await self.bot.say(embed=answer)
+
+
 	@commands.command()
 	async def urban(self, *, search_terms : str, definition_number : int=1):
 		"""Urban Dictionary search
@@ -448,14 +463,15 @@ class General:
 	async def randomcolor(self, ctx):
 		"""Generate a random color with a hex code"""
 		colour = ''.join([choice('0123456789ABCDEF') for x in range(6)])
-		colour = int(colour, 16)
-		colourstr = str(colour)
+		colour1 = int(colour, 16)
+		colourstr = str(colour1)
 		uri = "https://www.google.com/search?tbm=isch&q="
 		encode = urllib.parse.quote_plus(colourstr, encoding='utf-8', errors='replace')
 		colorpic = uri + encode
+		cololostr = str(colour)
 
-		endid = discord.Embed(colour=discord.Colour(value=colour))
-		endid.set_author(name=colourstr)
+		endid = discord.Embed(colour=discord.Colour(value=colour1))
+		endid.set_author(name=cololostr)
 		endid.set_image(url=colorpic)
 
 		await self.bot.say(embed=endid)

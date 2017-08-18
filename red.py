@@ -4,6 +4,7 @@ import sys
 sys.path.insert(0, "lib")
 import logging
 import logging.handlers
+from discord.game import Game
 import traceback
 import datetime
 import subprocess

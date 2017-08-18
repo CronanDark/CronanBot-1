@@ -158,6 +158,7 @@ class Owner:
                )
         for page in pagify(msg, [" "], shorten_by=16):
             await self.bot.say(box(page.lstrip(" "), lang="diff"))
+    
 
     @commands.command(pass_context=True, hidden=True)
     @checks.is_owner()
@@ -575,30 +576,36 @@ class Owner:
         self.save_global_ignores()
         await self.bot.say("Whitelist is now empty.")
 
-    @commands.command()
+    @commands.command(pass_context=True)
     @checks.is_owner()
-    async def shutdown(self, silently : bool=False):
+    async def shutdown(self, ctx, *, silently=None):
         """Shuts down Cronan"""
         wave = "\N{WAVING HAND SIGN}"
         skin = "\N{EMOJI MODIFIER FITZPATRICK TYPE-3}"
-        try: # We don't want missing perms to stop our shutdown
+        dacommand = ctx.message
+        try:
             if not silently:
                 await self.bot.say("Shutting down... " + wave + skin)
+            elif silently is not None:
+                await self.bot.delete_message(dacommand)
         except:
             pass
         await self.bot.shutdown()
 
-    @commands.command()
+    @commands.command(pass_context=True)
     @checks.is_owner()
-    async def restart(self, silently : bool=False):
+    async def restart(self, ctx, *, silently=None):
         """Attempts to restart Cronan
 
         Makes Cronan quit with exit code 26
         The restart is not guaranteed: it must be dealt
         with by the process manager in use"""
+        dacommand = ctx.message
         try:
-            if not silently:
+            if silently is None:
                 await self.bot.say("Restarting...")
+            elif silently is not None:
+                await self.bot.delete_message(dacommand)
         except:
             pass
         await self.bot.shutdown(restart=True)
