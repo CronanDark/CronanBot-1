@@ -8726,3 +8726,29 @@ Traceback (most recent call last):
   File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\stupid.py", line 20, in annoyme
     user = ctx.message.user.id
 AttributeError: 'Message' object has no attribute 'user'
+[18/08/2017 17:41] ERROR red on_command_error 369: Exception in command 'addrole'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\admin.py", line 100, in addrole
+    await self.bot.add_roles(user, role)
+  File "lib\discord\client.py", line 2916, in add_roles
+    yield from self._replace_roles(member, new_roles)
+  File "lib\discord\client.py", line 2887, in _replace_roles
+    yield from self.http.replace_roles(member.id, member.server.id, roles)
+  File "lib\discord\http.py", line 196, in request
+    raise Forbidden(r, data)
+discord.errors.Forbidden: FORBIDDEN (status code: 403): Missing Permissions
+[18/08/2017 17:44] ERROR red on_command_error 369: Exception in command 'addrole'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\admin.py", line 100, in addrole
+    await self.bot.add_roles(user, role)
+  File "lib\discord\client.py", line 2916, in add_roles
+    yield from self._replace_roles(member, new_roles)
+  File "lib\discord\client.py", line 2887, in _replace_roles
+    yield from self.http.replace_roles(member.id, member.server.id, roles)
+  File "lib\discord\http.py", line 196, in request
+    raise Forbidden(r, data)
+discord.errors.Forbidden: FORBIDDEN (status code: 403): Missing Permissions

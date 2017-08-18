@@ -24,14 +24,15 @@ class Stupid():
             await asyncio.sleep(600)
 
     @commands.command(pass_context=True)
-    async def spam(self, ctx, message : str):
+    async def spam(self, ctx, message):
         """spams chat with what u make it say.
         Note: You will be responsible for any trouble you get into"""
+        msgdude = str(message)
         user = str(ctx.message.author.name)
         msgdel = ctx.message
         await self.bot.delete_message(msgdel)
         for i in range(25):
-            await self.bot.say(message)
+            await self.bot.say(msgdude)
             await asyncio.sleep(1)
         await asyncio.sleep(5)
         await self.bot.say(user + " made me do it")

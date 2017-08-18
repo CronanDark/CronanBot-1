@@ -3042,7 +3042,7 @@ def check_file():
                 "mountaindawn": "http://i.imgur.com/kJ1yYY6.jpg",
                 "waterlilies": "http://i.imgur.com/qwdcJjI.jpg",
                 "greenery": "http://i.imgur.com/70ZH6LX.png",
-                "cronanpro" : "http://i.imgur.com/sY8KJAI.jpg"
+                "cronanpro" : "http://i.imgur.com/haugIC7.jpg"
             },
             "rank": {
                 "aurora" : "http://i.imgur.com/gVSbmYj.jpg",
@@ -3051,11 +3051,11 @@ def check_file():
                 "mountain" : "http://i.imgur.com/qYqEUYp.jpg",
                 "abstract" : "http://i.imgur.com/70ZH6LX.png",
                 "city": "http://i.imgur.com/yr2cUM9.jpg",
-                "cronanrank" : "http://i.imgur.com/haugIC7.jpg"
+                "cronanrank" : "http://i.imgur.com/sY8KJAI.jpg"
             },
             "levelup": {
                 "default" : "http://i.imgur.com/eEFfKqa.jpg",
-                "cronanup" : "http://i.imgur.com/haugIC7.jpg"
+                "cronanup" : "http://i.imgur.com/sY8KJAI.jpg"
             },
         }
 
