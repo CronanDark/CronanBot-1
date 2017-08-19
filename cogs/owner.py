@@ -4,6 +4,7 @@ from cogs.utils import checks
 from __main__ import set_cog
 from .utils.dataIO import dataIO
 from .utils.chat_formatting import pagify, box
+from discord.game import Game
 
 import importlib
 import traceback

@@ -582,7 +582,6 @@ class Leveler:
                     }})
             await self.bot.say("**Colors for profile set.**")
         else:
-            print("update one")
             db.users.update_one({'user_id':user.id}, {'$set':{
                     section_name: set_color[0]
                 }})
