@@ -305,6 +305,9 @@ class Mod:
         author = ctx.message.author
         server = author.server
 
+        if reason is None:
+            reason = "No Reason Given"
+
         if author == user:
             await self.bot.say("I cannot let you do that. Self-harm is "
                                "bad \N{PENSIVE FACE}")
@@ -339,6 +342,9 @@ class Mod:
         Minimum 0 days, maximum 7. Defaults to 0."""
         author = ctx.message.author
         server = author.server
+
+        if reason is None:
+            reason = "No Reason Given"
 
         if author == user:
             await self.bot.say("I cannot let you do that. Self-harm is "
@@ -394,6 +400,9 @@ class Mod:
         author = ctx.message.author
         server = author.server
 
+        if reason is None:
+            reason = "No Reason Given"
+
         ban_list = await self.bot.get_bans(server)
         is_banned = discord.utils.get(ban_list, id=user_id)
 
@@ -433,6 +442,9 @@ class Mod:
         channel = ctx.message.channel
         can_ban = channel.permissions_for(server.me).ban_members
         author = ctx.message.author
+
+        if reason is None:
+            reason = "No Reason Given"
 
         if author == user:
             await self.bot.say("I cannot let you do that. Self-harm is "
@@ -512,6 +524,9 @@ class Mod:
         server = ctx.message.server
         overwrites = channel.overwrites_for(user)
 
+        if reason is None:
+            reason = "No Reason Given"
+
         if overwrites.send_messages is False:
             await self.bot.say("That user can't send messages in this "
                                "channel.")
@@ -546,6 +561,9 @@ class Mod:
         """Mutes user in the server"""
         author = ctx.message.author
         server = ctx.message.server
+
+        if reason is None:
+            reason = "No Reason Given"
 
         if not self.is_allowed_by_hierarchy(server, author, user):
             await self.bot.say("I cannot let you do that. You are "
@@ -685,323 +703,6 @@ class Mod:
         dataIO.save_json("data/mod/perms_cache.json", self._perms_cache)
         await self.bot.say("User has been unmuted in this server.")
 
-    @commands.group(pass_context=True)
-    @checks.mod_or_permissions(manage_messages=True)
-    async def cleanup(self, ctx):
-        """Deletes messages."""
-        if ctx.invoked_subcommand is None:
-            await send_cmd_help(ctx)
-
-    @cleanup.command(pass_context=True, no_pm=True)
-    async def text(self, ctx, text: str, number: int):
-        """Deletes last X messages matching the specified text.
-
-        Example:
-        cleanup text \"test\" 5
-
-        Remember to use double quotes."""
-
-        channel = ctx.message.channel
-        author = ctx.message.author
-        server = author.server
-        is_bot = self.bot.user.bot
-        has_permissions = channel.permissions_for(server.me).manage_messages
-
-        def check(m):
-            if text in m.content:
-                return True
-            elif m == ctx.message:
-                return True
-            else:
-                return False
-
-        to_delete = [ctx.message]
-
-        if not has_permissions:
-            await self.bot.say("I'm not allowed to delete messages.")
-            return
-
-        tries_left = 5
-        tmp = ctx.message
-
-        while tries_left and len(to_delete) - 1 < number:
-            async for message in self.bot.logs_from(channel, limit=100,
-                                                    before=tmp):
-                if len(to_delete) - 1 < number and check(message):
-                    to_delete.append(message)
-                tmp = message
-            tries_left -= 1
-
-        logger.info("{}({}) deleted {} messages "
-                    " containing '{}' in channel {}".format(author.name,
-                    author.id, len(to_delete), text, channel.id))
-
-        if is_bot:
-            await self.mass_purge(to_delete)
-        else:
-            await self.slow_deletion(to_delete)
-
-    @cleanup.command(pass_context=True, no_pm=True)
-    async def user(self, ctx, user: discord.Member, number: int):
-        """Deletes last X messages from specified user.
-
-        Examples:
-        cleanup user @\u200bCronan 2
-        cleanup user Cronan 6"""
-
-        channel = ctx.message.channel
-        author = ctx.message.author
-        server = author.server
-        is_bot = self.bot.user.bot
-        has_permissions = channel.permissions_for(server.me).manage_messages
-        self_delete = user == self.bot.user
-
-        def check(m):
-            if m.author == user:
-                return True
-            elif m == ctx.message:
-                return True
-            else:
-                return False
-
-        to_delete = [ctx.message]
-
-        if not has_permissions and not self_delete:
-            await self.bot.say("I'm not allowed to delete messages.")
-            return
-
-        tries_left = 5
-        tmp = ctx.message
-
-        while tries_left and len(to_delete) - 1 < number:
-            async for message in self.bot.logs_from(channel, limit=100,
-                                                    before=tmp):
-                if len(to_delete) - 1 < number and check(message):
-                    to_delete.append(message)
-                tmp = message
-            tries_left -= 1
-
-        logger.info("{}({}) deleted {} messages "
-                    " made by {}({}) in channel {}"
-                    "".format(author.name, author.id, len(to_delete),
-                              user.name, user.id, channel.name))
-
-        if is_bot and not self_delete:
-            # For whatever reason the purge endpoint requires manage_messages
-            await self.mass_purge(to_delete)
-        else:
-            await self.slow_deletion(to_delete)
-
-    @cleanup.command(pass_context=True, no_pm=True)
-    async def after(self, ctx, message_id : int):
-        """Deletes all messages after specified message
-
-        To get a message id, enable developer mode in Discord's
-        settings, 'appearance' tab. Then right click a message
-        and copy its id.
-
-        This command only works on bots running as bot accounts.
-        """
-
-        channel = ctx.message.channel
-        author = ctx.message.author
-        server = channel.server
-        is_bot = self.bot.user.bot
-        has_permissions = channel.permissions_for(server.me).manage_messages
-
-        if not is_bot:
-            await self.bot.say("This command can only be used on bots with "
-                               "bot accounts.")
-            return
-
-        to_delete = []
-
-        after = await self.bot.get_message(channel, message_id)
-
-        if not has_permissions:
-            await self.bot.say("I'm not allowed to delete messages.")
-            return
-        elif not after:
-            await self.bot.say("Message not found.")
-            return
-
-        async for message in self.bot.logs_from(channel, limit=2000,
-                                                after=after):
-            to_delete.append(message)
-
-        logger.info("{}({}) deleted {} messages in channel {}"
-                    "".format(author.name, author.id,
-                              len(to_delete), channel.name))
-
-        await self.mass_purge(to_delete)
-
-    @cleanup.command(pass_context=True, no_pm=True)
-    async def messages(self, ctx, number: int):
-        """Deletes last X messages.
-
-        Example:
-        cleanup messages 26"""
-
-        channel = ctx.message.channel
-        author = ctx.message.author
-        server = author.server
-        is_bot = self.bot.user.bot
-        has_permissions = channel.permissions_for(server.me).manage_messages
-
-        to_delete = []
-
-        if not has_permissions:
-            await self.bot.say("I'm not allowed to delete messages.")
-            return
-
-        async for message in self.bot.logs_from(channel, limit=number+1):
-            to_delete.append(message)
-
-        logger.info("{}({}) deleted {} messages in channel {}"
-                    "".format(author.name, author.id,
-                              number, channel.name))
-
-        if is_bot:
-            await self.mass_purge(to_delete)
-        else:
-            await self.slow_deletion(to_delete)
-
-    @cleanup.command(pass_context=True, no_pm=True, name='bot')
-    async def cleanup_bot(self, ctx, number: int):
-        """Cleans up command messages and messages from the bot"""
-
-        channel = ctx.message.channel
-        author = ctx.message.author
-        server = channel.server
-        is_bot = self.bot.user.bot
-        has_permissions = channel.permissions_for(server.me).manage_messages
-
-        prefixes = self.bot.command_prefix
-        if isinstance(prefixes, str):
-            prefixes = [prefixes]
-        elif callable(prefixes):
-            if asyncio.iscoroutine(prefixes):
-                await self.bot.say('Coroutine prefixes not yet implemented.')
-                return
-            prefixes = prefixes(self.bot, ctx.message)
-
-        # In case some idiot sets a null prefix
-        if '' in prefixes:
-            prefixes.pop('')
-
-        def check(m):
-            if m.author.id == self.bot.user.id:
-                return True
-            elif m == ctx.message:
-                return True
-            p = discord.utils.find(m.content.startswith, prefixes)
-            if p and len(p) > 0:
-                return m.content[len(p):].startswith(tuple(self.bot.commands))
-            return False
-
-        to_delete = [ctx.message]
-
-        if not has_permissions:
-            await self.bot.say("I'm not allowed to delete messages.")
-            return
-
-        tries_left = 5
-        tmp = ctx.message
-
-        while tries_left and len(to_delete) - 1 < number:
-            async for message in self.bot.logs_from(channel, limit=100,
-                                                    before=tmp):
-                if len(to_delete) - 1 < number and check(message):
-                    to_delete.append(message)
-                tmp = message
-            tries_left -= 1
-
-        logger.info("{}({}) deleted {} "
-                    " command messages in channel {}"
-                    "".format(author.name, author.id, len(to_delete),
-                              channel.name))
-
-        if is_bot:
-            await self.mass_purge(to_delete)
-        else:
-            await self.slow_deletion(to_delete)
-
-    @cleanup.command(pass_context=True, name='self')
-    async def cleanup_self(self, ctx, number: int, match_pattern: str = None):
-        """Cleans up messages owned by the bot.
-
-        By default, all messages are cleaned. If a third argument is specified,
-        it is used for pattern matching: If it begins with r( and ends with ),
-        then it is interpreted as a regex, and messages that match it are
-        deleted. Otherwise, it is used in a simple substring test.
-
-        Some helpful regex flags to include in your pattern:
-        Dots match newlines: (?s); Ignore case: (?i); Both: (?si)
-        """
-        channel = ctx.message.channel
-        author = ctx.message.author
-        is_bot = self.bot.user.bot
-
-        # You can always delete your own messages, this is needed to purge
-        can_mass_purge = False
-        if type(author) is discord.Member:
-            me = channel.server.me
-            can_mass_purge = channel.permissions_for(me).manage_messages
-
-        use_re = (match_pattern and match_pattern.startswith('r(') and
-                  match_pattern.endswith(')'))
-
-        if use_re:
-            match_pattern = match_pattern[1:]  # strip 'r'
-            match_re = re.compile(match_pattern)
-
-            def content_match(c):
-                return bool(match_re.match(c))
-        elif match_pattern:
-            def content_match(c):
-                return match_pattern in c
-        else:
-            def content_match(_):
-                return True
-
-        def check(m):
-            if m.author.id != self.bot.user.id:
-                return False
-            elif content_match(m.content):
-                return True
-            return False
-
-        to_delete = []
-        # Selfbot convenience, delete trigger message
-        if author == self.bot.user:
-            to_delete.append(ctx.message)
-            number += 1
-
-        tries_left = 5
-        tmp = ctx.message
-
-        while tries_left and len(to_delete) < number:
-            async for message in self.bot.logs_from(channel, limit=100,
-                                                    before=tmp):
-                if len(to_delete) < number and check(message):
-                    to_delete.append(message)
-                tmp = message
-            tries_left -= 1
-
-        if channel.name:
-            channel_name = 'channel ' + channel.name
-        else:
-            channel_name = str(channel)
-
-        logger.info("{}({}) deleted {} messages "
-                    "sent by the bot in {}"
-                    "".format(author.name, author.id, len(to_delete),
-                              channel_name))
-
-        if is_bot and can_mass_purge:
-            await self.mass_purge(to_delete)
-        else:
-            await self.slow_deletion(to_delete)
 
     @commands.command(pass_context=True)
     @checks.mod_or_permissions(manage_messages=True)

@@ -327,7 +327,7 @@ def initialize(bot_class=Bot, formatter_class=Formatter):
         print("Make sure to keep your bot updated. Select the 'Update' "
               "option from the launcher.")
 
-        await bot.change_presence(game=discord.Game(name="->help", type=1))
+        await bot.change_presence(game=discord.Game(name="->help", type=0))
 
         await bot.get_cog('Owner').disable_commands()
         
