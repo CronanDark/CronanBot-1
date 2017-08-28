@@ -9490,3 +9490,76 @@ Traceback (most recent call last):
   File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 734, in serverchannels
     correctserv = self.bot.get_server(correctserv)
 UnboundLocalError: local variable 'correctserv' referenced before assignment
+[28/08/2017 15:44] ERROR red on_command_error 370: Exception in command 'exitrift'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\rift.py", line 183, in exitrift
+    otherplace = self.bot.get_channel(otherplace)
+  File "lib\discord\client.py", line 552, in get_channel
+    return self.connection.get_channel(id)
+  File "lib\discord\state.py", line 727, in get_channel
+    channel = server.get_channel(id)
+  File "lib\discord\server.py", line 129, in get_channel
+    return self._channels.get(channel_id)
+TypeError: unhashable type: 'list'
+[28/08/2017 15:48] ERROR red on_command_error 370: Exception in command 'exitrift'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\rift.py", line 182, in exitrift
+    otherplace = rafts["chan1"]
+TypeError: list indices must be integers or slices, not str
+[28/08/2017 15:50] ERROR red on_command_error 370: Exception in command 'exitrift'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\rift.py", line 184, in exitrift
+    otherplace = self.bot.get_channel(otherplace)
+  File "lib\discord\client.py", line 552, in get_channel
+    return self.connection.get_channel(id)
+  File "lib\discord\state.py", line 727, in get_channel
+    channel = server.get_channel(id)
+  File "lib\discord\server.py", line 129, in get_channel
+    return self._channels.get(channel_id)
+TypeError: unhashable type: 'list'
+[28/08/2017 15:52] ERROR red on_command_error 370: Exception in command 'exitrift'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\rift.py", line 190, in exitrift
+    await self.bot.send_message(otherplace, "Rift has been closed")
+  File "red.py", line 90, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1145, in send_message
+    channel_id, guild_id = yield from self._resolve_destination(destination)
+  File "lib\discord\client.py", line 289, in _resolve_destination
+    raise InvalidArgument(fmt.format(destination))
+discord.errors.InvalidArgument: Destination must be Channel, PrivateChannel, User, or Object. Received NoneType
+[28/08/2017 15:52] ERROR red on_command_error 370: Exception in command 'exitrift'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\rift.py", line 184, in exitrift
+    otherplace = int(otherplace)
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'list'
+[28/08/2017 15:53] ERROR red on_command_error 370: Exception in command 'exitrift'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\rift.py", line 185, in exitrift
+    otherplace = int(otherplace)
+ValueError: invalid literal for int() with base 10: "['293154786667266048']"
+[28/08/2017 15:54] ERROR red on_command_error 370: Exception in command 'exitrift'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\rift.py", line 192, in exitrift
+    await self.bot.send_message(otherplace, "Rift has been closed")
+  File "red.py", line 90, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1145, in send_message
+    channel_id, guild_id = yield from self._resolve_destination(destination)
+  File "lib\discord\client.py", line 289, in _resolve_destination
+    raise InvalidArgument(fmt.format(destination))
+discord.errors.InvalidArgument: Destination must be Channel, PrivateChannel, User, or Object. Received NoneType

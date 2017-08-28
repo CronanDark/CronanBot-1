@@ -159,6 +159,8 @@ class Rift:
                 rafts.append(data)
                 dataIO.save_json("data/rift/settings.json", self.settings)
                 await self.bot.say("Rift opened")
+                aceptchan = self.bot.get_channel(channel)
+                await self.bot.send_message(aceptchan, "Rift opened")
             else:
                 await self.bot.say("Rift has been denied")
         else:
@@ -177,18 +179,30 @@ class Rift:
 
             
             if author_channel.id in s["chan2"]:
+                otherplace = rafts[i]
+                otherplace = otherplace["chan1"]
+                otherplace = otherplace[0]
+                otherplace = str(otherplace)
+                otherplace = self.bot.get_channel(otherplace)
                 rafts[i]["chan2"].remove(author_channel.id)
                 if not s["chan2"]:
                     rafts.remove(s)
                 dataIO.save_json("data/rift/settings.json", self.settings)
+                await self.bot.send_message(otherplace, "Rift has been closed")
                 await self.bot.say("Rift closed")
                 return
 
             if author_channel.id in s["chan1"]:
+                otherplace = rafts[i]
+                otherplace = otherplace["chan2"]
+                otherplace = otherplace[0]
+                otherplace = str(otherplace)
+                otherplace = self.bot.get_channel(otherplace)
                 rafts[i]["chan1"].remove(author_channel.id)
                 if not s["chan1"]:
                     rafts.remove(s)
                 dataIO.save_json("data/rift/settings.json", self.settings)
+                await self.bot.send_message(otherplace, "Rift has been closed")
                 await self.bot.say("Rift closed")
                 return
 
