@@ -172,12 +172,10 @@ class Trivia:
         lists = [l.replace(".txt", "") for l in lists]
 
         if lists:
-            msg = "+ Available trivia lists\n\n" + ", ".join(sorted(lists))
-            msg = box(msg, lang="diff")
-            if len(lists) < 100:
-                await self.bot.say(msg)
-            else:
-                await self.bot.whisper(msg)
+            msg = ", ".join(sorted(lists))
+            trivbed = discord.Embed(color=discord.Color.red())
+            trivbed.add_field(name="Available trivia lists", value=msg)
+            await self.bot.say(embed=trivbed)
         else:
             await self.bot.say("There are no trivia lists available.")
 

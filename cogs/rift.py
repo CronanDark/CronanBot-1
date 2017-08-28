@@ -276,7 +276,7 @@ class Rift:
         footer = 'Said in {} #{} at {} UTC'.format(sname, cname, timestamp)
         botowner = "Cronan The Dark Gamer"
         if message.author.name == botowner:
-            msgcolor = discord.Color.dark_red()
+            msgcolor = discord.Color.red()
         else:
             msgcolor = discord.Color.gold()
         em = discord.Embed(description=content, color=msgcolor)
