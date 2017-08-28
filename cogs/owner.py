@@ -725,12 +725,16 @@ class Owner:
         """list channels on a certain server"""
         servers = sorted(list(self.bot.servers),
                          key=lambda s: s.name.lower())
+        correctserv = None
         for i, server in enumerate(servers):
             mychoice = str(servername)
             theserv = str(server.name)
             if theserv == mychoice:
                 correctserv = server.id
 
+        if correctserv is None:
+            await self.bot.say("There is no server named that")
+            return
         correctserv = self.bot.get_server(correctserv)
         thechannels = correctserv.channels
         channelsforit = sorted(list(thechannels),
