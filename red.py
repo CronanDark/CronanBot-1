@@ -341,6 +341,10 @@ def initialize(bot_class=Bot, formatter_class=Formatter):
         bot.counter["processed_commands"] += 1
 
     @bot.event
+    async def on_server_join(server):
+        await bot.send_message(server, "Hello. Thanks for adding me. `->help` for a list of the commands and if you are owner and want to change the command prefix do `->set serverprefix (chosen prefix)`")
+
+    @bot.event
     async def on_message(message):
         bot.counter["messages_read"] += 1
         if bot.user_allowed(message):
