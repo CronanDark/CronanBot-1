@@ -59,6 +59,9 @@ class Fun:
             await self.bot.say(author.mention + " has bribed " + user.mention + " with " +
                                str(randint(10, 10000)) + " dollars!")
 
+
+
+
     @commands.command(pass_context=True)
     async def daddy(self, ctx):
         """Pass the salt"""

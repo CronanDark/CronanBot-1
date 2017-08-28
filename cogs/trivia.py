@@ -9,6 +9,7 @@ import time
 import os
 import asyncio
 import chardet
+from discord.user import User
 
 DEFAULTS = {"MAX_SCORE"    : 10,
             "TIMEOUT"      : 120,
@@ -110,6 +111,35 @@ class Trivia:
                 await t.new_question()
         else:
             await self.bot.say("A trivia session is already ongoing in this channel.")
+
+    @trivia.group(name="make", pass_context=True, no_pm=True)
+    async def trivia_make(self, ctx):
+        """Tells you how to make a trivia list"""
+        user = ctx.message.author.id
+        owner_set = self.bot.settings.owner is not None
+        owner = self.bot.settings.owner if owner_set else None
+        if owner:
+            owner = discord.utils.get(self.bot.get_all_members(), id=owner)
+            if not owner:
+                try:
+                    owner = await self.bot.get_user_info(self.bot.settings.owner)
+                except:
+                    owner = None
+        if not owner:
+            owner = "Cronan"
+        await self.bot.send_message(discord.User(id=user), "__***How to make a trivia list:***__")
+        await asyncio.sleep(1)
+        await self.bot.send_message(discord.User(id=user), "1. open up notepad or whatever you use for .txt files")
+        await asyncio.sleep(1)
+        await self.bot.send_message(discord.User(id=user), "2. type in your question ending in a ?")
+        await asyncio.sleep(1)
+        await self.bot.send_message(discord.User(id=user), "3. after ? put a space and put ` before each answer(recomended to put multiple answers for each way the answer can be typed)")
+        await asyncio.sleep(1)
+        await self.bot.send_message(discord.User(id=user), "4. repeat steps 2 and 3 for as many questions as you wanna put (the more the merrier)")
+        await asyncio.sleep(1)
+        await self.bot.send_message(discord.User(id=user), "5. save it as the trivia name all lowercase and no spaces. make sure it is a .txt file")
+        await asyncio.sleep(1)
+        await self.bot.send_message(discord.User(id=user), "6. DM " + str(owner) + " the .txt file")
 
     @trivia.group(name="stop", pass_context=True, no_pm=True)
     async def trivia_stop(self, ctx):

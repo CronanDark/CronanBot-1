@@ -8968,3 +8968,518 @@ Traceback (most recent call last):
   File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\stupid.py", line 50, in pmconfession
     theconfesset.remove(datadel)
 ValueError: list.remove(x): x not in list
+[23/08/2017 01:05] ERROR red <module> 631: Fatal exception, attempting graceful logout
+Traceback (most recent call last):
+  File "lib\aiohttp\connector.py", line 601, in _create_direct_connection
+    local_addr=self._local_addr)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 645, in create_connection
+    raise exceptions[0]
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 632, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 358, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 290, in _wakeup
+    future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\selector_events.py", line 436, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+ConnectionAbortedError: [Errno 10053] Connect call failed ('104.16.59.5', 443)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "lib\aiohttp\connector.py", line 304, in connect
+    yield from self._create_connection(req)
+  File "lib\aiohttp\connector.py", line 578, in _create_connection
+    transport, proto = yield from self._create_direct_connection(req)
+  File "lib\aiohttp\connector.py", line 624, in _create_direct_connection
+    (req.host, req.port, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10053] Can not connect to discordapp.com:443 [Connect call failed ('104.16.59.5', 443)]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "red.py", line 611, in <module>
+    loop.run_until_complete(main(bot))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 337, in run_until_complete
+    return future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "red.py", line 600, in main
+    yield from bot.connect()
+  File "lib\discord\client.py", line 452, in connect
+    self.ws = yield from DiscordWebSocket.from_client(self, resume=resume)
+  File "lib\discord\gateway.py", line 203, in from_client
+    gateway = yield from client.http.get_gateway()
+  File "lib\discord\http.py", line 633, in get_gateway
+    data = yield from self.request(Route('GET', '/gateway'))
+  File "lib\discord\http.py", line 137, in request
+    r = yield from self.session.request(method, url, **kwargs)
+  File "lib\aiohttp\client.py", line 555, in __iter__
+    resp = yield from self._coro
+  File "lib\aiohttp\client.py", line 198, in _request
+    conn = yield from self._connector.connect(req)
+  File "lib\aiohttp\connector.py", line 314, in connect
+    .format(key, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10053] Cannot connect to host discordapp.com:443 ssl:True [Can not connect to discordapp.com:443 [Connect call failed ('104.16.59.5', 443)]]
+[23/08/2017 18:10] ERROR red <module> 631: Fatal exception, attempting graceful logout
+Traceback (most recent call last):
+  File "lib\aiohttp\connector.py", line 601, in _create_direct_connection
+    local_addr=self._local_addr)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 645, in create_connection
+    raise exceptions[0]
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 632, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 358, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 290, in _wakeup
+    future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\selector_events.py", line 436, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+OSError: [Errno 10051] Connect call failed ('104.16.58.5', 443)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "lib\aiohttp\connector.py", line 304, in connect
+    yield from self._create_connection(req)
+  File "lib\aiohttp\connector.py", line 578, in _create_connection
+    transport, proto = yield from self._create_direct_connection(req)
+  File "lib\aiohttp\connector.py", line 624, in _create_direct_connection
+    (req.host, req.port, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10051] Can not connect to discordapp.com:443 [Connect call failed ('104.16.58.5', 443)]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "red.py", line 611, in <module>
+    loop.run_until_complete(main(bot))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 337, in run_until_complete
+    return future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "red.py", line 600, in main
+    yield from bot.connect()
+  File "lib\discord\client.py", line 452, in connect
+    self.ws = yield from DiscordWebSocket.from_client(self, resume=resume)
+  File "lib\discord\gateway.py", line 203, in from_client
+    gateway = yield from client.http.get_gateway()
+  File "lib\discord\http.py", line 633, in get_gateway
+    data = yield from self.request(Route('GET', '/gateway'))
+  File "lib\discord\http.py", line 137, in request
+    r = yield from self.session.request(method, url, **kwargs)
+  File "lib\aiohttp\client.py", line 555, in __iter__
+    resp = yield from self._coro
+  File "lib\aiohttp\client.py", line 198, in _request
+    conn = yield from self._connector.connect(req)
+  File "lib\aiohttp\connector.py", line 314, in connect
+    .format(key, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10051] Cannot connect to host discordapp.com:443 ssl:True [Can not connect to discordapp.com:443 [Connect call failed ('104.16.58.5', 443)]]
+[24/08/2017 00:20] ERROR red <module> 631: Fatal exception, attempting graceful logout
+Traceback (most recent call last):
+  File "lib\aiohttp\connector.py", line 601, in _create_direct_connection
+    local_addr=self._local_addr)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 645, in create_connection
+    raise exceptions[0]
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 632, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 358, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 290, in _wakeup
+    future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\selector_events.py", line 436, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+TimeoutError: [Errno 10060] Connect call failed ('104.16.59.5', 443)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "lib\aiohttp\connector.py", line 304, in connect
+    yield from self._create_connection(req)
+  File "lib\aiohttp\connector.py", line 578, in _create_connection
+    transport, proto = yield from self._create_direct_connection(req)
+  File "lib\aiohttp\connector.py", line 624, in _create_direct_connection
+    (req.host, req.port, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10060] Can not connect to discordapp.com:443 [Connect call failed ('104.16.59.5', 443)]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "red.py", line 611, in <module>
+    loop.run_until_complete(main(bot))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 337, in run_until_complete
+    return future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "red.py", line 600, in main
+    yield from bot.connect()
+  File "lib\discord\client.py", line 452, in connect
+    self.ws = yield from DiscordWebSocket.from_client(self, resume=resume)
+  File "lib\discord\gateway.py", line 203, in from_client
+    gateway = yield from client.http.get_gateway()
+  File "lib\discord\http.py", line 633, in get_gateway
+    data = yield from self.request(Route('GET', '/gateway'))
+  File "lib\discord\http.py", line 137, in request
+    r = yield from self.session.request(method, url, **kwargs)
+  File "lib\aiohttp\client.py", line 555, in __iter__
+    resp = yield from self._coro
+  File "lib\aiohttp\client.py", line 198, in _request
+    conn = yield from self._connector.connect(req)
+  File "lib\aiohttp\connector.py", line 314, in connect
+    .format(key, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10060] Cannot connect to host discordapp.com:443 ssl:True [Can not connect to discordapp.com:443 [Connect call failed ('104.16.59.5', 443)]]
+[24/08/2017 15:35] ERROR red <module> 631: Fatal exception, attempting graceful logout
+Traceback (most recent call last):
+  File "lib\aiohttp\connector.py", line 601, in _create_direct_connection
+    local_addr=self._local_addr)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 645, in create_connection
+    raise exceptions[0]
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 632, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 358, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 290, in _wakeup
+    future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\selector_events.py", line 436, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+OSError: [Errno 10051] Connect call failed ('104.16.59.5', 443)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "lib\aiohttp\connector.py", line 304, in connect
+    yield from self._create_connection(req)
+  File "lib\aiohttp\connector.py", line 578, in _create_connection
+    transport, proto = yield from self._create_direct_connection(req)
+  File "lib\aiohttp\connector.py", line 624, in _create_direct_connection
+    (req.host, req.port, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10051] Can not connect to discordapp.com:443 [Connect call failed ('104.16.59.5', 443)]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "red.py", line 611, in <module>
+    loop.run_until_complete(main(bot))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 337, in run_until_complete
+    return future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "red.py", line 600, in main
+    yield from bot.connect()
+  File "lib\discord\client.py", line 452, in connect
+    self.ws = yield from DiscordWebSocket.from_client(self, resume=resume)
+  File "lib\discord\gateway.py", line 203, in from_client
+    gateway = yield from client.http.get_gateway()
+  File "lib\discord\http.py", line 633, in get_gateway
+    data = yield from self.request(Route('GET', '/gateway'))
+  File "lib\discord\http.py", line 137, in request
+    r = yield from self.session.request(method, url, **kwargs)
+  File "lib\aiohttp\client.py", line 555, in __iter__
+    resp = yield from self._coro
+  File "lib\aiohttp\client.py", line 198, in _request
+    conn = yield from self._connector.connect(req)
+  File "lib\aiohttp\connector.py", line 314, in connect
+    .format(key, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10051] Cannot connect to host discordapp.com:443 ssl:True [Can not connect to discordapp.com:443 [Connect call failed ('104.16.59.5', 443)]]
+[24/08/2017 20:51] ERROR red on_command_error 370: Exception in command 'math'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 333, in math
+    answer1 = eval(equation)
+  File "<string>", line 1
+    8.48693290505159x8.48683290505159
+                     ^
+SyntaxError: invalid syntax
+[24/08/2017 20:52] ERROR red on_command_error 370: Exception in command 'math'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 333, in math
+    answer1 = eval(equation)
+  File "<string>", line 1, in <module>
+NameError: name 'add' is not defined
+[24/08/2017 20:52] ERROR red on_command_error 370: Exception in command 'math'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 333, in math
+    answer1 = eval(equation)
+  File "<string>", line 1
+    8x8
+      ^
+SyntaxError: unexpected EOF while parsing
+[24/08/2017 21:58] ERROR red on_command_error 370: Exception in command 'say'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\admin.py", line 224, in say
+    await self.bot.delete_message(deletemsg)
+  File "lib\discord\client.py", line 1263, in delete_message
+    yield from self.http.delete_message(channel.id, message.id, guild_id)
+  File "lib\discord\http.py", line 196, in request
+    raise Forbidden(r, data)
+discord.errors.Forbidden: FORBIDDEN (status code: 403): Missing Permissions
+[25/08/2017 02:02] ERROR red <module> 631: Fatal exception, attempting graceful logout
+Traceback (most recent call last):
+  File "lib\aiohttp\connector.py", line 601, in _create_direct_connection
+    local_addr=self._local_addr)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 645, in create_connection
+    raise exceptions[0]
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 632, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 358, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 290, in _wakeup
+    future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\selector_events.py", line 436, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+TimeoutError: [Errno 10060] Connect call failed ('104.16.59.5', 443)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "lib\aiohttp\connector.py", line 304, in connect
+    yield from self._create_connection(req)
+  File "lib\aiohttp\connector.py", line 578, in _create_connection
+    transport, proto = yield from self._create_direct_connection(req)
+  File "lib\aiohttp\connector.py", line 624, in _create_direct_connection
+    (req.host, req.port, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10060] Can not connect to discordapp.com:443 [Connect call failed ('104.16.59.5', 443)]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "red.py", line 611, in <module>
+    loop.run_until_complete(main(bot))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 337, in run_until_complete
+    return future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "red.py", line 600, in main
+    yield from bot.connect()
+  File "lib\discord\client.py", line 452, in connect
+    self.ws = yield from DiscordWebSocket.from_client(self, resume=resume)
+  File "lib\discord\gateway.py", line 203, in from_client
+    gateway = yield from client.http.get_gateway()
+  File "lib\discord\http.py", line 633, in get_gateway
+    data = yield from self.request(Route('GET', '/gateway'))
+  File "lib\discord\http.py", line 137, in request
+    r = yield from self.session.request(method, url, **kwargs)
+  File "lib\aiohttp\client.py", line 555, in __iter__
+    resp = yield from self._coro
+  File "lib\aiohttp\client.py", line 198, in _request
+    conn = yield from self._connector.connect(req)
+  File "lib\aiohttp\connector.py", line 314, in connect
+    .format(key, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10060] Cannot connect to host discordapp.com:443 ssl:True [Can not connect to discordapp.com:443 [Connect call failed ('104.16.59.5', 443)]]
+[25/08/2017 11:15] ERROR red on_command_error 370: Exception in command 'bribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+TypeError: bribe() missing 2 required keyword-only arguments: 'amount' and 'message'
+[25/08/2017 11:16] ERROR red load_cogs 570: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\fun.py', 52, 54, '    async def bribe(self, ctx, *user : discord.Member=None, *amount : int, *message : str):\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 958, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\fun.py", line 52
+    async def bribe(self, ctx, *user : discord.Member=None, *amount : int, *message : str):
+                                                     ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 567, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 962, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\fun.py', 52, 54, '    async def bribe(self, ctx, *user : discord.Member=None, *amount : int, *message : str):\n'))
+[25/08/2017 11:17] ERROR red on_command_error 370: Exception in command 'bribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+TypeError: bribe() missing 2 required keyword-only arguments: 'amount' and 'message'
+[25/08/2017 11:20] ERROR red on_command_error 370: Exception in command 'bribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+TypeError: bribe() missing 2 required keyword-only arguments: 'amount' and 'message'
+[25/08/2017 11:22] ERROR red on_command_error 370: Exception in command 'bribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+TypeError: bribe() missing 2 required keyword-only arguments: 'amount' and 'message'
+[28/08/2017 12:56] ERROR red load_cogs 570: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\fun.py', 52, 63, '    async def bribe(self, ctx, *, user : discord.Member=None, ):\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 958, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\fun.py", line 52
+    async def bribe(self, ctx, *, user : discord.Member=None, ):
+                                                              ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 567, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 962, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\fun.py', 52, 63, '    async def bribe(self, ctx, *, user : discord.Member=None, ):\n'))
+[28/08/2017 12:56] ERROR red load_cogs 570: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\fun.py', 52, 63, '    async def bribe(self, ctx, *, user : discord.Member=None, ):\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 958, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\fun.py", line 52
+    async def bribe(self, ctx, *, user : discord.Member=None, ):
+                                                              ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 567, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 962, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\fun.py', 52, 63, '    async def bribe(self, ctx, *, user : discord.Member=None, ):\n'))
+[28/08/2017 12:59] ERROR red on_command_error 370: Exception in command 'bribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\fun.py", line 56, in bribe
+    if message is None:
+NameError: name 'message' is not defined
+[28/08/2017 12:59] ERROR red on_command_error 370: Exception in command 'bribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\fun.py", line 75, in bribe
+    str(randint(10, 10000)) + " dollars! reason: " + message)
+TypeError: Can't convert 'bool' object to str implicitly
+[28/08/2017 13:00] ERROR red on_command_error 370: Exception in command 'bribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\fun.py", line 78, in bribe
+    str(randint(10, 10000)) + " dollars! reason: " + message)
+TypeError: Can't convert 'bool' object to str implicitly
+[28/08/2017 13:04] ERROR red on_command_error 370: Exception in command 'bribe'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+TypeError: bribe() missing 2 required keyword-only arguments: 'amount' and 'message'
+[28/08/2017 13:23] ERROR red <module> 631: Fatal exception, attempting graceful logout
+Traceback (most recent call last):
+  File "lib\aiohttp\connector.py", line 601, in _create_direct_connection
+    local_addr=self._local_addr)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 645, in create_connection
+    raise exceptions[0]
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 632, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 358, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 290, in _wakeup
+    future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\selector_events.py", line 436, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+OSError: [Errno 10051] Connect call failed ('104.16.58.5', 443)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "lib\aiohttp\connector.py", line 304, in connect
+    yield from self._create_connection(req)
+  File "lib\aiohttp\connector.py", line 578, in _create_connection
+    transport, proto = yield from self._create_direct_connection(req)
+  File "lib\aiohttp\connector.py", line 624, in _create_direct_connection
+    (req.host, req.port, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10051] Can not connect to discordapp.com:443 [Connect call failed ('104.16.58.5', 443)]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "red.py", line 611, in <module>
+    loop.run_until_complete(main(bot))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 337, in run_until_complete
+    return future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "red.py", line 600, in main
+    yield from bot.connect()
+  File "lib\discord\client.py", line 452, in connect
+    self.ws = yield from DiscordWebSocket.from_client(self, resume=resume)
+  File "lib\discord\gateway.py", line 203, in from_client
+    gateway = yield from client.http.get_gateway()
+  File "lib\discord\http.py", line 633, in get_gateway
+    data = yield from self.request(Route('GET', '/gateway'))
+  File "lib\discord\http.py", line 137, in request
+    r = yield from self.session.request(method, url, **kwargs)
+  File "lib\aiohttp\client.py", line 555, in __iter__
+    resp = yield from self._coro
+  File "lib\aiohttp\client.py", line 198, in _request
+    conn = yield from self._connector.connect(req)
+  File "lib\aiohttp\connector.py", line 314, in connect
+    .format(key, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10051] Cannot connect to host discordapp.com:443 ssl:True [Can not connect to discordapp.com:443 [Connect call failed ('104.16.58.5', 443)]]
+[28/08/2017 15:02] ERROR red on_command_error 370: Exception in command 'trivia make'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\trivia.py", line 118, in trivia_make
+    user = ctx.message.user.id
+AttributeError: 'Message' object has no attribute 'user'
