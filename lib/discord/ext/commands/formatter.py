@@ -63,7 +63,7 @@ class Paginator:
     max_size: int
         The maximum amount of codepoints allowed in a page.
     """
-    def __init__(self, prefix='```', suffix='```', max_size=2000):
+    def __init__(self, prefix='', suffix='', max_size=2000):
         self.prefix = prefix
         self.suffix = suffix
         self.max_size = max_size - len(suffix)
@@ -197,9 +197,10 @@ class HelpFormatter:
             fmt = '{0}[{1.name}|{2}]'
             if parent:
                 fmt = '{0}{3} [{1.name}|{2}]'
+            result.append("`")
             result.append(fmt.format(prefix, cmd, aliases, parent))
         else:
-            name = prefix + cmd.name if not parent else prefix + parent + ' ' + cmd.name
+            name = "`" + prefix + cmd.name if not parent else prefix + parent + ' ' + cmd.name
             result.append(name)
 
         params = cmd.clean_params
@@ -218,12 +219,14 @@ class HelpFormatter:
                 else:
                     result.append('<{}>'.format(name))
 
+        result.append('`')
+
         return ' '.join(result)
 
     def get_ending_note(self):
         command_name = self.context.invoked_with
-        return "Type {0}{1} command for more info on a command.\n" \
-               "You can also type {0}{1} category for more info on a category.".format(self.clean_prefix, command_name)
+        return "Type `{0}{1} command` for more info on a command.\n" \
+               "You can also type `{0}{1} category` for more info on a category.".format(self.clean_prefix, command_name)
 
     def filter_command_list(self):
         """Returns a filtered list of commands based on the two attributes
@@ -265,9 +268,8 @@ class HelpFormatter:
                 # skip aliases
                 continue
 
-            entry = '  {0:<{width}} {1}'.format(name, command.short_doc, width=max_width)
-            shortened = self.shorten(entry)
-            self._paginator.add_line(shortened)
+            entry = '   `{0:<{width}}`'.format(name, width=max_width)
+            self._paginator.add_line(entry)
 
     def format_help_for(self, context, command_or_bot):
         """Formats the help page and handles the actual heavy lifting of how
@@ -304,7 +306,12 @@ class HelpFormatter:
 
         # we need a padding of ~80 or so
 
+        title = self.command.title if not self.is_cog() else None
+
         description = self.command.description if not self.is_cog() else inspect.getdoc(self.command)
+
+        if title is not None:
+            self._paginator.add_line(title, empty=False)
 
         if description:
             # <description> portion
@@ -330,7 +337,7 @@ class HelpFormatter:
             cog = tup[1].cog_name
             # we insert the zero width space there to give it approximate
             # last place sorting position.
-            return cog + ':' if cog is not None else '\u200bNo Category:'
+            return '**' + cog + ':**' if cog is not None else '\u200b**No Category**'
 
         if self.is_bot():
             data = sorted(self.filter_command_list(), key=category)
@@ -338,11 +345,13 @@ class HelpFormatter:
                 # there simply is no prettier way of doing this.
                 commands = list(commands)
                 if len(commands) > 0:
+                    self._paginator.add_line()
                     self._paginator.add_line(category)
 
                 self._add_subcommands_to_page(max_width, commands)
         else:
-            self._paginator.add_line('Commands:')
+            self._paginator.add_line('__**Commands:**__')
+            self._paginator.add_line()
             self._add_subcommands_to_page(max_width, self.filter_command_list())
 
         # add the ending note

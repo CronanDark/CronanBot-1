@@ -35,7 +35,8 @@ from io import TextIOWrapper
 #                 https://github.com/Rapptz/RoboDanny/
 #
 
-description = "CronanBot - A bot made by the youtuber Cronan The Dark Gamer"
+title = "__***CronanBot***__"
+description = "__*A bot made by the youtuber Cronan The Dark Gamer*__"
 
 
 class Bot(commands.Bot):
@@ -227,7 +228,7 @@ class Formatter(commands.HelpFormatter):
                 # skip aliases
                 continue
 
-            entry = '  {0:<{width}} {1}'.format(name, command.short_doc,
+            entry = '  `{0}{1:<{width}}` {2}'.format(self.clean_prefix, name, command.short_doc,
                                                 width=max_width)
             shortened = self.shorten(entry)
             self._paginator.add_line(shortened)
@@ -236,7 +237,7 @@ class Formatter(commands.HelpFormatter):
 def initialize(bot_class=Bot, formatter_class=Formatter):
     formatter = formatter_class(show_check_failure=False)
 
-    bot = bot_class(formatter=formatter, description=description, pm_help=None)
+    bot = bot_class(formatter=formatter, description=description, title=title, pm_help=None)
 
     import __main__
     __main__.send_cmd_help = bot.send_cmd_help  # Backwards

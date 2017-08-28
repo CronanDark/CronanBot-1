@@ -137,6 +137,7 @@ class Command:
         self.aliases = kwargs.get('aliases', [])
         self.pass_context = kwargs.get('pass_context', False)
         self.description = inspect.cleandoc(kwargs.get('description', ''))
+        self.title = inspect.cleandoc(kwargs.get('title', ''))
         self.hidden = kwargs.get('hidden', False)
         signature = inspect.signature(callback)
         self.params = signature.parameters.copy()

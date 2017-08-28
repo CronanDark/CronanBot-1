@@ -9563,3 +9563,40 @@ Traceback (most recent call last):
   File "lib\discord\client.py", line 289, in _resolve_destination
     raise InvalidArgument(fmt.format(destination))
 discord.errors.InvalidArgument: Destination must be Channel, PrivateChannel, User, or Object. Received NoneType
+[28/08/2017 16:47] ERROR red on_command_error 374: Exception in command 'help'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "lib\discord\ext\commands\bot.py", line 102, in _default_help_command
+    pages = bot.formatter.format_help_for(ctx, bot)
+  File "lib\discord\ext\commands\formatter.py", line 291, in format_help_for
+    return self.format()
+  File "lib\discord\ext\commands\formatter.py", line 307, in format
+    title = self.command.title if not self.is_cog() else inspect.getdoc(self.command)
+  File "lib\discord\client.py", line 296, in __getattr__
+    raise AttributeError(msg.format(self.__class__, name))
+AttributeError: '<class '__main__.Bot'>' object has no attribute 'title'
+[28/08/2017 16:47] ERROR red on_command_error 375: Exception in command 'help'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "lib\discord\ext\commands\bot.py", line 102, in _default_help_command
+    pages = bot.formatter.format_help_for(ctx, bot)
+  File "lib\discord\ext\commands\formatter.py", line 291, in format_help_for
+    return self.format()
+  File "lib\discord\ext\commands\formatter.py", line 307, in format
+    title = self.command.title if not self.is_cog() else inspect.getdoc(self.command)
+  File "lib\discord\client.py", line 296, in __getattr__
+    raise AttributeError(msg.format(self.__class__, name))
+AttributeError: '<class '__main__.Bot'>' object has no attribute 'title'
+[28/08/2017 17:17] ERROR red on_command_error 375: Exception in command 'help'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "lib\discord\ext\commands\bot.py", line 115, in _default_help_command
+    pages = bot.formatter.format_help_for(ctx, command)
+  File "lib\discord\ext\commands\formatter.py", line 294, in format_help_for
+    return self.format()
+  File "lib\discord\ext\commands\formatter.py", line 310, in format
+    title = self.command.title if self.is_cog() else inspect.getdoc(self.command)
+AttributeError: 'Fun' object has no attribute 'title'

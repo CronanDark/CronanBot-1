@@ -203,13 +203,14 @@ class Bot(GroupMixin, discord.Client):
         ``"Command {0.name} has no subcommands."``. The first format argument is the
         :class:`Command` attempted to get a subcommand and the second is the name.
     """
-    def __init__(self, command_prefix, formatter=None, description=None, pm_help=False, **options):
+    def __init__(self, command_prefix, formatter=None, description=None, title=None, pm_help=False, **options):
         super().__init__(**options)
         self.command_prefix = command_prefix
         self.extra_events = {}
         self.cogs = {}
         self.extensions = {}
         self._checks = []
+        self.title = inspect.cleandoc(title) if title else ''
         self.description = inspect.cleandoc(description) if description else ''
         self.pm_help = pm_help
         self.command_not_found = options.pop('command_not_found', 'No command called "{}" found.')
