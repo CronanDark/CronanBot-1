@@ -333,14 +333,17 @@ class General:
 	@commands.command()
 	async def math(self, equation):
 		"""do math"""
-		if "/0" in equation:
-			await self.bot.say("ERROR: You can't divide by 0 idiot")
-			return
-		answer1 = eval(equation)
-		answer1 = str(answer1)
-		answer = discord.Embed(color=discord.Color.red())
-		answer.add_field(name="The Answer is:", value=answer1)
-		await self.bot.say(embed=answer)
+		try:
+			if "/0" in equation:
+				await self.bot.say("ERROR: You can't divide by 0 idiot")
+				return
+			answer1 = eval(equation)
+			answer1 = str(answer1)
+			answer = discord.Embed(color=discord.Color.red())
+			answer.add_field(name="The Answer is:", value=answer1)
+			await self.bot.say(embed=answer)
+		except NameError:
+			await self.bot.say("Invalid")
 
 
 	@commands.command()
