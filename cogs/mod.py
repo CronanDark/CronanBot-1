@@ -121,15 +121,15 @@ class Mod:
             if "delete_delay" not in _settings:
                 _settings["delete_delay"] = "Disabled"
 
-            msg = ("Admin role: {ADMIN_ROLE}\n"
-                   "Mod role: {MOD_ROLE}\n"
-                   "Mod-log: {mod-log}\n"
-                   "Delete repeats: {delete_repeats}\n"
-                   "Ban mention spam: {ban_mention_spam}\n"
-                   "Delete delay: {delete_delay}\n"
-                   "Respects hierarchy: {respect_hierarchy}"
+            msg = ("**__Admin role:__** *{ADMIN_ROLE}*\n"
+                   "**__Mod role:__** *{MOD_ROLE}*\n"
+                   "**__Mod-log:__** *{mod-log}*\n"
+                   "**__Delete repeats:__** *{delete_repeats}*\n"
+                   "**__Ban mention spam:__** *{ban_mention_spam}*\n"
+                   "**__Delete delay:__** *{delete_delay}*\n"
+                   "**__Respects hierarchy:__** *{respect_hierarchy}*"
                    "".format(**_settings))
-            await self.bot.say(box(msg))
+            await self.bot.say(msg)
 
     @modset.command(name="adminrole", pass_context=True, no_pm=True, hidden=True)
     async def _modset_adminrole(self, ctx):
@@ -243,16 +243,15 @@ class Mod:
 
         if action == enabled:  # No args given
             await self.bot.send_cmd_help(ctx)
-            msg = "Current settings:\n```py\n"
+            msg = "**__Current settings:__**\n"
             maxlen = max(map(lambda x: len(x[0]), ACTIONS_REPR.values()))
             for action, name in ACTIONS_REPR.items():
                 action = action.lower() + '_cases'
                 value = self.settings[server.id].get(action,
                                                      default_settings[action])
-                value = 'enabled' if value else 'disabled'
+                value = '*enabled*' if value else '*disabled*'
                 msg += '%s : %s\n' % (name[0].ljust(maxlen), value)
 
-            msg += '```'
             await self.bot.say(msg)
 
         elif action.upper() not in ACTIONS_CASES:
@@ -824,9 +823,9 @@ class Mod:
             await self.bot.say("This server is not in the ignore list.")
 
     def count_ignored(self):
-        msg = "```Currently ignoring:\n"
-        msg += str(len(self.ignore_list["CHANNELS"])) + " channels\n"
-        msg += str(len(self.ignore_list["SERVERS"])) + " servers\n```\n"
+        msg = "**__Currently ignoring:__**\n"
+        msg += str(len(self.ignore_list["CHANNELS"])) + " *channels\n"
+        msg += str(len(self.ignore_list["SERVERS"])) + " servers\n*\n"
         return msg
 
     @commands.group(name="filter", pass_context=True, no_pm=True)

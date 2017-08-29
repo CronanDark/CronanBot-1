@@ -279,6 +279,12 @@ class General:
 		except discord.HTTPException:
 			await self.bot.say("I need the `Embed links` permission "
 							   "to send this")
+	
+	@commands.command(pass_context=True)
+	async def  hi(self, ctx):
+		"""Bot says hello to you"""
+		username = ctx.message.author.name
+		await self.bot.say("Hello " + username)
 
 	@commands.command(pass_context=True, no_pm=True)
 	async def serverinfo(self, ctx):

@@ -22,5 +22,6 @@
     "cogs.subscription" : true,
     "cogs.trigger" : true,
     "cogs.trivia" : true,
+    "cogs.welcome" : true,
     "cogs.whoplays" : true
 }

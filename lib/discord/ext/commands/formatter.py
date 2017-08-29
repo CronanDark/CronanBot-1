@@ -200,7 +200,7 @@ class HelpFormatter:
             result.append("`")
             result.append(fmt.format(prefix, cmd, aliases, parent))
         else:
-            name = "`" + prefix + cmd.name if not parent else prefix + parent + ' ' + cmd.name
+            name = "`" + prefix + cmd.name if not parent else '`' + prefix + parent + ' ' + cmd.name
             result.append(name)
 
         params = cmd.clean_params

@@ -110,13 +110,13 @@ class CustomCommands:
             return
 
         commands = ", ".join([ctx.prefix + c for c in sorted(commands)])
-        commands = "Custom commands:\n\n" + commands
+        commands = "**__Custom commands:__**\n\n" + commands
 
         if len(commands) < 1500:
-            await self.bot.say(box(commands))
+            await self.bot.say(commands)
         else:
             for page in pagify(commands, delims=[" ", "\n"]):
-                await self.bot.whisper(box(page))
+                await self.bot.whisper(page)
 
     async def on_message(self, message):
         if len(message.content) < 2 or message.channel.is_private:

@@ -513,8 +513,7 @@ class Owner:
         blacklist = self._populate_list(self.global_ignores["blacklist"])
 
         if blacklist:
-            for page in blacklist:
-                await self.bot.say(box(page))
+            await self.bot.say(blacklist)
         else:
             await self.bot.say("The blacklist is empty.")
 
@@ -565,8 +564,7 @@ class Owner:
         whitelist = self._populate_list(self.global_ignores["whitelist"])
 
         if whitelist:
-            for page in whitelist:
-                await self.bot.say(box(page))
+            await self.bot.say(whitelist)
         else:
             await self.bot.say("The whitelist is empty.")
 
@@ -620,11 +618,11 @@ class Owner:
         if ctx.invoked_subcommand is None:
             await self.bot.send_cmd_help(ctx)
             if self.disabled_commands:
-                msg = "Disabled commands:\n```xl\n"
+                msg = "**__Disabled commands:__**\n"
                 for cmd in self.disabled_commands:
-                    msg += "{}, ".format(cmd)
+                    msg += "*{}*, ".format(cmd)
                 msg = msg.strip(", ")
-                await self.bot.whisper("{}```".format(msg))
+                await self.bot.whisper("{}".format(msg))
 
     @command_disabler.command()
     async def disable(self, *, command):
@@ -882,9 +880,9 @@ class Owner:
     @commands.command()
     async def uptime(self):
         """Shows Cronan's uptime"""
-        since = self.bot.uptime.strftime("%Y-%m-%d %H:%M:%S")
+        since = self.bot.uptime.strftime("%m-%d-%Y %H:%M:%S")
         passed = self.get_bot_uptime()
-        await self.bot.say("Been up for: **{}** (since {} UTC)"
+        await self.bot.say("Been up for: **{}** (since {} EST)"
                            "".format(passed, since))
 
     @commands.command()
@@ -1049,7 +1047,7 @@ class Owner:
 
     def get_bot_uptime(self, *, brief=False):
         # Courtesy of Danny
-        now = datetime.datetime.utcnow()
+        now = datetime.datetime.now()
         delta = now - self.bot.uptime
         hours, remainder = divmod(int(delta.total_seconds()), 3600)
         minutes, seconds = divmod(remainder, 60)

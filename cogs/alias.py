@@ -76,7 +76,10 @@ class Alias:
         if server.id in self.aliases:
             server_aliases = self.aliases[server.id]
             if command in server_aliases:
-                await self.bot.say(box(server_aliases[command]))
+                commandinfo = "**" + str(command) + " executes:**"
+                alibed = discord.Embed(color=discord.Color.red())
+                alibed.add_field(name=commandinfo, value=str(server_aliases[command]))
+                await self.bot.say(embed=alibed)
             else:
                 await self.bot.say("That alias doesn't exist.")
 
@@ -98,14 +101,14 @@ class Alias:
         Responds in DM"""
         server = ctx.message.server
         if server.id in self.aliases:
-            message = "```Alias list:\n"
+            message = "**__Alias list:__**\n"
             for alias in sorted(self.aliases[server.id]):
                 if len(message) + len(alias) + 3 > 2000:
                     await self.bot.whisper(message)
-                    message = "```\n"
+                    message = ""
                 message += "\t{}\n".format(alias)
-            if message != "```Alias list:\n":
-                message += "```"
+            if message != "**__Alias list:__**\n":
+                message += ""
                 await self.bot.whisper(message)
             else:
                 await self.bot.say("There are no aliases on this server.")

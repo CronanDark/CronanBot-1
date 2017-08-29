@@ -306,10 +306,12 @@ class TriviaSession():
                 await self.new_question()
 
     async def send_table(self):
-        t = "+ Results: \n\n"
+        usescore = ""
         for user, score in self.scores.most_common():
-            t += "+ {}\t{}\n".format(user, score)
-        await self.bot.say(box(t, lang="diff"))
+            usescore += "{} has a score of {} questions answered\n".format(user, score)
+        t = discord.Embed(color=discord.Color.red())
+        t.add_field(name="Results:", value=usescore)
+        await self.bot.say(embed=t)
 
     async def check_answer(self, message):
         if message.author == self.bot.user:

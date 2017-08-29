@@ -9634,3 +9634,369 @@ Traceback (most recent call last):
   File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\trivia.py", line 176, in trivia_list
     trivbed = discord.Embed(discord.Color.red())
 TypeError: __init__() takes 1 positional argument but 2 were given
+[28/08/2017 19:23] ERROR red on_command_error 375: Exception in command 'trivia stop'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\trivia.py", line 160, in trivia_stop
+    await session.end_game()
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\trivia.py", line 261, in end_game
+    await self.send_table()
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\trivia.py", line 310, in send_table
+    scores += "{} has a score of {} questions answered\n".format(user, score)
+UnboundLocalError: local variable 'scores' referenced before assignment
+[28/08/2017 19:23] ERROR red on_command_error 375: Exception in command 'trivia stop'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\trivia.py", line 160, in trivia_stop
+    await session.end_game()
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\trivia.py", line 261, in end_game
+    await self.send_table()
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\trivia.py", line 310, in send_table
+    usescore += "{} has a score of {} questions answered\n".format(user, score)
+UnboundLocalError: local variable 'usescore' referenced before assignment
+[29/08/2017 10:52] ERROR red <module> 636: Fatal exception, attempting graceful logout
+Traceback (most recent call last):
+  File "red.py", line 616, in <module>
+    loop.run_until_complete(main(bot))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 337, in run_until_complete
+    return future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 239, in _step
+    result = coro.send(None)
+  File "red.py", line 589, in main
+    load_cogs(bot)
+  File "red.py", line 546, in load_cogs
+    bot.load_extension('cogs.owner')
+  File "lib\discord\ext\commands\bot.py", line 733, in load_extension
+    lib = importlib.import_module(name)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 662, in exec_module
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 42, in <module>
+    class Owner:
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 891, in Owner
+    @checks.is_owner
+TypeError: is_owner() takes 0 positional arguments but 1 was given
+[29/08/2017 11:23] ERROR red load_cogs 575: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\customcom.py', 116, 41, '            await self.bot.say(commands))\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 962, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\customcom.py", line 116
+    await self.bot.say(commands))
+                                ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 572, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 966, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\customcom.py', 116, 41, '            await self.bot.say(commands))\n'))
+[29/08/2017 11:29] ERROR red on_command_error 375: Exception in command 'leaderboard server'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\economy.py", line 482, in _server_leaderboard
+    serboardbed.add_field(name=str(highscore))
+TypeError: add_field() missing 1 required keyword-only argument: 'value'
+[29/08/2017 11:30] ERROR red on_command_error 375: Exception in command 'leaderboard server'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\economy.py", line 485, in _server_leaderboard
+    await self.bot.say(embed=serboardbed)
+  File "lib\discord\ext\commands\bot.py", line 310, in _augmented_msg
+    msg = yield from coro
+  File "red.py", line 91, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1152, in send_message
+    data = yield from self.http.send_message(channel_id, content, guild_id=guild_id, tts=tts, embed=embed)
+  File "lib\discord\http.py", line 200, in request
+    raise HTTPException(r, data)
+discord.errors.HTTPException: BAD REQUEST (status code: 400)
+[29/08/2017 11:32] ERROR red on_command_error 375: Exception in command 'leaderboard'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\economy.py", line 459, in leaderboard
+    await ctx.invoke(self._server_leaderboard)
+  File "lib\discord\ext\commands\context.py", line 112, in invoke
+    ret = yield from command.callback(*arguments, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\economy.py", line 485, in _server_leaderboard
+    await self.bot.say(embed=serboardbed)
+  File "lib\discord\ext\commands\bot.py", line 310, in _augmented_msg
+    msg = yield from coro
+  File "red.py", line 91, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1152, in send_message
+    data = yield from self.http.send_message(channel_id, content, guild_id=guild_id, tts=tts, embed=embed)
+  File "lib\discord\http.py", line 200, in request
+    raise HTTPException(r, data)
+discord.errors.HTTPException: BAD REQUEST (status code: 400)
+[29/08/2017 11:35] ERROR red on_command_error 375: Exception in command 'leaderboard'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\economy.py", line 459, in leaderboard
+    await ctx.invoke(self._server_leaderboard)
+  File "lib\discord\ext\commands\context.py", line 112, in invoke
+    ret = yield from command.callback(*arguments, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\economy.py", line 483, in _server_leaderboard
+    await self.bot.say(embed=serboardbed)
+  File "lib\discord\ext\commands\bot.py", line 310, in _augmented_msg
+    msg = yield from coro
+  File "red.py", line 91, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1152, in send_message
+    data = yield from self.http.send_message(channel_id, content, guild_id=guild_id, tts=tts, embed=embed)
+  File "lib\discord\http.py", line 200, in request
+    raise HTTPException(r, data)
+discord.errors.HTTPException: BAD REQUEST (status code: 400)
+[29/08/2017 11:36] ERROR red on_command_error 375: Exception in command 'leaderboard'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\economy.py", line 459, in leaderboard
+    await ctx.invoke(self._server_leaderboard)
+  File "lib\discord\ext\commands\context.py", line 112, in invoke
+    ret = yield from command.callback(*arguments, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\economy.py", line 483, in _server_leaderboard
+    await self.bot.say(embed=serboardbed)
+  File "lib\discord\ext\commands\bot.py", line 310, in _augmented_msg
+    msg = yield from coro
+  File "red.py", line 91, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1152, in send_message
+    data = yield from self.http.send_message(channel_id, content, guild_id=guild_id, tts=tts, embed=embed)
+  File "lib\discord\http.py", line 200, in request
+    raise HTTPException(r, data)
+discord.errors.HTTPException: BAD REQUEST (status code: 400)
+[29/08/2017 11:38] ERROR red on_command_error 375: Exception in command 'leaderboard'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\economy.py", line 459, in leaderboard
+    await ctx.invoke(self._server_leaderboard)
+  File "lib\discord\ext\commands\context.py", line 112, in invoke
+    ret = yield from command.callback(*arguments, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\economy.py", line 487, in _server_leaderboard
+    await self.bot.send_message(channelsend, embed=serboardbed)
+  File "red.py", line 91, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1152, in send_message
+    data = yield from self.http.send_message(channel_id, content, guild_id=guild_id, tts=tts, embed=embed)
+  File "lib\discord\http.py", line 200, in request
+    raise HTTPException(r, data)
+discord.errors.HTTPException: BAD REQUEST (status code: 400)
+[29/08/2017 11:39] ERROR red on_command_error 375: Exception in command 'leaderboard'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\economy.py", line 459, in leaderboard
+    await ctx.invoke(self._server_leaderboard)
+  File "lib\discord\ext\commands\context.py", line 112, in invoke
+    ret = yield from command.callback(*arguments, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\economy.py", line 482, in _server_leaderboard
+    serboardbed.add_field(name=str(highscore))
+TypeError: add_field() missing 1 required keyword-only argument: 'value'
+[29/08/2017 11:40] ERROR red on_command_error 375: Exception in command 'leaderboard'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\economy.py", line 459, in leaderboard
+    await ctx.invoke(self._server_leaderboard)
+  File "lib\discord\ext\commands\context.py", line 112, in invoke
+    ret = yield from command.callback(*arguments, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\economy.py", line 486, in _server_leaderboard
+    await self.bot.say(embed=serboardbed)
+  File "lib\discord\ext\commands\bot.py", line 310, in _augmented_msg
+    msg = yield from coro
+  File "red.py", line 91, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1152, in send_message
+    data = yield from self.http.send_message(channel_id, content, guild_id=guild_id, tts=tts, embed=embed)
+  File "lib\discord\http.py", line 200, in request
+    raise HTTPException(r, data)
+discord.errors.HTTPException: BAD REQUEST (status code: 400)
+[29/08/2017 11:41] ERROR red on_command_error 375: Exception in command 'leaderboard'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\economy.py", line 459, in leaderboard
+    await ctx.invoke(self._server_leaderboard)
+  File "lib\discord\ext\commands\context.py", line 112, in invoke
+    ret = yield from command.callback(*arguments, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\economy.py", line 486, in _server_leaderboard
+    await self.bot.say(embed=serboardbed)
+  File "lib\discord\ext\commands\bot.py", line 310, in _augmented_msg
+    msg = yield from coro
+  File "red.py", line 91, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1152, in send_message
+    data = yield from self.http.send_message(channel_id, content, guild_id=guild_id, tts=tts, embed=embed)
+  File "lib\discord\http.py", line 200, in request
+    raise HTTPException(r, data)
+discord.errors.HTTPException: BAD REQUEST (status code: 400)
+[29/08/2017 11:52] INFO economy _set 393: Cronan The Dark Gamer(169593870777057280) set 10 credits to Cronan The Dark Gamer (169593870777057280)
+[29/08/2017 12:02] ERROR red on_command_error 375: Exception in command 'economyset'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\economy.py", line 627, in economyset
+    v = "*" + v + "*"
+TypeError: Can't convert 'int' object to str implicitly
+[29/08/2017 12:04] INFO economy _set 393: Cronan The Dark Gamer(169593870777057280) set $10 to Cronan The Dark Gamer (169593870777057280)
+[29/08/2017 12:04] INFO economy _set 380: Cronan The Dark Gamer(169593870777057280) added $2 to Cronan The Dark Gamer (169593870777057280)
+[29/08/2017 12:04] INFO economy _set 386: Cronan The Dark Gamer(169593870777057280) removed $12 to Cronan The Dark Gamer (169593870777057280)
+[29/08/2017 13:41] ERROR red load_cogs 575: localhost:27017: [WinError 10061] No connection could be made because the target machine actively refused it
+Traceback (most recent call last):
+  File "red.py", line 572, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 964, in _load_cog
+    self.bot.load_extension(mod_obj.__name__)
+  File "lib\discord\ext\commands\bot.py", line 739, in load_extension
+    lib.setup(self)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\leveler.py", line 3081, in setup
+    n = Leveler(bot)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\leveler.py", line 61, in __init__
+    dbs = client.database_names()
+  File "lib\pymongo\mongo_client.py", line 1149, in database_names
+    "listDatabases")["databases"]]
+  File "lib\pymongo\database.py", line 491, in command
+    with client._socket_for_reads(read_preference) as (sock_info, slave_ok):
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\contextlib.py", line 59, in __enter__
+    return next(self.gen)
+  File "lib\pymongo\mongo_client.py", line 859, in _socket_for_reads
+    with self._get_socket(read_preference) as sock_info:
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\contextlib.py", line 59, in __enter__
+    return next(self.gen)
+  File "lib\pymongo\mongo_client.py", line 823, in _get_socket
+    server = self._get_topology().select_server(selector)
+  File "lib\pymongo\topology.py", line 214, in select_server
+    address))
+  File "lib\pymongo\topology.py", line 189, in select_servers
+    self._error_message(selector))
+pymongo.errors.ServerSelectionTimeoutError: localhost:27017: [WinError 10061] No connection could be made because the target machine actively refused it
+[29/08/2017 14:35] ERROR red load_cogs 575: ("(unicode error) 'unicodeescape' codec can't decode bytes in position 0-12: unknown Unicode character name", ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\general.py', 26, 12, 'rock     = "\\N{FULL MOON}"\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 960, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 26
+    rock     = "\N{FULL MOON}"
+               ^
+SyntaxError: (unicode error) 'unicodeescape' codec can't decode bytes in position 0-12: unknown Unicode character name
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 572, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 964, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ("(unicode error) 'unicodeescape' codec can't decode bytes in position 0-12: unknown Unicode character name", ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\general.py', 26, 12, 'rock     = "\\N{FULL MOON}"\n'))
+[29/08/2017 16:29] ERROR red on_command_error 375: Exception in command 'welcomeset channel'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\welcome.py", line 129, in channel
+    ).permissions_in(channel).send_messages:
+  File "lib\discord\user.py", line 124, in permissions_in
+    return channel.permissions_for(self)
+AttributeError: 'NoneType' object has no attribute 'permissions_for'
+[29/08/2017 17:43] ERROR red load_cogs 575: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\welcome.py', 444, 58, '            await self.send_testing_byemsg(ctx, bot=True))\n'))
+Traceback (most recent call last):
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 960, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 658, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 764, in get_code
+  File "<frozen importlib._bootstrap_external>", line 724, in source_to_code
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\welcome.py", line 444
+    await self.send_testing_byemsg(ctx, bot=True))
+                                                 ^
+SyntaxError: invalid syntax
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "red.py", line 572, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 964, in _load_cog
+    raise CogLoadError(*e.args)
+cogs.owner.CogLoadError: ('invalid syntax', ('C:\\Users\\nicos\\Desktop\\cronanbot\\CronanBot\\cogs\\welcome.py', 444, 58, '            await self.send_testing_byemsg(ctx, bot=True))\n'))
+[29/08/2017 17:43] ERROR red load_cogs 575: name 'goodbyeet' is not defined
+Traceback (most recent call last):
+  File "red.py", line 572, in load_cogs
+    owner_cog._load_cog(extension)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\owner.py", line 960, in _load_cog
+    mod_obj = importlib.import_module(cogname)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\importlib\__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 662, in exec_module
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\welcome.py", line 24, in <module>
+    class Welcome:
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\welcome.py", line 424, in Welcome
+    @goodbyeet.group(pass_context=True, name="bot", no_pm=True)
+NameError: name 'goodbyeet' is not defined
+[29/08/2017 17:44] ERROR red on_command_error 375: Exception in command 'goodbyeset'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\welcome.py", line 316, in goodbyeset
+    if server.id not in self.goodbye:
+AttributeError: 'Welcome' object has no attribute 'goodbye'
+[29/08/2017 17:45] ERROR red on_command_error 375: Exception in command 'goodbyeset'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\welcome.py", line 318, in goodbyeset
+    self.goodbye[server.id]["CHANNEL"] = server.default_channel.id
+AttributeError: 'NoneType' object has no attribute 'id'
+[29/08/2017 17:49] ERROR red on_command_error 375: Exception in command 'welcomeset toggle'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\welcome.py", line 117, in toggle
+    server = ctx.message.server
+AttributeError: 'str' object has no attribute 'message'

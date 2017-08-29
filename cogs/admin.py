@@ -167,10 +167,10 @@ class Admin:
             msg = ""
             servers = sorted(self.bot.servers, key=lambda s: s.name)
             for i, server in enumerate(servers, 1):
-                msg += "{}: {}\n".format(i, server.name)
+                msg += "**{}:** *{}*\n".format(i, server.name)
             msg += "\nTo post an invite for a server just type its number."
             for page in pagify(msg, delims=["\n"]):
-                await self.bot.say(box(page))
+                await self.bot.say(page)
                 await asyncio.sleep(1.5)  # Just in case for rate limits
             msg = await self.bot.wait_for_message(author=owner, timeout=15)
             if msg is not None:
@@ -331,13 +331,15 @@ class Admin:
             if target is None:
                 target = self.bot.get_server(id)
 
-        prefix = "Hello, you're getting a message from {} ({})".format(
-            author.name, author.id)
-        payload = "{}\n\n{}".format(prefix, text)
+        prefix = "*Hello, you're getting a message from **{}***".format(
+            author.name)
+        msgtxt = str(text)
+        whisperbed = discord.Embed(color=discord.Color.red())
+        whisperbed.set_author(name=msgtxt)
 
         try:
-            for page in pagify(payload, delims=[" ", "\n"], shorten_by=10):
-                await self.bot.send_message(target, box(page))
+            await self.bot.send_message(target, prefix)
+            await self.bot.send_message(target, embed=whisperbed)
         except discord.errors.Forbidden:
             log.debug("Forbidden to send message to {}".format(id))
         except (discord.errors.NotFound, discord.errors.InvalidArgument):
