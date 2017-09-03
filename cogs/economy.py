@@ -727,7 +727,7 @@ def setup(bot):
     global logger
     check_folders()
     check_files()
-    logger = logging.getLogger("red.economy")
+    logger = logging.getLogger("cronan.economy")
     if logger.level == 0:
         # Prevents the logger from being loaded again in case of module reload
         logger.setLevel(logging.INFO)

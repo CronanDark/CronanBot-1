@@ -50,7 +50,7 @@ def parse_cli_arguments():
     parser.add_argument("--auto-restart",
                         help="Autorestarts Cronan in case of issues",
                         action="store_true")
-    parser.add_argument("--update-red",
+    parser.add_argument("--update-cronan",
                         help="Updates Cronan (git)",
                         action="store_true")
     parser.add_argument("--update-reqs",
@@ -117,7 +117,7 @@ def update_pip():
         print("\nAn error occurred and pip might not have been updated.")
 
 
-def update_red():
+def update_cronan():
     try:
         code = subprocess.call(("git", "pull", "--ff-only"))
     except FileNotFoundError:
@@ -132,7 +132,7 @@ def update_red():
               "the Maintenance submenu")
 
 
-def reset_red(reqs=False, data=False, cogs=False, git_reset=False):
+def reset_cronan(reqs=False, data=False, cogs=False, git_reset=False):
     if reqs:
         try:
             shutil.rmtree(REQS_DIR, onerror=remove_readonly)
@@ -290,7 +290,7 @@ def update_menu():
         print("\n0. Go back")
         choice = user_choice()
         if choice == "1":
-            update_red()
+            update_cronan()
             print("Updating requirements...")
             reqs = verify_requirements()
             if reqs is not None:
@@ -299,7 +299,7 @@ def update_menu():
                 print("The requirements haven't been installed yet.")
             wait()
         elif choice == "2":
-            update_red()
+            update_cronan()
             wait()
         elif choice == "3":
             reqs = verify_requirements()
@@ -332,31 +332,31 @@ def maintenance_menu():
             print("Any code modification you have made will be lost. Data/"
                   "non-default cogs will be left intact. Are you sure?")
             if user_pick_yes_no():
-                reset_red(git_reset=True)
+                reset_cronan(git_reset=True)
                 wait()
         elif choice == "2":
             print("Are you sure? This will wipe the 'data' folder, which "
                   "contains all your settings and cogs' data.\nThe 'cogs' "
                   "folder, however, will be left intact.")
             if user_pick_yes_no():
-                reset_red(data=True)
+                reset_cronan(data=True)
                 wait()
         elif choice == "3":
-            reset_red(reqs=True)
+            reset_cronan(reqs=True)
             wait()
         elif choice == "4":
             print("Are you sure? This will wipe ALL your Cronan's installation "
                   "data.\nYou'll lose all your settings, cogs and any "
                   "modification you have made.\nThere is no going back.")
             if user_pick_yes_no():
-                reset_red(reqs=True, data=True, cogs=True, git_reset=True)
+                reset_cronan(reqs=True, data=True, cogs=True, git_reset=True)
                 wait()
         elif choice == "0":
             break
         clear_screen()
 
 
-def run_red(autorestart):
+def run_cronan(autorestart):
     interpreter = sys.executable
 
     if interpreter is None: # This should never happen
@@ -368,7 +368,7 @@ def run_red(autorestart):
         if not INTERACTIVE_MODE:
             exit(1)
 
-    cmd = (interpreter, "red.py")
+    cmd = (interpreter, "cronan.py")
 
     while True:
         try:
@@ -450,8 +450,8 @@ def create_fast_start_scripts():
         return
 
     call = "\"{}\" launcher.py".format(interpreter)
-    start_red = "{} --start".format(call)
-    start_red_autorestart = "{} --start --auto-restart".format(call)
+    start_cronan = "{} --start".format(call)
+    start_cronan_autorestart = "{} --start --auto-restart".format(call)
     modified = False
 
     if IS_WINDOWS:
@@ -466,12 +466,12 @@ def create_fast_start_scripts():
         else:
             ext = ".command"
 
-    start_red             = ccd + start_red             + pause
-    start_red_autorestart = ccd + start_red_autorestart + pause
+    start_cronan             = ccd + start_cronan             + pause
+    start_cronan_autorestart = ccd + start_cronan_autorestart + pause
 
     files = {
-        "start_red"             + ext : start_red,
-        "start_red_autorestart" + ext : start_red_autorestart
+        "start_cronan"             + ext : start_cronan,
+        "start_cronan_autorestart" + ext : start_cronan_autorestart
     }
 
     if not IS_WINDOWS:
@@ -525,9 +525,9 @@ def main():
         print("\n0. Quit")
         choice = user_choice()
         if choice == "1":
-            run_red(autorestart=True)
+            run_cronan(autorestart=True)
         elif choice == "2":
-            run_red(autorestart=False)
+            run_cronan(autorestart=False)
         elif choice == "3":
             update_menu()
         elif choice == "4":
@@ -557,9 +557,9 @@ if __name__ == '__main__':
         wait()
         exit(1)
     if args.repair:
-        reset_red(git_reset=True)
-    if args.update_red:
-        update_red()
+        reset_cronan(git_reset=True)
+    if args.update_cronan:
+        update_cronan()
     if args.update_reqs:
         install_reqs(audio=True)
     elif args.update_reqs_no_audio:
@@ -568,4 +568,4 @@ if __name__ == '__main__':
         main()
     elif args.start:
         print("Starting Cronan...")
-        run_red(autorestart=args.auto_restart)
+        run_cronan(autorestart=args.auto_restart)

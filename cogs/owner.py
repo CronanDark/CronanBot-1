@@ -16,7 +16,7 @@ import glob
 import os
 import aiohttp
 
-log = logging.getLogger("red.owner")
+log = logging.getLogger("cronan.owner")
 
 
 class CogNotFoundError(Exception):
@@ -45,8 +45,8 @@ class Owner:
     def __init__(self, bot):
         self.bot = bot
         self.setowner_lock = False
-        self.disabled_commands = dataIO.load_json("data/red/disabled_commands.json")
-        self.global_ignores = dataIO.load_json("data/red/global_ignores.json")
+        self.disabled_commands = dataIO.load_json("data/cronan/disabled_commands.json")
+        self.global_ignores = dataIO.load_json("data/cronan/global_ignores.json")
         self.session = aiohttp.ClientSession(loop=self.bot.loop)
 
     def __unload(self):
@@ -828,7 +828,7 @@ class Owner:
     async def info(self):
         """Shows info about Cronan"""
         author_repo = "https://github.com/CronanDark/"
-        red_repo = author_repo + "/CronanBot"
+        cronan_repo = author_repo + "/CronanBot"
         server_url = "https://discord.gg/hEFFpsc"
         dpy_repo = "https://github.com/Rapptz/discord.py"
         python_url = "https://www.python.org/"
@@ -840,7 +840,7 @@ class Owner:
         wordgit = "CronanBot"
         worduse = "CronanDark"
         wordserv = "Dark Army HQ"
-        gitstr = "[{}]({})".format(wordgit, red_repo)
+        gitstr = "[{}]({})".format(wordgit, cronan_repo)
         usestr = "[{}]({})".format(worduse, author_repo)
         servstr = "[{}]({})".format(wordserv, server_url)
         
@@ -1066,10 +1066,10 @@ class Owner:
         return fmt.format(d=days, h=hours, m=minutes, s=seconds)
 
     def save_global_ignores(self):
-        dataIO.save_json("data/red/global_ignores.json", self.global_ignores)
+        dataIO.save_json("data/cronan/global_ignores.json", self.global_ignores)
 
     def save_disabled_commands(self):
-        dataIO.save_json("data/red/disabled_commands.json", self.disabled_commands)
+        dataIO.save_json("data/cronan/disabled_commands.json", self.disabled_commands)
 
 
 def _import_old_data(data):
@@ -1088,11 +1088,11 @@ def _import_old_data(data):
 
 
 def check_files():
-    if not os.path.isfile("data/red/disabled_commands.json"):
+    if not os.path.isfile("data/cronan/disabled_commands.json"):
         print("Creating empty disabled_commands.json...")
-        dataIO.save_json("data/red/disabled_commands.json", [])
+        dataIO.save_json("data/cronan/disabled_commands.json", [])
 
-    if not os.path.isfile("data/red/global_ignores.json"):
+    if not os.path.isfile("data/cronan/global_ignores.json"):
         print("Creating empty global_ignores.json...")
         data = {"blacklist": [], "whitelist": []}
         try:
@@ -1101,7 +1101,7 @@ def check_files():
             log.error("Failed to migrate blacklist / whitelist data from "
                       "mod.py: {}".format(e))
 
-        dataIO.save_json("data/red/global_ignores.json", data)
+        dataIO.save_json("data/cronan/global_ignores.json", data)
 
 
 def setup(bot):

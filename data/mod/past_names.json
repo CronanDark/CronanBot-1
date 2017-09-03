@@ -855,7 +855,8 @@
         "maki (smol maki|nepsi)",
         "smol maki (maki|nepsi)",
         "maki (nepsi)",
-        "nico (maki|nepsi)"
+        "nico (maki|nepsi)",
+        "PLAYER (maki|nico)"
     ],
     "292106897392402432" : [
         "SamuelBot"

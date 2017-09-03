@@ -29,7 +29,7 @@ from io import TextIOWrapper
 #                   https://github.com/CronanDark/
 #
 #
-# red.py and cogs/utils/checks.py both contain some modified functions
+# cronan.py and cogs/utils/checks.py both contain some modified functions
 #                     originally made by Rapptz.
 #
 #                 https://github.com/Rapptz/RoboDanny/
@@ -404,7 +404,7 @@ def initialize(bot_class=Bot, formatter_class=Formatter):
 
 
 def check_folders():
-    folders = ("data", "data/red", "cogs", "cogs/utils")
+    folders = ("data", "data/cronan", "cogs", "cogs/utils")
     for folder in folders:
         if not os.path.exists(folder):
             print("Creating " + folder + " folder...")
@@ -473,16 +473,16 @@ def interactive_setup(settings):
 
 
 def set_logger(bot):
-    logger = logging.getLogger("red")
+    logger = logging.getLogger("cronan")
     logger.setLevel(logging.INFO)
 
-    red_format = logging.Formatter(
+    cronan_format = logging.Formatter(
         '%(asctime)s %(levelname)s %(module)s %(funcName)s %(lineno)d: '
         '%(message)s',
         datefmt="[%d/%m/%Y %H:%M]")
 
     stdout_handler = logging.StreamHandler(sys.stdout)
-    stdout_handler.setFormatter(red_format)
+    stdout_handler.setFormatter(cronan_format)
     if bot.settings.debug:
         stdout_handler.setLevel(logging.DEBUG)
         logger.setLevel(logging.DEBUG)
@@ -491,9 +491,9 @@ def set_logger(bot):
         logger.setLevel(logging.INFO)
 
     fhandler = logging.handlers.RotatingFileHandler(
-        filename='data/red/red.log', encoding='utf-8', mode='a',
+        filename='data/cronan/cronan.log', encoding='utf-8', mode='a',
         maxBytes=10**7, backupCount=5)
-    fhandler.setFormatter(red_format)
+    fhandler.setFormatter(cronan_format)
 
     logger.addHandler(fhandler)
     logger.addHandler(stdout_handler)
@@ -504,7 +504,7 @@ def set_logger(bot):
     else:
         dpy_logger.setLevel(logging.WARNING)
     handler = logging.FileHandler(
-        filename='data/red/discord.log', encoding='utf-8', mode='a')
+        filename='data/cronan/discord.log', encoding='utf-8', mode='a')
     handler.setFormatter(logging.Formatter(
         '%(asctime)s %(levelname)s %(module)s %(funcName)s %(lineno)d: '
         '%(message)s',
@@ -532,10 +532,10 @@ def get_answer():
         return False
 
 
-def set_cog(cog, value):  # TODO: move this out of red.py
-    data = dataIO.load_json("data/red/cogs.json")
+def set_cog(cog, value):  # TODO: move this out of cronan.py
+    data = dataIO.load_json("data/cronan/cogs.json")
     data[cog] = value
-    dataIO.save_json("data/red/cogs.json", data)
+    dataIO.save_json("data/cronan/cogs.json", data)
 
 
 def load_cogs(bot):
@@ -543,7 +543,7 @@ def load_cogs(bot):
                 "general", "image", "mod", "streams", "trivia", "leveler")
 
     try:
-        registry = dataIO.load_json("data/red/cogs.json")
+        registry = dataIO.load_json("data/cronan/cogs.json")
     except:
         registry = {}
 
@@ -556,8 +556,8 @@ def load_cogs(bot):
 
     if bot.settings._no_cogs:
         bot.logger.debug("Skipping initial cogs loading (--no-cogs)")
-        if not os.path.isfile("data/red/cogs.json"):
-            dataIO.save_json("data/red/cogs.json", {})
+        if not os.path.isfile("data/cronan/cogs.json"):
+            dataIO.save_json("data/cronan/cogs.json", {})
         return
 
     failed = []
@@ -580,7 +580,7 @@ def load_cogs(bot):
                 failed.append(extension)
                 registry[extension] = False
 
-    dataIO.save_json("data/red/cogs.json", registry)
+    dataIO.save_json("data/cronan/cogs.json", registry)
 
     if failed:
         print("\nFailed to load: {}\n".format(" ".join(failed)))

@@ -19,10 +19,10 @@ import time
 import inspect
 import subprocess
 
-__author__ = "tekulvw"
+__author__ = "Cronan"
 __version__ = "0.1.1"
 
-log = logging.getLogger("red.audio")
+log = logging.getLogger("cronan.audio")
 
 try:
     import youtube_dl
@@ -2226,8 +2226,7 @@ def setup(bot):
             " bitness. They both must be either 32bit or 64bit.")
     elif opus is None:
         raise RuntimeError(
-            "You need to install ffmpeg and opus. See \"https://github.com/"
-            "Twentysix26/Red-DiscordBot/wiki/Requirements\"")
+            "You need to install ffmpeg and opus.")
 
     player = verify_ffmpeg_avconv()
 
@@ -2239,7 +2238,6 @@ def setup(bot):
         raise RuntimeError(
           "{}.\nConsult the guide for your operating system "
           "and do ALL the steps in order.\n"
-          "https://twentysix26.github.io/Red-Docs/\n"
           "".format(msg))
 
     n = Audio(bot, player=player)  # Praise 26

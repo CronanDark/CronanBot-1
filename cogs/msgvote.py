@@ -10,8 +10,7 @@ from cogs.utils import checks
 
 from .utils.dataIO import dataIO
 
-# Credit to JennJenn#6857 for thinking up this cog.
-# It started as a joke, and people actualy use it! Who knew?
+
 
 
 class Msgvote:

@@ -37,7 +37,7 @@ bg_credits = {
 # directory
 user_directory = "data/leveler/users"
 
-prefix = dataIO.load_json("data/red/settings.json")['PREFIXES']
+prefix = dataIO.load_json("data/cronan/settings.json")['PREFIXES']
 default_avatar_url = "http://i.imgur.com/XPDO9VH.jpg"
 
 try:
@@ -54,7 +54,7 @@ class Leveler:
         self.backgrounds = dataIO.load_json("data/leveler/backgrounds.json")
         self.badges = dataIO.load_json("data/leveler/badges.json")
         self.settings = dataIO.load_json("data/leveler/settings.json")
-        bot_settings = dataIO.load_json("data/red/settings.json")
+        bot_settings = dataIO.load_json("data/cronan/settings.json")
         self.owner = bot_settings["OWNER"]
         self.userlevels = dataIO.load_json("data/leveler/userlevels.json")
 

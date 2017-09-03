@@ -5,7 +5,7 @@ import os
 import argparse
 
 
-default_path = "data/red/settings.json"
+default_path = "data/cronan/settings.json"
 
 
 class Settings:
@@ -150,7 +150,7 @@ class Settings:
 
     @property
     def token(self):
-        return os.environ.get("RED_TOKEN", self.bot_settings["TOKEN"])
+        return os.environ.get("CRONAN_TOKEN", self.bot_settings["TOKEN"])
 
     @token.setter
     def token(self, value):
@@ -160,7 +160,7 @@ class Settings:
 
     @property
     def email(self):
-        return os.environ.get("RED_EMAIL", self.bot_settings["EMAIL"])
+        return os.environ.get("CRONAN_EMAIL", self.bot_settings["EMAIL"])
 
     @email.setter
     def email(self, value):
@@ -169,7 +169,7 @@ class Settings:
 
     @property
     def password(self):
-        return os.environ.get("RED_PASSWORD", self.bot_settings["PASSWORD"])
+        return os.environ.get("CRONAN_PASSWORD", self.bot_settings["PASSWORD"])
 
     @password.setter
     def password(self, value):
