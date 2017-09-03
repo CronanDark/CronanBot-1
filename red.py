@@ -354,6 +354,7 @@ def initialize(bot_class=Bot, formatter_class=Formatter):
     @bot.event
     async def on_command_error(error, ctx):
         channel = ctx.message.channel
+        msgcommand = ctx.message
         if isinstance(error, commands.MissingRequiredArgument):
             await bot.send_cmd_help(ctx)
         elif isinstance(error, commands.BadArgument):
@@ -390,9 +391,12 @@ def initialize(bot_class=Bot, formatter_class=Formatter):
             await bot.send_message(channel, "That command is not "
                                             "available in DMs.")
         elif isinstance(error, commands.CommandOnCooldown):
-            await bot.send_message(channel, "This command is on cooldown. "
-                                            "Try again in {:.2f}s"
-                                            "".format(error.retry_after))
+            botcommandmsg = await bot.send_message(channel, "This command is on cooldown. "
+                                                   "Try again in {:.2f}s"
+                                                   "".format(error.retry_after))
+            await bot.delete_message(msgcommand)
+            await asyncio.sleep(1)
+            await bot.delete_message(botcommandmsg)
         else:
             bot.logger.exception(type(error).__name__, exc_info=error)
 

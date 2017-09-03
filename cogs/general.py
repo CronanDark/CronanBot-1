@@ -58,6 +58,7 @@ class General:
 					 "Signs point to yes", "Without a doubt", "Yes", "Yes – definitely", "You may rely on it", "Reply hazy, try again",
 					 "Ask again later", "Better not tell you now", "Cannot predict now", "Concentrate and ask again",
 					 "Don't count on it", "My reply is no", "My sources say no", "Outlook not so good", "Very doubtful"]
+		self.aussiepics = ["https://cdn.discordapp.com/attachments/321169190650118154/353771228059795457/images_61.jpg", "https://cdn.discordapp.com/attachments/321169190650118154/353771228730753024/images_59.jpg", "https://cdn.discordapp.com/attachments/321169190650118154/353771228730753026/images_53.jpg", "https://cdn.discordapp.com/attachments/321169190650118154/353771229347577856/images_60.jpg", "https://cdn.discordapp.com/attachments/321169190650118154/353771229783654401/images_54.jpg", "https://cdn.discordapp.com/attachments/321169190650118154/353771287379836929/JPEG_20170827_220619.jpg", "https://cdn.discordapp.com/attachments/321169190650118154/353771370909401092/4NKa80UXY3ar6.gif", "https://cdn.discordapp.com/attachments/321169190650118154/353771475729252353/images_47.jpg", "https://cdn.discordapp.com/attachments/321169190650118154/353771677064232960/rSiurIy9lLi24.gif", "https://cdn.discordapp.com/attachments/321169190650118154/353771677730996229/images_38.jpg", "https://cdn.discordapp.com/attachments/321169190650118154/353780398440054794/images_63.jpg"]
 
 	@commands.command(hidden=True)
 	async def ping(self):
@@ -453,6 +454,32 @@ class General:
 		except discord.errors.HTTPException:
 			await self.bot.say("```->bob <message>\n\n"
 							   "spongebob meme\n\n```")
+	
+	@commands.command()
+	async def kebab(self):
+		"""Kebab"""
+		kebdid = discord.Embed(color=discord.Color.darker_grey())
+		kebdid.set_image(url="https://cdn.discordapp.com/attachments/350398297309052931/353451977696608256/91sBJ4vg0cL._SL1500__1.jpg")
+		await self.bot.say(embed=kebdid)
+	
+	@commands.cooldown(1, 10, commands.BucketType.user)
+	@commands.command()
+	async def sumfuk(self):
+		"""You want sum fuk?"""
+		fukdid = discord.Embed(color=discord.Color.darker_grey())
+		fukdid.set_image(url="https://static.tumblr.com/d9916687b0a7c9c573a6eda0b58d1d19/fbqldx3/Br4oquly8/tumblr_static_tumblr_static_bl1itsj4ttcs48080kog44skg_640.jpg")
+		await self.bot.say(embed=fukdid)
+	
+	@commands.command()
+	async def aussie(self):
+		"""Some Aussie Pics"""
+		thepics = self.aussiepics
+		thechoiceaus = random.choice(thepics)
+		thechoiceaus = ''.join(thechoiceaus)
+		thechoiceaus = str(thechoiceaus)
+		ausdid = discord.Embed(color=discord.Color.darker_grey())
+		ausdid.set_image(url=thechoiceaus)
+		await self.bot.say(embed=ausdid)
 
 	@commands.command()
 	async def custombot(self):

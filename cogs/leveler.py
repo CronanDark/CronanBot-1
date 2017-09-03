@@ -1585,33 +1585,62 @@ class Leveler:
 
     @checks.mod_or_permissions(manage_roles=True)
     @badge.command(pass_context = True, no_pm=True)
-    async def give(self, ctx, user : discord.Member, name: str):
+    async def give(self, ctx, user : discord.Member, name: str, ifglobal : str=None):
         """Give a user a badge with a certain name"""
-        org_user = ctx.message.author
-        server = org_user.server
-        # creates user if doesn't exist
-        await self._create_user(user, server)
-        userinfo = db.users.find_one({'user_id':user.id})
-        userinfo = self._badge_convert_dict(userinfo)
+        if ifglobal is None:
+            org_user = ctx.message.author
+            server = org_user.server
+            # creates user if doesn't exist
+            await self._create_user(user, server)
+            userinfo = db.users.find_one({'user_id':user.id})
+            userinfo = self._badge_convert_dict(userinfo)
 
-        if server.id in self.settings["disabled_servers"]:
-            await self.bot.say("Leveler commands for this server are disabled.")
-            return
+            if server.id in self.settings["disabled_servers"]:
+                await self.bot.say("Leveler commands for this server are disabled.")
+                return
 
-        serverbadges = db.badges.find_one({'server_id':server.id})
-        badges = serverbadges['badges']
-        badge_name = "{}_{}".format(name, server.id)
+            serverbadges = db.badges.find_one({'server_id':server.id})
+            badges = serverbadges['badges']
+            badge_name = "{}_{}".format(name, server.id)
 
-        if name not in badges:
-            await self.bot.say("**That badge doesn't exist in this server!**")
-            return
-        elif badge_name in badges.keys():
-            await self.bot.say("**{} already has that badge!**".format(self._is_mention(user)))
-            return
+            if name not in badges:
+                await self.bot.say("**That badge doesn't exist in this server!**")
+                return
+            elif badge_name in badges.keys():
+                await self.bot.say("**{} already has that badge!**".format(self._is_mention(user)))
+                return
+            else:
+                userinfo["badges"][badge_name] = badges[name]
+                db.users.update_one({'user_id':user.id}, {'$set':{"badges": userinfo["badges"]}})
+                await self.bot.say("**{} has just given `{}` the `{}` badge!**".format(self._is_mention(org_user), self._is_mention(user), name))
+        elif ifglobal == "-global":
+            org_user = ctx.message.author
+            server = org_user.server
+            # creates user if doesn't exist
+            await self._create_user(user, server)
+            userinfo = db.users.find_one({'user_id':user.id})
+            userinfo = self._badge_convert_dict(userinfo)
+
+            if server.id in self.settings["disabled_servers"]:
+                await self.bot.say("Leveler commands for this server are disabled.")
+                return
+
+            serverbadges = db.badges.find_one({'server_id':'global'})
+            badges = serverbadges['badges']
+            badge_name = "{}_{}".format(name, 'global')
+
+            if name not in badges:
+                await self.bot.say("**That badge doesn't exist in this server!**")
+                return
+            elif badge_name in badges.keys():
+                await self.bot.say("**{} already has that badge!**".format(self._is_mention(user)))
+                return
+            else:
+                userinfo["badges"][badge_name] = badges[name]
+                db.users.update_one({'user_id':user.id}, {'$set':{"badges": userinfo["badges"]}})
+                await self.bot.say("**{} has just given `{}` the `{}` badge!**".format(self._is_mention(org_user), self._is_mention(user), name))
         else:
-            userinfo["badges"][badge_name] = badges[name]
-            db.users.update_one({'user_id':user.id}, {'$set':{"badges": userinfo["badges"]}})
-            await self.bot.say("**{} has just given `{}` the `{}` badge!**".format(self._is_mention(org_user), self._is_mention(user), name))
+            return
 
     @checks.mod_or_permissions(manage_roles=True)
     @badge.command(pass_context = True, no_pm=True)
