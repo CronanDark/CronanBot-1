@@ -57,6 +57,8 @@ class Leveler:
         bot_settings = dataIO.load_json("data/cronan/settings.json")
         self.owner = bot_settings["OWNER"]
         self.userlevels = dataIO.load_json("data/leveler/userlevels.json")
+        self.cooldown = dataIO.load_json("data/leveler/cooldown.json")
+        self.minmax = dataIO.load_json("data/leveler/minmax.json")
 
         dbs = client.database_names()
         if 'leveler' not in dbs:
@@ -918,6 +920,64 @@ class Leveler:
         if ctx.invoked_subcommand is None:
             await send_cmd_help(ctx)
             return
+
+    @checks.admin_or_permissions(manage_server=True)
+    @lvladmin.group(pass_context=True)
+    async def setcooldown(self, ctx, seconds : int):
+        """Set the msg cooldown for exp"""
+        server = ctx.message.server
+        cooldownset = self.cooldown
+        for i, s in enumerate(cooldownset):
+            if s["TIME"] == cooldownset:
+                continue
+
+            if server.id in s["ID"]:
+                cooldownset[i]["ID"].remove(server.id)
+                if not s["ID"]:
+                    cooldownset.remove(s)
+                dataIO.save_json("data/leveler/cooldown.json", self.cooldown)
+                data = {"ID": [server.id],
+                        "TIME": str(seconds)}
+                cooldownset.append(data)
+                dataIO.save_json("data/leveler/cooldown.json", self.cooldown)
+                await self.bot.say("Cooldown settings updated")
+                return
+        
+        data = {"ID": [server.id],
+                "TIME": str(seconds)}
+        cooldownset.append(data)
+        dataIO.save_json("data/leveler/cooldown.json", self.cooldown)
+        await self.bot.say("Cooldown set")
+
+    @checks.admin_or_permissions(manage_server=True)
+    @lvladmin.group(pass_context=True)
+    async def setminmax(self, ctx, minimum : int, maximum : int):
+        """Set the minimum and maximum for exp per msg"""
+        server = ctx.message.server
+        minmaxset = self.minmax
+        for i, s in enumerate(minmaxset):
+            if s["MIN"] == minmaxset:
+                continue
+
+            if server.id in s["ID"]:
+                minmaxset[i]["ID"].remove(server.id)
+                if not s["ID"]:
+                    minmaxset.remove(s)
+                dataIO.save_json("data/leveler/minmax.json", self.minmax)
+                data = {"ID": [server.id],
+                        "MIN": str(minimum),
+                        "MAX": str(maximum)}
+                minmaxset.append(data)
+                dataIO.save_json("data/leveler/minmax.json", self.minmax)
+                await self.bot.say("Minimum and Maximum xp per msg settings updated")
+                return
+        
+        data = {"ID": [server.id],
+                "MIN": str(minimum),
+                "MAX": str(maximum)}
+        minmaxset.append(data)
+        dataIO.save_json("data/leveler/minmax.json", self.minmax)
+        await self.bot.say("Minimum and Maximum xp per msg set")
 
     @checks.admin_or_permissions(manage_server=True)
     @lvladmin.group(pass_context=True)
@@ -2723,8 +2783,69 @@ class Leveler:
         if "chat_block" not in userinfo:
             userinfo["chat_block"] = 0
 
-        if float(curr_time) - float(userinfo["chat_block"]) >= 30 and not any(text.startswith(x) for x in prefix):
-            await self._process_exp(message, userinfo, random.randint(25, 50))
+        setcooldowns = self.cooldown
+        cooldownhaveit = False
+        for i, s in enumerate(setcooldowns):
+            if s["TIME"] == setcooldowns:
+                continue
+
+            if server.id in s["ID"]:
+                cooldownhaveit = True
+                break
+            else:
+                cooldownhaveit = False
+
+        if cooldownhaveit is False:
+                data = {"ID": [server.id],
+                        "TIME": str(30)}
+                setcooldowns.append(data)
+                dataIO.save_json("data/leveler/cooldown.json", self.cooldown)
+
+        setminmaxs = self.minmax
+        minmaxhaveit = False
+        for i, s in enumerate(setminmaxs):
+            if s["MIN"] == setminmaxs:
+                continue
+
+            if server.id in s["ID"]:
+                minmaxhaveit = True
+                break
+            else:
+                minmaxhaveit = False
+
+        if minmaxhaveit is False:
+                data = {"ID": [server.id],
+                        "MIN": str(25),
+                        "MAX": str(50)}
+                setminmaxs.append(data)
+                dataIO.save_json("data/leveler/minmax.json", self.minmax)
+            
+
+        cooldownset = self.cooldown
+        for i, s in enumerate(cooldownset):
+            if s["TIME"] == cooldownset:
+                continue
+
+            if server.id in s["ID"]:
+                cooldownforxp = cooldownset[i]
+                cooldownforxp = cooldownforxp["TIME"]
+                cooldownforxp = cooldownforxp[0]
+                
+        minmaxset = self.minmax
+        for i, s in enumerate(minmaxset):
+            if s["MIN"] == minmaxset:
+                continue
+
+            if server.id in s["ID"]:
+                minxp = minmaxset[i]
+                minxp = minxp["MIN"]
+                minxp = minxp[0]
+                maxxp = minmaxset[i]
+                maxxp = maxxp["MAX"]
+                maxxp = maxxp[0]
+                
+        if float(curr_time) - float(userinfo["chat_block"]) >= int(cooldownforxp) and not any(text.startswith(x) for x in prefix):
+            await self._process_exp(message, userinfo, random.randint(int(minxp), int(maxxp)))
             await self._give_chat_credit(user, server)
         #except AttributeError as e:
             #pass
