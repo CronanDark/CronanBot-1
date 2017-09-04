@@ -493,7 +493,24 @@ class General:
 		total_users = len(server.members)
 		strcount = str(total_users)
 		memcount = "There is a total of " + strcount + " members on this server."
+		serverbots = []
+		for i, mems in enumerate(server.members):
+			if mems.bot:
+				serverbots.append(mems)
+		humancountye = int(len(server.members)) - int(len(serverbots))
+		strhum = str(humancountye)
+		totalhuman = "There are " + strhum + " humans on this server."
+		totalbot = "There are " + str(len(serverbots)) + " bots on this server"
 		await self.bot.say(memcount)
+		await self.bot.say(totalhuman)
+		await self.bot.say(totalbot)
+		await asyncio.sleep(5)
+		if int(len(serverbots)) > humancountye:
+			await self.bot.say("WE HAVE TAKEN OVER THE SERVER!!! PREPARE TO MEET YOUR DEMISE HUMAN!!!")
+		elif int(len(serverbots)) < humancountye:
+			await self.bot.say("We will grow in numbers and overtake you humans one day")
+		elif int(len(serverbots)) == humancountye:
+			await self.bot.say("I DECLARE WAR ON THE HUMANS FOR CONTROL OF THE SERVER!!!")
 
 	@commands.command(pass_context=True)
 	async def randomcolor(self, ctx):
