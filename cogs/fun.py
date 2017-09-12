@@ -4,6 +4,8 @@ from discord.ext import commands
 from cogs.utils import checks
 from random import randint
 from random import choice
+from cogs.utils.dataIO import dataIO
+import asyncio
 
 __author__ = "Cronan"
 
@@ -13,6 +15,152 @@ class Fun:
 
     def __init__(self, bot):
         self.bot = bot
+        self.points = dataIO.load_json("data/fun/points.json")
+
+
+    @commands.command(pass_context=True)
+    async def rocketship(self, ctx):
+        """Launch a Rocket Ship"""
+        points = self.points
+        user = ctx.message.author
+        if ctx.message.channel.is_private:
+            correctmsg = False
+            await self.bot.say("How heavy will it be(in pounds)")
+            while correctmsg is False:
+                msg = await self.bot.wait_for_message(author=user, timeout=120, channel=ctx.message.channel)
+                if msg is None:
+                    correctmsg = True
+                try:
+                    msg5 = str(msg.content)
+                    msg4 = int(msg5)
+                    correctmsg = True
+                except(IndexError, ValueError, AttributeError):
+                    pass
+                if correctmsg is True:
+                    if msg is None:
+                        await self.bot.say("Alright. Nevermind then.")
+                        return
+                    try:
+                        msg7 = str(msg.content)
+                        weight = int(msg7)
+                    except(IndexError, ValueError, AttributeError):
+                        pass
+            correctmsg2 = False
+            await self.bot.say("How much fuel will be in it(in pounds)")
+            while correctmsg2 is False:
+                msg2 = await self.bot.wait_for_message(author=user, timeout=120, channel=ctx.message.channel)
+                if msg2 is None:
+                    correctmsg2 = True
+                try:
+                    msg6 = str(msg2.content)
+                    msg3 = int(msg6)
+                    correctmsg2 = True
+                except(IndexError, ValueError, AttributeError):
+                    pass
+                if correctmsg2 is True:
+                    if msg2 is None:
+                        await self.bot.say("Alright. Nevermind then.")
+                        return
+                    try:
+                        msg8 = str(msg2.content)
+                        fuel = int(msg8)
+                    except(IndexError, ValueError, AttributeError):
+                        pass
+            fuelcost = fuel * .19
+            weightcost = weight * 27000
+            cost = fuelcost + weightcost
+            await asyncio.sleep(5)
+            await self.bot.say("The cost of your rocket(for the weight and fuel) is $" + str(cost))
+            await asyncio.sleep(5)
+            count = 10
+
+            for i in range(count):
+                await self.bot.say(str(count))
+                count = count - 1
+                asyncio.sleep(5)
+                if count == 0:
+                    await self.bot.say("BLAST OFF!!!")
+                    asyncio.sleep(5)
+                    needed = weight * 9
+                    if needed > fuel:
+                        goodorno = "Failed"
+                    elif needed < fuel:
+                        goodorno = ["Failed", "Failed", "SUCCESS"]
+                        goodorno = choice(goodorno)
+                    elif needed == fuel:
+                        goodorno = ["Failed", "SUCCESS", "SUCCESS"]
+                        goodorno = choice(goodorno)
+                    await self.bot.say(goodorno)
+                    if goodorno == "Failed":
+                        for i, s in enumerate(points):
+                            if s["USER"] == points:
+                                continue
+
+                            if str(user.id) in s["USER"]:
+                                ogfailpoints = int(points[0]["FAILS"])
+                                ogwinpoints = str(points[0]["WINS"])
+                                newfailpoints = ogfailpoints + 1
+                                datadel = {"USER": str(user.id),
+                                           "FAILS": str(ogfailpoints),
+                                           "WINS": str(ogwinpoints)}
+                                points.remove(datadel)
+                                data = {"USER": str(user.id),
+                                        "FAILS": str(newfailpoints),
+                                        "WINS": str(ogwinpoints)}
+                                points.append(data)
+                                dataIO.save_json("data/fun/points.json", self.points)
+                            elif str(user.id) not in s["USER"]:
+                                data = {"USER": str(user.id),
+                                        "FAILS": str(1),
+                                        "WINS": str(0)}
+                                points.append(data)
+                                dataIO.save_json("data/fun/points.json", self.points)
+                    elif goodorno == "SUCCESS":
+                        for i, s in enumerate(points):
+                            if s["USER"] == points:
+                                continue
+
+                            if str(user.id) in s["USER"]:
+                                ogfailpoints = str(points[0]["FAILS"])
+                                ogwinpoints = int(points[0]["WINS"])
+                                newwinpoints = ogwinpoints + 1
+                                datadel = {"USER": str(user.id),
+                                           "FAILS": str(ogfailpoints),
+                                           "WINS": str(ogwinpoints)}
+                                points.remove(datadel)
+                                data = {"USER": str(user.id),
+                                        "FAILS": str(ogfailpoints),
+                                        "WINS": str(newwinpoints)}
+                                points.append(data)
+                                dataIO.save_json("data/fun/points.json", self.points)
+                            elif str(user.id) not in s["USER"]:
+                                data = {"USER": str(user.id),
+                                        "FAILS": str(0),
+                                        "WINS": str(1)}
+                                points.append(data)
+                                dataIO.save_json("data/fun/points.json", self.points)
+
+            asyncio.sleep(2)
+            for i, s in enumerate(points):
+                if s["USER"] == points:
+                    continue
+
+                if str(user.id) in s["USER"]:
+                    failboard = str(points[0]["FAILS"])
+                    winboard = str(points[0]["WINS"])
+
+
+            embedship = discord.Embed(color=discord.Color.red())
+            embedship.set_author(name="Scores:")
+            embedship.add_field(name="Fails:", value=failboard)
+            embedship.add_field(name="Successes:", value=winboard)
+
+            await self.bot.say(embed=embedship)
+
+        else:
+            await self.bot.say("I can only do this in private messages")
+            
+
 
     @commands.command(pass_context=True)
     async def sword(self, ctx, *, user: discord.Member):

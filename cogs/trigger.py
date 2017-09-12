@@ -36,6 +36,7 @@ class Trigger:
         self.triggers = []
         self.load_triggers()
         self.stats_task = bot.loop.create_task(self.save_stats())
+        self.cooldownserver = dataIO.load_json("data/trigger/cooldown.json")
 
     @commands.group(pass_context=True, no_dm=True)
     async def trigger(self, ctx):
@@ -271,6 +272,34 @@ class Trigger:
         await self.bot.say("The trigger will be activated by `{}`."
                            "".format(triggered_by))
 
+    @checks.admin_or_permissions(manage_server=True)
+    @triggerset.command(pass_context=True)
+    async def servercooldown(self, ctx, seconds : int):
+        """Set the cooldown for triggers for ur server"""
+        server = ctx.message.server
+        cooldownset = self.cooldownserver
+        for i, s in enumerate(cooldownset):
+            if s["TIME"] == cooldownset:
+                continue
+
+            if server.id in s["ID"]:
+                cooldownset[i]["ID"].remove(server.id)
+                if not s["ID"]:
+                    cooldownset.remove(s)
+                dataIO.save_json("data/trigger/cooldown.json", self.cooldownserver)
+                data = {"ID": [server.id],
+                        "TIME": str(seconds)}
+                cooldownset.append(data)
+                dataIO.save_json("data/trigger/cooldown.json", self.cooldownserver)
+                await self.bot.say("Cooldown settings updated")
+                return
+        
+        data = {"ID": [server.id],
+                "TIME": str(seconds)}
+        cooldownset.append(data)
+        dataIO.save_json("data/trigger/cooldown.json", self.cooldownserver)
+        await self.bot.say("Cooldown set")
+
     @triggerset.command(pass_context=True)
     async def response(self, ctx, trigger_name : str, _type : str):
         """Sets the response type for the trigger.
@@ -504,6 +533,7 @@ class Trigger:
     async def on_message(self, message):
         channel = message.channel
         author = message.author
+        server = message.server
         await asyncio.sleep(1)
 
         if message.server is None:
@@ -516,8 +546,36 @@ class Trigger:
         if self.is_command(message):
             return
 
+        setcooldowns = self.cooldownserver
+        cooldownhaveit = False
+        for i, s in enumerate(setcooldowns):
+            if s["TIME"] == setcooldowns:
+                continue
+
+            if server.id in s["ID"]:
+                cooldownhaveit = True
+                break
+            else:
+                cooldownhaveit = False
+
+        if cooldownhaveit is False:
+                data = {"ID": [server.id],
+                        "TIME": str(0)}
+                setcooldowns.append(data)
+                dataIO.save_json("data/trigger/cooldown.json", self.cooldownserver)
+
+        cooldownset = self.cooldownserver
+        for i, s in enumerate(cooldownset):
+            if s["TIME"] == cooldownset:
+                continue
+
+            if server.id in s["ID"]:
+                cooldownforxp = cooldownset[i]
+                cooldownforxp = cooldownforxp["TIME"]
+
+
         for trigger in self.triggers:
-            if not trigger.check(message):
+            if not trigger.check(message, int(cooldownforxp)):
                 continue
             payload = trigger.payload()
             for p in payload:
@@ -576,7 +634,7 @@ class TriggerObj:
         del data["last_triggered"]
         return data
 
-    def check(self, msg):
+    def check(self, msg, cooldown):
         if not self.active:
             return False
 
@@ -603,9 +661,14 @@ class TriggerObj:
             if not found:
                 return False
 
+        if cooldown == 0:
+            cooldown = self.cooldown
+        else:
+            cooldown = cooldown
+
         timestamp = datetime.datetime.now()
         passed = (timestamp - self.last_triggered).seconds
-        if passed > self.cooldown:
+        if passed > cooldown:
             self.last_triggered = timestamp
             return True
         else:

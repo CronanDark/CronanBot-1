@@ -1,4 +1,13 @@
 {
+    "220297883390443520" : {
+        "BOTS_MSG" : null,
+        "BOTS_ROLE" : null,
+        "CHANNEL" : "220297883390443520",
+        "GOODBYE" : [
+            "Goodbye {0.name}!"
+        ],
+        "ON" : false
+    },
     "246496365713162240" : {
         "BOTS_MSG" : null,
         "BOTS_ROLE" : null,
@@ -39,6 +48,15 @@
         "BOTS_MSG" : null,
         "BOTS_ROLE" : null,
         "CHANNEL" : "321691955061063681",
+        "GOODBYE" : [
+            "Goodbye {0.name}!"
+        ],
+        "ON" : false
+    },
+    "332126450780078081" : {
+        "BOTS_MSG" : null,
+        "BOTS_ROLE" : null,
+        "CHANNEL" : "332126450780078081",
         "GOODBYE" : [
             "Goodbye {0.name}!"
         ],

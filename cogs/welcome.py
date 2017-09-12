@@ -6,7 +6,12 @@ from .utils.chat_formatting import pagify
 from __main__ import send_cmd_help
 from copy import deepcopy
 import os
+import aiohttp
 from random import choice as rand_choice
+try:
+    from PIL import Image, ImageDraw, ImageFont, ImageColor, ImageOps
+except:
+    raise RuntimeError("Can't load pillow. Do 'pip3 install pillow'.")
 
 
 default_greeting = "Welcome {0.name} to {1.name}!"
@@ -19,6 +24,8 @@ default_goodbyeset = {"GOODBYE": [default_goodbye], "ON": False,
                       "CHANNEL": None, "BOTS_MSG": None,
                       "BOTS_ROLE": None}
 goodbye_path = "data/welcome/goodbye.json"
+font_file = "data/welcome/Font/njnaruto.ttf"
+default_avatar_url = "http://i.imgur.com/XPDO9VH.jpg"
 
 
 class Welcome:
@@ -211,61 +218,134 @@ class Welcome:
                                         "as a DM".format(channel))
         await self.send_testing_msg(ctx)
 
+    def _center(self, start, end, text, font):
+        dist = end - start
+        width = font.getsize(text)[0]
+        start_pos = start + ((dist-width)/2)
+        return int(start_pos)
+
     async def member_join(self, member):
         server = member.server
-        if server.id not in self.settings:
-            self.settings[server.id] = deepcopy(default_settings)
-            self.settings[server.id]["CHANNEL"] = server.default_channel.id
-            dataIO.save_json(settings_path, self.settings)
-        if not self.settings[server.id]["ON"]:
-            return
-        if server is None:
-            print("Server is None. Private Message or some new fangled "
-                  "Discord thing?.. Anyways there be an error, "
-                  "the user was {}".format(member.name))
-            return
-
-        only_whisper = self.settings[server.id]["WHISPER"] is True
-        bot_welcome = member.bot and self.settings[server.id]["BOTS_MSG"]
-        bot_role = member.bot and self.settings[server.id]["BOTS_ROLE"]
-        msg = bot_welcome or rand_choice(self.settings[server.id]["GREETING"])
-
-        # whisper the user if needed
-        if not member.bot and self.settings[server.id]["WHISPER"]:
+        user = member
+        if str(server.id) == "220297883390443520":
+            person = str(member.name)
+            profile_url = user.avatar_url
+            profile_image = Image
             try:
-                await self.bot.send_message(member, msg.format(member, server))
+                async with aiohttp.get(profile_url) as r:
+                    image = await r.content.read()
             except:
-                print("welcome.py: unable to whisper {}. Probably "
-                      "doesn't want to be PM'd".format(member))
-        # grab the welcome channel
-        channel = self.get_welcome_channel(server)
-        if channel is None:  # complain even if only whisper
-            print('welcome.py: Channel not found. It was most '
-                  'likely deleted. User joined: {}'.format(member.name))
-            return
-        # we can stop here
-        if only_whisper and not bot_welcome:
-            return
-        if not self.speak_permissions(server):
-            print("Permissions Error. User that joined: "
-                  "{0.name}".format(member))
-            print("Bot doesn't have permissions to send messages to "
-                  "{0.name}'s #{1.name} channel".format(server, channel))
-            return
-        # try to add role if needed
-        if bot_role:
-            try:
-                role = discord.utils.get(server.roles, name=bot_role)
-                await self.bot.add_roles(member, role)
-            except:
-                print('welcome.py: unable to add {} role to {}. '
-                      'Role was deleted, network error, or lacking '
-                      'permissions'.format(bot_role, member))
-            else:
-                print('welcome.py: added {} role to '
-                      'bot, {}'.format(role, member))
-        # finally, welcome them
-        await self.bot.send_message(channel, msg.format(member, server))
+                async with aiohttp.get(default_avatar_url) as r:
+                    image = await r.content.read()
+            with open('data/leveler/temp/{}_temp_level_profile.png'.format(user.id),'wb') as f:
+                f.write(image)
+            profile_image = Image.open('data/leveler/temp/{}_temp_level_profile.png'.format(user.id)).convert('RGBA')
+
+            width = 175
+            height = 60
+            bg_color = (70,0,0, 255)
+            result = Image.new('RGBA', (width, height), bg_color)
+            process = Image.new('RGBA', (width, height), bg_color)
+
+            draw = ImageDraw.Draw(process)
+
+            multiplier = 6
+            lvl_circle_dia = 60
+            circle_left = 4
+            circle_top = int((height- lvl_circle_dia)/2)
+            raw_length = lvl_circle_dia * multiplier
+
+            mask = Image.new('L', (raw_length, raw_length), 0)
+            draw_thumb = ImageDraw.Draw(mask)
+            draw_thumb.ellipse((0, 0) + (raw_length, raw_length), fill = 255, outline = 0)
+
+            
+
+            total_gap = 6
+            border = int(total_gap/2)
+            profile_size = lvl_circle_dia - total_gap
+            raw_length = profile_size * multiplier
+            output = ImageOps.fit(profile_image, (raw_length, raw_length), centering=(0.5, 0.5))
+            output = output.resize((profile_size, profile_size), Image.ANTIALIAS)
+            mask = mask.resize((profile_size, profile_size), Image.ANTIALIAS)
+            profile_image = profile_image.resize((profile_size, profile_size), Image.ANTIALIAS)
+            process.paste(profile_image, (circle_left + border, circle_top + border), mask)
+
+            level_fnt = ImageFont.truetype('data/welcome/Font/njnaruto.ttf', 20)
+            level_fnt2 = ImageFont.truetype('data/welcome/Font/njnaruto.ttf', 14)
+
+            white_text = (0, 106, 99, 255)
+            dark_text = (0, 248, 219, 255)
+
+            welcome = "WELCOME"
+
+            draw.text((self._center(50, 170, welcome, level_fnt), 20), welcome, font=level_fnt, fill=white_text)
+            draw.text((self._center(50, 170, person, level_fnt), 40), person, font=level_fnt2, fill=dark_text)
+
+            result = Image.alpha_composite(result, process)
+            filename = 'data/welcome/temp/{}_welcome.png'.format(user.id)
+            result.save(filename,'PNG', quality=100)
+
+            channel = self.get_welcome_channel(server) 
+            
+            await self.bot.send_file(channel, 'data/welcome/temp/{}_welcome.png'.format(user.id))
+
+            
+            
+        else:
+            if server.id not in self.settings:
+                self.settings[server.id] = deepcopy(default_settings)
+                self.settings[server.id]["CHANNEL"] = server.default_channel.id
+                dataIO.save_json(settings_path, self.settings)
+            if not self.settings[server.id]["ON"]:
+                return
+            if server is None:
+                print("Server is None. Private Message or some new fangled "
+                      "Discord thing?.. Anyways there be an error, "
+                      "the user was {}".format(member.name))
+                return
+
+            only_whisper = self.settings[server.id]["WHISPER"] is True
+            bot_welcome = member.bot and self.settings[server.id]["BOTS_MSG"]
+            bot_role = member.bot and self.settings[server.id]["BOTS_ROLE"]
+            msg = bot_welcome or rand_choice(self.settings[server.id]["GREETING"])
+
+            # whisper the user if needed
+            if not member.bot and self.settings[server.id]["WHISPER"]:
+                try:
+                    await self.bot.send_message(member, msg.format(member, server))
+                except:
+                    print("welcome.py: unable to whisper {}. Probably "
+                          "doesn't want to be PM'd".format(member))
+            # grab the welcome channel
+            channel = self.get_welcome_channel(server)
+            if channel is None:  # complain even if only whisper
+                print('welcome.py: Channel not found. It was most '
+                      'likely deleted. User joined: {}'.format(member.name))
+                return
+            # we can stop here
+            if only_whisper and not bot_welcome:
+                return
+            if not self.speak_permissions(server):
+                print("Permissions Error. User that joined: "
+                      "{0.name}".format(member))
+                print("Bot doesn't have permissions to send messages to "
+                      "{0.name}'s #{1.name} channel".format(server, channel))
+                return
+            # try to add role if needed
+            if bot_role:
+                try:
+                    role = discord.utils.get(server.roles, name=bot_role)
+                    await self.bot.add_roles(member, role)
+                except:
+                    print('welcome.py: unable to add {} role to {}. '
+                          'Role was deleted, network error, or lacking '
+                          'permissions'.format(bot_role, member))
+                else:
+                    print('welcome.py: added {} role to '
+                          'bot, {}'.format(role, member))
+            # finally, welcome them
+            await self.bot.send_message(channel, msg.format(member, server))
 
     def get_welcome_channel(self, server):
         try:

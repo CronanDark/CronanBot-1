@@ -78,12 +78,71 @@ class Leveler:
                 db.users.insert_one(userinfo)
 
 
-    @commands.command()
-    async def rankupinfo(self):
+    @commands.command(pass_context=True)
+    async def rankupinfo(self, ctx):
         """get the info on exp and all"""
+        server = ctx.message.server
+        setcooldowns = self.cooldown
+        cooldownhaveit = False
+        for i, s in enumerate(setcooldowns):
+            if s["TIME"] == setcooldowns:
+                continue
+
+            if server.id in s["ID"]:
+                cooldownhaveit = True
+                break
+            else:
+                cooldownhaveit = False
+
+        if cooldownhaveit is False:
+                data = {"ID": [server.id],
+                        "TIME": str(30)}
+                setcooldowns.append(data)
+                dataIO.save_json("data/leveler/cooldown.json", self.cooldown)
+
+        setminmaxs = self.minmax
+        minmaxhaveit = False
+        for i, s in enumerate(setminmaxs):
+            if s["MIN"] == setminmaxs:
+                continue
+
+            if server.id in s["ID"]:
+                minmaxhaveit = True
+                break
+            else:
+                minmaxhaveit = False
+
+        if minmaxhaveit is False:
+                data = {"ID": [server.id],
+                        "MIN": str(25),
+                        "MAX": str(50)}
+                setminmaxs.append(data)
+                dataIO.save_json("data/leveler/minmax.json", self.minmax)
+            
+
+        cooldownset = self.cooldown
+        for i, s in enumerate(cooldownset):
+            if s["TIME"] == cooldownset:
+                continue
+
+            if server.id in s["ID"]:
+                cooldownforxp = cooldownset[i]
+                cooldownforxp = cooldownforxp["TIME"]
+                
+        minmaxset = self.minmax
+        for i, s in enumerate(minmaxset):
+            if s["MIN"] == minmaxset:
+                continue
+
+            if server.id in s["ID"]:
+                minxp = minmaxset[i]
+                minxp = minxp["MIN"]
+                maxxp = minmaxset[i]
+                maxxp = maxxp["MAX"]
+                
         await self.bot.say("EXP forum: 125*level+50")
-        await self.bot.say("Cooldown: 30 seconds")
-        await self.bot.say("EXP each msg: 25-50")
+        await self.bot.say("Cooldown: " + str(cooldownforxp) + " seconds")
+        await self.bot.say("EXP each msg: " + str(minxp) + "-" + str(maxxp))
 
     @commands.command(pass_context=True, no_pm=True)
     async def expneeded(self, ctx, *, user : discord.Member=None):
@@ -2829,7 +2888,6 @@ class Leveler:
             if server.id in s["ID"]:
                 cooldownforxp = cooldownset[i]
                 cooldownforxp = cooldownforxp["TIME"]
-                cooldownforxp = cooldownforxp[0]
                 
         minmaxset = self.minmax
         for i, s in enumerate(minmaxset):
@@ -2839,11 +2897,9 @@ class Leveler:
             if server.id in s["ID"]:
                 minxp = minmaxset[i]
                 minxp = minxp["MIN"]
-                minxp = minxp[0]
                 maxxp = minmaxset[i]
                 maxxp = maxxp["MAX"]
-                maxxp = maxxp[0]
-                
+
         if float(curr_time) - float(userinfo["chat_block"]) >= int(cooldownforxp) and not any(text.startswith(x) for x in prefix):
             await self._process_exp(message, userinfo, random.randint(int(minxp), int(maxxp)))
             await self._give_chat_credit(user, server)

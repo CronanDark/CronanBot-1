@@ -8,6 +8,7 @@ from enum import Enum
 from urllib.parse import quote_plus
 import datetime
 import string
+from discord.permissions import PermissionOverwrite
 import re
 import time
 import aiohttp
@@ -49,6 +50,7 @@ class General:
 	
 	def __init__(self, bot):
 		self.bot = bot
+		self.rpchannels = dataIO.load_json("data/rpchannel/rpchannels.json")
 		self.stopwatches = {}
 		self.regional_map = {"z": "🇿", "y": "🇾", "x": "🇽", "w": "🇼", "v": "🇻", "u": "🇺", "t": "🇹", "s": "🇸", "r": "🇷", "q": "🇶", "p": "🇵", "o": "🇴", "n": "🇳", "m": "🇲", "l": "🇱", "k": "🇰", "j": "🇯", "i": "🇮", "h": "🇭", "g": "🇬", "f": "🇫", "e": "🇪", "d": "🇩", "c": "🇨", "b": "🇧", "a": "🇦"}
 		self.emote_regex = re.compile(r'<:.*:(?P<id>\d*)>')
@@ -286,6 +288,88 @@ class General:
 		"""Bot says hello to you"""
 		username = ctx.message.author.name
 		await self.bot.say("Hello " + username)
+	
+#	@commands.group(pass_context=True, hidden=True, no_pm=True)
+#	async def rpchannel(self, ctx, *, rpname):
+#		"""For Rps"""
+#		if rpname is None:
+#			await self.bot.send_cmd_help(ctx)
+#			return
+#		rpname = rpname.lower()
+#		rpchannels = self.rpchannels
+#		server = ctx.message.server
+#		stuff = ["y", "n", "yes", "no"]
+#		answers = ["y", "yes"]
+#		nope = ["n", "nope"]
+#		exist = False
+#		timesexist = 0
+#		for i, s in enumerate(rpchannels):
+#			
+#			if server.id in s["SERVER"]:
+#				if str(rpname) in s["RPNAME"]:
+#					exist = True
+#					timesexist += 1
+#					continue
+#		
+#		if exist is True:
+#			await self.bot.say("That RP already exists. Do you want me to create this rp but with " + timesexist + " at the end?(yes/no)")
+#			channelrpmsg = ctx.message.channel
+#			correctmsg = False
+#			while correctmsg is False:
+#				msg = await self.bot.wait_for_message(timeout=20, channel=channelrpmsg)
+#				if msg is None:
+#					correctmsg = True
+#				elif msg.content.lower().strip() in stuff:
+#					correctmsg = True
+#				if correctmsg is True:
+#					if msg is None:
+#						await self.bot.say("Nevermind then")
+#						return
+#					elif msg.content.lower().strip() in answers:
+#						rpname = str(rpname)
+#						rpname += str(timesexist)
+#						rpname = str(rpname)
+#						rpname = rpname.replace(" ", "-")
+#						rpname = rpname.replace("(", "")
+#						rpname = rpname.replace(")", "")
+#						rpname = rpname.replace("'", "")
+#						rpname = rpname.replace(",", "")
+#						await self.bot.create_role(server, name=str(rpname))
+#						everyone = discord.PermissionOverwrite(read_messages=False)
+#						mine = discord.PermissionOverwrite(read_messages=True)
+#						await self.bot.create_channel(server, name=str(rpname), overwrites=((str(server.default_role), everyone),(str(rpname), mine)))
+#						rolename = str(rpname)
+#						data = {"SERVER":[server.id],
+#								"RPNAME": str(rpname),
+#								"ROLENAME": str(rolename)}
+#						rpchannels.append(data)
+#						dataIO.save_json("data/rpchannel/rpchannels.json", self.rpchannels)
+#						
+#						await self.bot.say("RP Opened")
+#						return
+#					elif msg.content.lower().strip() in nope:
+#						await self.bot.say("Ok. I wont create it then")
+#						return
+#		else:
+#			rpname = str(rpname)
+#			rpname = rpname.replace(" ", "-")
+#			rpname = rpname.replace("(", "")
+#			rpname = rpname.replace(")", "")
+#			rpname = rpname.replace("'", "")
+#			rpname = rpname.replace(",", "")
+#			await self.bot.create_role(server, name=str(rpname))
+#			everyone = discord.PermissionOverwrite(read_messages=False)
+#			mine = discord.PermissionOverwrite(read_messages=True)
+#			await self.bot.create_channel(server, name=str(rpname), overwrites=((str(server.default_role), everyone), (str(rpname), mine)))
+#			rolename = str(rpname)
+#			data = {"SERVER":[server.id],
+#					"RPNAME": str(rpname),
+#					"ROLENAME": str(rolename)}
+#			rpchannels.append(data)
+#			dataIO.save_json("data/rpchannel/rpchannels.json", self.rpchannels)
+#			
+#			await self.bot.say("RP Opened")
+#			return
 
 	@commands.command(pass_context=True, no_pm=True)
 	async def serverinfo(self, ctx):
