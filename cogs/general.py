@@ -52,6 +52,7 @@ class General:
 		self.bot = bot
 		self.rpchannels = dataIO.load_json("data/rpchannel/rpchannels.json")
 		self.stopwatches = {}
+		self.points = dataIO.load_json("data/general/rpspoints.json")
 		self.regional_map = {"z": "🇿", "y": "🇾", "x": "🇽", "w": "🇼", "v": "🇻", "u": "🇺", "t": "🇹", "s": "🇸", "r": "🇷", "q": "🇶", "p": "🇵", "o": "🇴", "n": "🇳", "m": "🇲", "l": "🇱", "k": "🇰", "j": "🇯", "i": "🇮", "h": "🇭", "g": "🇬", "f": "🇫", "e": "🇪", "d": "🇩", "c": "🇨", "b": "🇧", "a": "🇦"}
 		self.emote_regex = re.compile(r'<:.*:(?P<id>\d*)>')
 		self.retro_regex = re.compile(r"((https)(\:\/\/|)?u3\.photofunia\.com\/.\/results\/.\/.\/.*(\.jpg\?download))")
@@ -118,6 +119,8 @@ class General:
 	@commands.command(pass_context=True)
 	async def rps(self, ctx, your_choice : RPSParser):
 		"""Play rock paper scissors"""
+		user = ctx.message.author
+		points = self.points
 		author = ctx.message.author
 		player_choice = your_choice.choice
 		cronan_choice = choice((RPS.rock, RPS.paper, RPS.scissors))
@@ -138,12 +141,110 @@ class General:
 		if outcome is True:
 			await self.bot.say("{} You win {}!"
 								"".format(cronan_choice.value, author.mention))
+			for i, s in enumerate(points):
+				if s["USER"] == points:
+					continue
+
+				if str(user.id) in s["USER"]:
+					oglosepoints = str(points[0]["LOSES"])
+					ogtiepoints = str(points[0]["TIES"])
+					ogwinpoints = int(points[0]["WINS"])
+					newwinpoints = ogwinpoints + 1
+					datadel = {"USER": str(user.id),
+							   "LOSES": str(oglosepoints),
+							   "TIES": str(ogtiepoints),
+							   "WINS": str(ogwinpoints)}
+					points.remove(datadel)
+					data = {"USER": str(user.id),
+							"LOSES": str(oglosepoints),
+							"TIES": str(ogtiepoints),
+							"WINS": str(newwinpoints)}
+					points.append(data)
+					dataIO.save_json("data/general/rpspoints.json", self.points)
+				elif str(user.id) not in s["USER"]:
+					data = {"USER": str(user.id),
+							"LOSES": str(0),
+							"TIES": str(0),
+							"WINS": str(1)}
+					points.append(data)
+					dataIO.save_json("data/general/rpspoints.json", self.points)
 		elif outcome is False:
 			await self.bot.say("{} You lose {}!"
 								"".format(cronan_choice.value, author.mention))
+			for i, s in enumerate(points):
+				if s["USER"] == points:
+					continue
+
+				if str(user.id) in s["USER"]:
+					oglosepoints = int(points[0]["LOSES"])
+					ogtiepoints = str(points[0]["TIES"])
+					ogwinpoints = str(points[0]["WINS"])
+					newlosepoints = oglosepoints + 1
+					datadel = {"USER": str(user.id),
+							   "LOSES": str(oglosepoints),
+							   "TIES": str(ogtiepoints),
+							   "WINS": str(ogwinpoints)}
+					points.remove(datadel)
+					data = {"USER": str(user.id),
+							"LOSES": str(newlosepoints),
+							"TIES": str(ogtiepoints),
+							"WINS": str(ogwinpoints)}
+					points.append(data)
+					dataIO.save_json("data/general/rpspoints.json", self.points)
+				elif str(user.id) not in s["USER"]:
+					data = {"USER": str(user.id),
+							"LOSES": str(1),
+							"TIES": str(0),
+							"WINS": str(0)}
+					points.append(data)
+					dataIO.save_json("data/general/rpspoints.json", self.points)
 		else:
 			await self.bot.say("{} We're square {}!"
 								"".format(cronan_choice.value, author.mention))
+			for i, s in enumerate(points):
+				if s["USER"] == points:
+					continue
+
+				if str(user.id) in s["USER"]:
+					oglosepoints = str(points[0]["LOSES"])
+					ogtiepoints = int(points[0]["TIES"])
+					ogwinpoints = str(points[0]["WINS"])
+					newtiepoints = ogtiepoints + 1
+					datadel = {"USER": str(user.id),
+							   "LOSES": str(oglosepoints),
+							   "TIES": str(ogtiepoints),
+							   "WINS": str(ogwinpoints)}
+					points.remove(datadel)
+					data = {"USER": str(user.id),
+							"LOSES": str(oglosepoints),
+							"TIES": str(newtiepoints),
+							"WINS": str(ogwinpoints)}
+					points.append(data)
+					dataIO.save_json("data/general/rpspoints.json", self.points)
+				elif str(user.id) not in s["USER"]:
+					data = {"USER": str(user.id),
+							"LOSES": str(0),
+							"TIES": str(1),
+							"WINS": str(0)}
+					points.append(data)
+					dataIO.save_json("data/general/rpspoints.json", self.points)
+		for i, s in enumerate(points):
+			if s["USER"] == points:
+				continue
+
+			if str(user.id) in s["USER"]:
+				loseboard = str(points[0]["LOSES"])
+				tieboard = str(points[0]["TIES"])
+				winboard = str(points[0]["WINS"])
+
+
+		embedship = discord.Embed(color=discord.Color.red())
+		embedship.set_author(name="Scores:")
+		embedship.add_field(name="Loses:", value=loseboard)
+		embedship.add_field(name="Ties:", value=tieboard)
+		embedship.add_field(name="Wins:", value=winboard)
+
+		await self.bot.say(embed=embedship)
 
 	@commands.command(name="8", aliases=["8ball"])
 	async def _8ball(self, *, question : str):

@@ -343,7 +343,8 @@ def initialize(bot_class=Bot, formatter_class=Formatter):
 
     @bot.event
     async def on_server_join(server):
-        await bot.send_message(server, "Hello. Thanks for adding me. `->help` for a list of the commands and if you are owner and want to change the command prefix do `->set serverprefix (chosen prefix)`")
+        owner = server.owner
+        await bot.send_message(owner, "Hello. Thanks for adding me. `->help` for a list of the commands and if you are owner and want to change the command prefix do `->set serverprefix (chosen prefix)`")
 
     @bot.event
     async def on_message(message):
