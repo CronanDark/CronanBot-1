@@ -510,9 +510,9 @@ class Mod:
     async def mute(self, ctx, user : discord.Member, *, reason: str = None):
         """Mutes user in the channel/server
 
-        Defaults to channel"""
+        Defaults to server"""
         if ctx.invoked_subcommand is None:
-            await ctx.invoke(self.channel_mute, user=user, reason=reason)
+            await ctx.invoke(self.server_mute, user=user, reason=reason)
 
     @checks.mod_or_permissions(administrator=True)
     @mute.command(name="channel", pass_context=True, no_pm=True)
@@ -606,9 +606,9 @@ class Mod:
     async def unmute(self, ctx, user : discord.Member):
         """Unmutes user in the channel/server
 
-        Defaults to channel"""
+        Defaults to server"""
         if ctx.invoked_subcommand is None:
-            await ctx.invoke(self.channel_unmute, user=user)
+            await ctx.invoke(self.server_unmute, user=user)
 
     @checks.mod_or_permissions(administrator=True)
     @unmute.command(name="channel", pass_context=True, no_pm=True)
