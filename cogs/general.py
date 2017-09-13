@@ -141,6 +141,7 @@ class General:
 		if outcome is True:
 			await self.bot.say("{} You win {}!"
 								"".format(cronan_choice.value, author.mention))
+			userexist = False
 			for i, s in enumerate(points):
 				if s["USER"] == points:
 					continue
@@ -150,27 +151,27 @@ class General:
 					ogtiepoints = str(points[0]["TIES"])
 					ogwinpoints = int(points[0]["WINS"])
 					newwinpoints = ogwinpoints + 1
-					datadel = {"USER": str(user.id),
-							   "LOSES": str(oglosepoints),
-							   "TIES": str(ogtiepoints),
-							   "WINS": str(ogwinpoints)}
-					points.remove(datadel)
-					data = {"USER": str(user.id),
-							"LOSES": str(oglosepoints),
+					points.remove(s)
+					dataIO.save_json("data/general/rpspoints.json", self.points)
+					data = {"LOSES": str(oglosepoints),
 							"TIES": str(ogtiepoints),
+							"USER": str(user.id),
 							"WINS": str(newwinpoints)}
 					points.append(data)
 					dataIO.save_json("data/general/rpspoints.json", self.points)
-				elif str(user.id) not in s["USER"]:
-					data = {"USER": str(user.id),
-							"LOSES": str(0),
-							"TIES": str(0),
-							"WINS": str(1)}
-					points.append(data)
-					dataIO.save_json("data/general/rpspoints.json", self.points)
+					userexist = True
+			
+			if not userexist:
+				data = {"LOSES": str(0),
+						"TIES": str(0),
+						"USER": str(user.id),
+						"WINS": str(1)}
+				points.append(data)
+				dataIO.save_json("data/general/rpspoints.json", self.points)
 		elif outcome is False:
 			await self.bot.say("{} You lose {}!"
 								"".format(cronan_choice.value, author.mention))
+			userexist = False
 			for i, s in enumerate(points):
 				if s["USER"] == points:
 					continue
@@ -180,27 +181,27 @@ class General:
 					ogtiepoints = str(points[0]["TIES"])
 					ogwinpoints = str(points[0]["WINS"])
 					newlosepoints = oglosepoints + 1
-					datadel = {"USER": str(user.id),
-							   "LOSES": str(oglosepoints),
-							   "TIES": str(ogtiepoints),
-							   "WINS": str(ogwinpoints)}
-					points.remove(datadel)
-					data = {"USER": str(user.id),
-							"LOSES": str(newlosepoints),
+					points.remove(s)
+					dataIO.save_json("data/general/rpspoints.json", self.points)
+					data = {"LOSES": str(newlosepoints),
 							"TIES": str(ogtiepoints),
+							"USER": str(user.id),
 							"WINS": str(ogwinpoints)}
 					points.append(data)
 					dataIO.save_json("data/general/rpspoints.json", self.points)
-				elif str(user.id) not in s["USER"]:
-					data = {"USER": str(user.id),
-							"LOSES": str(1),
-							"TIES": str(0),
-							"WINS": str(0)}
-					points.append(data)
-					dataIO.save_json("data/general/rpspoints.json", self.points)
+					userexist = True
+					
+			if not userexist:
+				data = {"LOSES": str(1),
+						"TIES": str(0),
+						"USER": str(user.id),
+						"WINS": str(0)}
+				points.append(data)
+				dataIO.save_json("data/general/rpspoints.json", self.points)
 		else:
 			await self.bot.say("{} We're square {}!"
 								"".format(cronan_choice.value, author.mention))
+			userexist = False
 			for i, s in enumerate(points):
 				if s["USER"] == points:
 					continue
@@ -210,24 +211,23 @@ class General:
 					ogtiepoints = int(points[0]["TIES"])
 					ogwinpoints = str(points[0]["WINS"])
 					newtiepoints = ogtiepoints + 1
-					datadel = {"USER": str(user.id),
-							   "LOSES": str(oglosepoints),
-							   "TIES": str(ogtiepoints),
-							   "WINS": str(ogwinpoints)}
-					points.remove(datadel)
-					data = {"USER": str(user.id),
-							"LOSES": str(oglosepoints),
+					points.remove(s)
+					dataIO.save_json("data/general/rpspoints.json", self.points)
+					data = {"LOSES": str(oglosepoints),
 							"TIES": str(newtiepoints),
+							"USER": str(user.id),
 							"WINS": str(ogwinpoints)}
 					points.append(data)
 					dataIO.save_json("data/general/rpspoints.json", self.points)
-				elif str(user.id) not in s["USER"]:
-					data = {"USER": str(user.id),
-							"LOSES": str(0),
-							"TIES": str(1),
-							"WINS": str(0)}
-					points.append(data)
-					dataIO.save_json("data/general/rpspoints.json", self.points)
+					userexist = True
+					
+			if not userexist:
+				data = {"LOSES": str(0),
+						"TIES": str(1),
+						"USER": str(user.id),
+						"WINS": str(0)}
+				points.append(data)
+				dataIO.save_json("data/general/rpspoints.json", self.points)
 		for i, s in enumerate(points):
 			if s["USER"] == points:
 				continue

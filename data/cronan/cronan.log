@@ -11487,3 +11487,210 @@ Traceback (most recent call last):
   File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 220, in rps
     "TIES": str(newtiepoints),
 NameError: name 'newtiepoints' is not defined
+[13/09/2017 17:26] ERROR cronan on_command_error 377: Exception in command 'bank register'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\economy.py", line 316, in register
+    account = self.bank.create_account(author, initial_balance=credits)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\economy.py", line 135, in create_account
+    return self.get_account(user)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\economy.py", line 240, in get_account
+    return self._create_account_obj(acc)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\economy.py", line 245, in _create_account_obj
+    "%Y-%m-%d %H:%M:%S")
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\_strptime.py", line 500, in _strptime_datetime
+    tt, fraction = _strptime(data_string, format)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\_strptime.py", line 337, in _strptime
+    (data_string, format))
+ValueError: time data '09-13-2017 17:26:33' does not match format '%Y-%m-%d %H:%M:%S'
+[13/09/2017 18:05] ERROR cronan on_command_error 377: Exception in command 'selfrole'
+Traceback (most recent call last):
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\selector_events.py", line 664, in _read_ready
+    data = self._sock.recv(self.max_size)
+ConnectionResetError: [WinError 10054] An existing connection was forcibly closed by the remote host
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "lib\aiohttp\client.py", line 202, in _request
+    yield from resp.start(conn, read_until_eof)
+  File "lib\aiohttp\client_reqrep.py", line 640, in start
+    message = yield from httpstream.read()
+  File "lib\aiohttp\streams.py", line 641, in read
+    result = yield from super().read()
+  File "lib\aiohttp\streams.py", line 476, in read
+    yield from self._waiter
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 358, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 290, in _wakeup
+    future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+aiohttp.errors.ServerDisconnectedError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\admin.py", line 257, in selfrole
+    await self.bot.say("Role added.")
+  File "lib\discord\ext\commands\bot.py", line 310, in _augmented_msg
+    msg = yield from coro
+  File "cronan.py", line 91, in send_message
+    return await super().send_message(*args, **kwargs)
+  File "lib\discord\client.py", line 1152, in send_message
+    data = yield from self.http.send_message(channel_id, content, guild_id=guild_id, tts=tts, embed=embed)
+  File "lib\discord\http.py", line 137, in request
+    r = yield from self.session.request(method, url, **kwargs)
+  File "lib\aiohttp\client.py", line 555, in __iter__
+    resp = yield from self._coro
+  File "lib\aiohttp\client.py", line 209, in _request
+    raise aiohttp.ClientResponseError() from exc
+aiohttp.errors.ClientResponseError
+[13/09/2017 18:05] ERROR cronan <module> 641: Fatal exception, attempting graceful logout
+Traceback (most recent call last):
+  File "lib\aiohttp\connector.py", line 601, in _create_direct_connection
+    local_addr=self._local_addr)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 645, in create_connection
+    raise exceptions[0]
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 632, in create_connection
+    yield from self.sock_connect(sock, address)
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 358, in __iter__
+    yield self  # This tells Task to wait for completion.
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 290, in _wakeup
+    future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\selector_events.py", line 436, in _sock_connect_cb
+    raise OSError(err, 'Connect call failed %s' % (address,))
+OSError: [Errno 10051] Connect call failed ('104.16.59.5', 443)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "lib\aiohttp\connector.py", line 304, in connect
+    yield from self._create_connection(req)
+  File "lib\aiohttp\connector.py", line 578, in _create_connection
+    transport, proto = yield from self._create_direct_connection(req)
+  File "lib\aiohttp\connector.py", line 624, in _create_direct_connection
+    (req.host, req.port, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10051] Can not connect to discordapp.com:443 [Connect call failed ('104.16.59.5', 443)]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "cronan.py", line 621, in <module>
+    loop.run_until_complete(main(bot))
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\base_events.py", line 337, in run_until_complete
+    return future.result()
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\futures.py", line 274, in result
+    raise self._exception
+  File "C:\Users\nicos\AppData\Local\Programs\Python\Python35\lib\asyncio\tasks.py", line 241, in _step
+    result = coro.throw(exc)
+  File "cronan.py", line 610, in main
+    yield from bot.connect()
+  File "lib\discord\client.py", line 452, in connect
+    self.ws = yield from DiscordWebSocket.from_client(self, resume=resume)
+  File "lib\discord\gateway.py", line 203, in from_client
+    gateway = yield from client.http.get_gateway()
+  File "lib\discord\http.py", line 633, in get_gateway
+    data = yield from self.request(Route('GET', '/gateway'))
+  File "lib\discord\http.py", line 137, in request
+    r = yield from self.session.request(method, url, **kwargs)
+  File "lib\aiohttp\client.py", line 555, in __iter__
+    resp = yield from self._coro
+  File "lib\aiohttp\client.py", line 198, in _request
+    conn = yield from self._connector.connect(req)
+  File "lib\aiohttp\connector.py", line 314, in connect
+    .format(key, exc.strerror)) from exc
+aiohttp.errors.ClientOSError: [Errno 10051] Cannot connect to host discordapp.com:443 ssl:True [Can not connect to discordapp.com:443 [Connect call failed ('104.16.59.5', 443)]]
+[13/09/2017 18:48] ERROR cronan on_command_error 377: Exception in command 'textmoji'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 293, in textmoji
+    await self.bot.delete_message(deletethis)
+  File "lib\discord\client.py", line 1263, in delete_message
+    yield from self.http.delete_message(channel.id, message.id, guild_id)
+  File "lib\discord\http.py", line 196, in request
+    raise Forbidden(r, data)
+discord.errors.Forbidden: FORBIDDEN (status code: 403): Missing Permissions
+[13/09/2017 18:52] ERROR cronan on_command_error 377: Exception in command 'rps'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 187, in rps
+    points.remove(datadel)
+ValueError: list.remove(x): x not in list
+[13/09/2017 18:53] ERROR cronan on_command_error 377: Exception in command 'rps'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 157, in rps
+    points.remove(datadel)
+ValueError: list.remove(x): x not in list
+[13/09/2017 18:53] ERROR cronan on_command_error 377: Exception in command 'rps'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 217, in rps
+    points.remove(datadel)
+ValueError: list.remove(x): x not in list
+[13/09/2017 18:53] ERROR cronan on_command_error 377: Exception in command 'rps'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 187, in rps
+    points.remove(datadel)
+ValueError: list.remove(x): x not in list
+[13/09/2017 19:02] ERROR cronan on_command_error 377: Exception in command 'rps'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 224, in rps
+    points.remove(datadel)
+ValueError: list.remove(x): x not in list
+[13/09/2017 19:25] ERROR cronan on_command_error 377: Exception in command 'rps'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 158, in rps
+    points.remove(datadel)
+ValueError: list.remove(x): x not in list
+[13/09/2017 19:28] ERROR cronan on_command_error 377: Exception in command 'rps'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 191, in rps
+    points.remove(datadel)
+ValueError: list.remove(x): x not in list
+[13/09/2017 19:30] ERROR cronan on_command_error 377: Exception in command 'rps'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 158, in rps
+    points.remove(datadel)
+ValueError: list.remove(x): x not in list
+[13/09/2017 19:32] ERROR cronan on_command_error 377: Exception in command 'rps'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 220, in rps
+    points.remove(i)
+ValueError: list.remove(x): x not in list
+[13/09/2017 19:35] ERROR cronan on_command_error 377: Exception in command 'rps'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\general.py", line 218, in rps
+    points[i]["USER"].remove(user.id)
+AttributeError: 'str' object has no attribute 'remove'
+[13/09/2017 19:44] ERROR cronan on_command_error 377: Exception in command 'rocketship'
+Traceback (most recent call last):
+  File "lib\discord\ext\commands\core.py", line 50, in wrapped
+    ret = yield from coro(*args, **kwargs)
+  File "C:\Users\nicos\Desktop\cronanbot\CronanBot\cogs\fun.py", line 129, in rocketship
+    points.remove(i)
+ValueError: list.remove(x): x not in list

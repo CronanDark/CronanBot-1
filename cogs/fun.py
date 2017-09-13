@@ -92,6 +92,7 @@ class Fun:
                         goodorno = choice(goodorno)
                     await self.bot.say(goodorno)
                     if goodorno == "Failed":
+                        userexist = False
                         for i, s in enumerate(points):
                             if s["USER"] == points:
                                 continue
@@ -100,22 +101,23 @@ class Fun:
                                 ogfailpoints = int(points[0]["FAILS"])
                                 ogwinpoints = str(points[0]["WINS"])
                                 newfailpoints = ogfailpoints + 1
-                                datadel = {"USER": str(user.id),
-                                           "FAILS": str(ogfailpoints),
-                                           "WINS": str(ogwinpoints)}
-                                points.remove(datadel)
+                                points.remove(s)
+                                dataIO.save_json("data/fun/points.json", self.points)
                                 data = {"USER": str(user.id),
                                         "FAILS": str(newfailpoints),
                                         "WINS": str(ogwinpoints)}
                                 points.append(data)
                                 dataIO.save_json("data/fun/points.json", self.points)
-                            elif str(user.id) not in s["USER"]:
-                                data = {"USER": str(user.id),
-                                        "FAILS": str(1),
-                                        "WINS": str(0)}
-                                points.append(data)
-                                dataIO.save_json("data/fun/points.json", self.points)
+                                userexist = True
+                                
+                        if not userexist:
+                            data = {"USER": str(user.id),
+                                    "FAILS": str(1),
+                                    "WINS": str(0)}
+                            points.append(data)
+                            dataIO.save_json("data/fun/points.json", self.points)
                     elif goodorno == "SUCCESS":
+                        userexist = False
                         for i, s in enumerate(points):
                             if s["USER"] == points:
                                 continue
@@ -124,21 +126,20 @@ class Fun:
                                 ogfailpoints = str(points[0]["FAILS"])
                                 ogwinpoints = int(points[0]["WINS"])
                                 newwinpoints = ogwinpoints + 1
-                                datadel = {"USER": str(user.id),
-                                           "FAILS": str(ogfailpoints),
-                                           "WINS": str(ogwinpoints)}
-                                points.remove(datadel)
+                                points.remove(s)
+                                dataIO.save_json("data/fun/points.json", self.points)
                                 data = {"USER": str(user.id),
                                         "FAILS": str(ogfailpoints),
                                         "WINS": str(newwinpoints)}
                                 points.append(data)
                                 dataIO.save_json("data/fun/points.json", self.points)
-                            elif str(user.id) not in s["USER"]:
-                                data = {"USER": str(user.id),
-                                        "FAILS": str(0),
-                                        "WINS": str(1)}
-                                points.append(data)
-                                dataIO.save_json("data/fun/points.json", self.points)
+                                userexist = True
+                        if not userexist:
+                            data = {"USER": str(user.id),
+                                    "FAILS": str(0),
+                                    "WINS": str(1)}
+                            points.append(data)
+                            dataIO.save_json("data/fun/points.json", self.points)
 
             asyncio.sleep(2)
             for i, s in enumerate(points):
